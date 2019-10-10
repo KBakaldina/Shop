@@ -12,8 +12,9 @@ router.get('/', function(req, res, next) {
 /* POST login page.*/
 router.post('/', urlencodedParser, function(req, res, next) {
     if(!req.body) return res.sendStatus(400);
-    console.log(req.body);
-    res.send(`${req.body.userName} - ${req.body.userPassword}`);
+    //console.log(req.body);
+    //res.send(`${req.body.userName} - ${req.body.userPassword}`);
+
 });
 
 module.exports = router;
