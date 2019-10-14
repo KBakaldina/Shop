@@ -12,23 +12,15 @@ router.get('/', function(req, res) {
 
 /* POST registration page.*/
 router.post('/', urlencodedParser, function(req, res) {
-
     console.log(req.body);
 
-    if(req.body) {
-        if ( req.body.userPassword == req.body.userPassword2) {
-            res.send('Thank you for registration!');
-            actionRegistration(req.body.userName, req.body.userPassword, function(){
-                //???
+    if(req.body.userName && req.body.userPassword && req.body.userPassword2) {
+        actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2, function(err, resultMsg){
+            //if (err) res.send(resultMsg);
+            res.send(resultMsg);
             });
-        }
-        else {
-            return res.send('Incorrect conformation of password. Try again, please!')
-            //return to registration form???
-        }
     }
-    else  return res.sendStatus(400);
-
+    else res.send('All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!');
 });
 
 module.exports = router;

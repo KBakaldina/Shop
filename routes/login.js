@@ -12,18 +12,14 @@ router.get('/', function(req, res) {
 
 /* POST login page.*/
 router.post('/', urlencodedParser, function(req, res) {
-
     console.log(req.body);
 
     if(req.body.userName && req.body.userPassword) {
             actionLogin(req.body.userName, req.body.userPassword, function(err, resultMsg){
-                if (err) throw err;
+                //if (err) res.send(resultMsg);
                 res.send(resultMsg);
             });
-
-        }
-    else  res.send('Both fields (\"Name\" and \"Password\") are required. Please, try again by completing them!');
-
+    } else  res.send('Both fields (\"Name\" and \"Password\") are required. Please, try again by completing them!');
 });
 
 module.exports = router;
