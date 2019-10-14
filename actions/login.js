@@ -1,7 +1,8 @@
 var connection = require('../libs/dbConnection');
+var bcrypt = require('bcrypt');
 
 module.exports = function (userName, userPassword, callback) {
-    var sql='SELECT * FROM users WHERE login = ?';
+    var sql = 'SELECT * FROM users WHERE login = ?';
 
     connection.query(
         sql, userName,
@@ -9,7 +10,7 @@ module.exports = function (userName, userPassword, callback) {
             if (err) callback(1, err);
 
             if (rows[0]){
-                if (userPassword === rows[0].password)
+                if (bcrypt.compareSync(userPassword, rows[0].password))
                     callback(0, 'You logged in successfully!');
                 else callback(0, 'Wrong password. Try again, please!');
             }

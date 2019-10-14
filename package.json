@@ -13,6 +13,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "body-parser": "latest",
-    "mysql": "latest"
+    "mysql": "latest",
+    "bcrypt": "latest"
   }
 }

@@ -1,4 +1,5 @@
 var connection = require('../libs/dbConnection');
+var bcrypt = require('bcrypt');
 
 module.exports = function (userName, userPassword, userPassword2, callback) {
     var sqlUserExist='SELECT * FROM users WHERE login = ?';
@@ -9,7 +10,9 @@ module.exports = function (userName, userPassword, userPassword2, callback) {
             if (err) callback(1, err);
 
             if (!rows[0]) {
-                if(userPassword === userPassword2){
+                if(userPassword == userPassword2){
+                    userPassword = bcrypt.hashSync(userPassword, 5);
+
                     connection.query(
                         sqlCreateNewUser, [userName, userPassword],
                         function (err) {

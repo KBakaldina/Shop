@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var actionRegistration= require('../actions/registration');
+var actionRegistration = require('../actions/registration');
+var bodyParser = require('body-parser');
 
-var bodyParser = require("body-parser");
+
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 /* GET registration page.*/
