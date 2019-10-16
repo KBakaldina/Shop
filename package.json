@@ -16,6 +16,8 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql": "latest",
-    "passport": "^0.4.0"
+    "passport": "^0.4.0",
+    "passport-local": "latest",
+    "express-session": "latest"
   }
 }

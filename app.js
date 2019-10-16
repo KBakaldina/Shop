@@ -1,16 +1,19 @@
 var createError = require('http-errors');
 var express = require('express');
-var passport = require('passport');
+var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var passport = require('passport');
 
+require('./config/passport')(passport);
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var registrationRouter = require('./routes/registration');
+var homeRouter = require('./routes/home');
 
 var app = express();
 
@@ -28,6 +31,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/registration', registrationRouter);
+app.use('/home', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

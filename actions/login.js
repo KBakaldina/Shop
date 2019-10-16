@@ -10,8 +10,10 @@ module.exports = function (userName, userPassword, callback) {
             if (err) callback(1, err);
 
             if (rows[0]){
-                if (bcrypt.compareSync(userPassword, rows[0].password))
+                if (bcrypt.compareSync(userPassword, rows[0].password)) {
+                    //console.log(rows[0].userID);
                     callback(0, 'You logged in successfully!');
+                }
                 else callback(0, 'Wrong password. Try again, please!');
             }
             else callback(0, 'Wrong login name. Please, try again or sign up!')

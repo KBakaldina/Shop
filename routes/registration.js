@@ -8,7 +8,7 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 /* GET registration page.*/
 router.get('/', function(req, res) {
-    res.render('registration', { title: 'Registration' });
+    res.render('registration');
 });
 
 /* POST registration page.*/

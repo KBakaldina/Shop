@@ -2,12 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/home.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/bcrypt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bcrypt/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dotenv/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dotenv/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/urlencoded.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bytes/History.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bytes/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bytes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bytes/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bytes/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/raw-body/HISTORY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/raw-body/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/raw-body/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/registration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/registration.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +161,7 @@
       <workItem from="1570789415586" duration="5861000" />
       <workItem from="1570795301368" duration="14048000" />
       <workItem from="1571050156925" duration="10599000" />
-      <workItem from="1571223480237" duration="5164000" />
+      <workItem from="1571223480237" duration="14358000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -180,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571061454600</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="correction of dotenv using">
+      <created>1571229195248</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1571229195248</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +217,8 @@
     <MESSAGE value="+ action login" />
     <MESSAGE value="changes in registration action and route + small changes in login action and route" />
     <MESSAGE value="+ bcrypt" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ bcrypt" />
+    <MESSAGE value="correction of dotenv using" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction of dotenv using" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -207,22 +233,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1076" y="332" width="612" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1571224637320" />
-    <state width="898" height="222" key="GridCell.Tab.0.bottom" timestamp="1571228830781">
+    <state width="898" height="222" key="GridCell.Tab.0.bottom" timestamp="1571237819847">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="898" height="222" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1571228830781" />
-    <state width="898" height="222" key="GridCell.Tab.0.center" timestamp="1571228830780">
+    <state width="898" height="222" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1571237819847" />
+    <state width="898" height="222" key="GridCell.Tab.0.center" timestamp="1571237819847">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="898" height="222" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1571228830780" />
-    <state width="898" height="222" key="GridCell.Tab.0.left" timestamp="1571228830780">
+    <state width="898" height="222" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1571237819847" />
+    <state width="898" height="222" key="GridCell.Tab.0.left" timestamp="1571237819846">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="898" height="222" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1571228830780" />
-    <state width="898" height="222" key="GridCell.Tab.0.right" timestamp="1571228830780">
+    <state width="898" height="222" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1571237819846" />
+    <state width="898" height="222" key="GridCell.Tab.0.right" timestamp="1571237819847">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="898" height="222" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1571228830780" />
+    <state width="898" height="222" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1571237819847" />
     <state width="1014" height="321" key="GridCell.Tab.1.bottom" timestamp="1571062170321">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -275,6 +301,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="873" y="104" width="1024" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1570716540524" />
+    <state x="1201" y="354" width="484" height="342" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1571232933188">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="1201" y="354" width="484" height="342" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1571232933188" />
     <state x="1079" y="167" width="552" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1571061287485">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
