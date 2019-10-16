@@ -1,16 +1,16 @@
 var mysql = require('mysql');
 
+require('dotenv').config();
 
 var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        //
+        host: process.env.HOST,
+        username: process.env.NAME,
+        password: process.env.PASSWORD,
         database: 'registration'
 });
 
-connection.connect();
 
+connection.connect();
 //проверить есть ли база
 
 
