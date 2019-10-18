@@ -18,6 +18,8 @@
     "mysql": "latest",
     "passport": "^0.4.0",
     "passport-local": "latest",
-    "express-session": "latest"
+    "express-session": "latest",
+    "req-flash": "latest",
+    "passport-jwt": "latest"
   }
 }

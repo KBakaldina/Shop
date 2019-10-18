@@ -2,8 +2,8 @@ var connection = require('../libs/dbConnection');
 var bcrypt = require('bcrypt');
 
 module.exports = function (userName, userPassword, userPassword2, callback) {
-    var sqlUserExist='SELECT * FROM users WHERE login = ?';
-    var sqlCreateNewUser='INSERT INTO users(login, password) VALUES (?, ?)';
+    var sqlUserExist='SELECT * FROM users WHERE userName = ?';
+    var sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
 
     connection.query(
         sqlUserExist, userName, function (err, rows) {

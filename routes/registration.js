@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var actionRegistration = require('../actions/registration');
-var bodyParser = require('body-parser');
-
-
-var urlencodedParser = bodyParser.urlencoded({extended: false});
+var passport = require('../config/passport');
 
 /* GET registration page.*/
 router.get('/', function(req, res) {
@@ -12,16 +8,11 @@ router.get('/', function(req, res) {
 });
 
 /* POST registration page.*/
-router.post('/', urlencodedParser, function(req, res) {
-    console.log(req.body);
-
-    if(req.body.userName && req.body.userPassword && req.body.userPassword2) {
-        actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2, function(err, resultMsg){
-            //if (err) res.send(resultMsg);
-            res.send(resultMsg);
-            });
-    }
-    else res.send('All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!');
-});
+router.post('/', async(ctx, next) => {
+    await passport.authenticate('local-registration', {
+        successRedirect: '/profile',
+        failureRedirect: '/registration',
+        failureFlash: true
+})});
 
 module.exports = router;

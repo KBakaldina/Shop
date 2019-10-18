@@ -22,11 +22,11 @@ module.exports = function(passport){
                 passReqToCallback: true
             },
             function(req, userName, userPassword, userPassword2, done){
-                var sqlFindUser='SELECT * FROM users WHERE login = ?';
-                var sqlCreateNewUser='INSERT INTO users(login, password) VALUES (?, ?)';
-
-                connection.query(sqlFindUser,
-                    [userName], function(err, rows){
+                if (userName && userPassword && userPassword2) {
+                    var sqlFindUser='SELECT * FROM users WHERE userName = ?';
+                    var sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
+                    connection.query(sqlFindUser,
+                        [userName], function(err, rows){
                         if(err) return done(err);
                         if(!rows[0]){
                             if(userPassword == userPassword2){
@@ -36,14 +36,25 @@ module.exports = function(passport){
                                 };
 
                                 connection.query(sqlCreateNewUser, [newUserMysql.username, newUserMysql.password],
-                                function(err, rows){
-                                    newUserMysql.id = rows.insertId;
-                                    return done(null, newUserMysql);
-                                });}
-                            else return done(null, false, 'Incorrect conformation of password. Try again, please!');
-                        }else return done(null, false, 'This user is already exists. Please, choose another name and try again!');
-                });
-            })
+                                    function(err, rows){
+                                        newUserMysql.id = rows.insertId;
+                                        return done(null, newUserMysql);
+                                    });}
+                            else {
+                                console.log('registrationMessage: Incorrect conformation of password. Try again, please!');
+                                return done(null, false);
+                            }
+                        }else
+                        {
+                            console.log('registrationMessage: This user is already exists. Please, choose another name and try again!');
+                            return done(null, false);
+                        }
+                    });
+                } else {
+                    console.log('registrationMessage: All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!');
+                    return done(null, false);
+                }
+        })
     );
 
     passport.use(
@@ -54,15 +65,28 @@ module.exports = function(passport){
                 passReqToCallback: true
             },
             function(req, userName, userPassword, done){
-                connection.query("SELECT * FROM users WHERE username = ? ", [userName],
-                    function(err, rows){
-                        if(err) return done(err);
-                        if(rows[0]){
-                            if(bcrypt.compareSync(userPassword, rows[0].password))
+            if (userName && userPassword) {
+                connection.query("SELECT * FROM users WHERE userName = ? ", [userName],
+                    function (err, rows) {
+                        if (err) return done(err);
+                        if (rows[0]) {
+                            if (bcrypt.compareSync(userPassword, rows[0].password))
                                 return done(null, rows[0]);
-                            else return done(null, false, 'Wrong password. Try again, please!');
-                        } else return done(null, false, 'This user is already exists. Please, choose another name and try again!');
+                            else
+                            {
+                                console.log('loginMessage: Wrong password. Try again, please!');
+                                return done(null, false);
+                            }
+                        } else
+                        {
+                            console.log('loginMessage: This user is already exists. Please, choose another name and try again!');
+                            return done(null, false);
+                        }
                     });
+            } else {
+                console.log('registrationMessage: All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!');
+                return done(null, false);
+            }
             })
     );
 };

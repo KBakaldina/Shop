@@ -2,7 +2,7 @@ var connection = require('../libs/dbConnection');
 var bcrypt = require('bcrypt');
 
 module.exports = function (userName, userPassword, callback) {
-    var sql = 'SELECT * FROM users WHERE login = ?';
+    var sql = 'SELECT * FROM users WHERE userName = ?';
 
     connection.query(
         sql, userName,
