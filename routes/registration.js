@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('../config/passport');
+const actionRegistration = require('../actions/registration');
 
 /* GET registration page.*/
 router.get('/', function(req, res) {
@@ -8,11 +8,10 @@ router.get('/', function(req, res) {
 });
 
 /* POST registration page.*/
-router.post('/', async(ctx, next) => {
-    await passport.authenticate('local-registration', {
-        successRedirect: '/profile',
-        failureRedirect: '/registration',
-        failureFlash: true
+router.post('/', function(req, res){
+    actionRegistration(userName, userPassword, userPassword2,
+        function(err, msg) {
+        res.send(msg);
 })});
 
 module.exports = router;

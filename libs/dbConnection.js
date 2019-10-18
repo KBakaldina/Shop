@@ -9,6 +9,7 @@ var connection = mysql.createConnection({
         database: process.env.DB_NAME
 });
 
+//TODO: add async await promise
 
 connection.connect();
 //проверить есть ли база

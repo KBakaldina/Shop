@@ -1,62 +1,32 @@
 var LocalStrategy = require('passport-local').Strategy;
 var connection = require('../libs/dbConnection');
 var bcrypt = require('bcrypt');
+var JwtStrategy = require('passport-jwt').Strategy;
+var ExtractJwt = require('passport-jwt').ExtractJwt;
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: 'secret'
+};
 
 module.exports = function(passport){
-    passport.serializeUser(function(user, done){
-        done(null, user.id);
-    });
-
-    passport.deserializeUser(function(id, done){
-        connection.query("SELECT * FROM users WHERE id = ? ", [id],
-            function(err, rows){
-                done(err, rows[0]);
-            });
-    });
-
     passport.use(
-        'local-registration',
-        new LocalStrategy({
-                usernameField : 'username',
-                passwordField: 'password',
-                passReqToCallback: true
-            },
-            function(req, userName, userPassword, userPassword2, done){
-                if (userName && userPassword && userPassword2) {
-                    var sqlFindUser='SELECT * FROM users WHERE userName = ?';
-                    var sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
-                    connection.query(sqlFindUser,
-                        [userName], function(err, rows){
-                        if(err) return done(err);
-                        if(!rows[0]){
-                            if(userPassword == userPassword2){
-                                var newUserMysql = {
-                                    userName: userName,
-                                    password: bcrypt.hashSync(userPassword, 5)
-                                };
-
-                                connection.query(sqlCreateNewUser, [newUserMysql.username, newUserMysql.password],
-                                    function(err, rows){
-                                        newUserMysql.id = rows.insertId;
-                                        return done(null, newUserMysql);
-                                    });}
-                            else {
-                                console.log('registrationMessage: Incorrect conformation of password. Try again, please!');
-                                return done(null, false);
-                            }
-                        }else
-                        {
-                            console.log('registrationMessage: This user is already exists. Please, choose another name and try again!');
-                            return done(null, false);
-                        }
-                    });
-                } else {
-                    console.log('registrationMessage: All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!');
-                    return done(null, false);
-                }
+        'jwt',
+        new JwtStrategy(jwtOptions, function (payload, done) {
+            connection.query('SELECT * FROM users WHERE id = ?', [payload.id],
+                (err, user) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    if (user) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
+            });
         })
     );
 
+    //TODO: add promise & async in a wrap function
     passport.use(
         'local-login',
         new LocalStrategy({
@@ -64,13 +34,14 @@ module.exports = function(passport){
                 passwordField: 'password',
                 passReqToCallback: true
             },
-            function(req, userName, userPassword, done){
-            if (userName && userPassword) {
-                connection.query("SELECT * FROM users WHERE userName = ? ", [userName],
+            function(req, done){
+            console.log('here');
+            if (req.body.userName && req.body.userPassword) {
+                connection.query('SELECT * FROM users WHERE userName = ?', [req.body.userName],
                     function (err, rows) {
                         if (err) return done(err);
                         if (rows[0]) {
-                            if (bcrypt.compareSync(userPassword, rows[0].password))
+                            if (bcrypt.compareSync(req.body.userPassword, rows[0].password))
                                 return done(null, rows[0]);
                             else
                             {

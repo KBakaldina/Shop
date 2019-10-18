@@ -1,17 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('../config/passport');
+const passport = require('passport');
+require('../config/passport')(passport);
 
 /* GET profile page.*/
-router.get('/', async(ctx, next) => {
-    await passport.authenticate('jwt', function(err, user) {
+router.get('/', (req, res) => {
+     passport.authenticate('jwt', function(err, user) {
         if (user) {
-            ctx.body = "Hello " + user.userName;
+            req.body = "Hello " + user.userName;
         } else {
-            ctx.body = "No such user";
+            req.body = "No such user";
             console.log("err", err);
         }
-    })(ctx, next)
+    })(req, res)
 });
 
 module.exports = router;

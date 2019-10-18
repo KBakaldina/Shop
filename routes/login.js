@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var passport = require('../config/passport');
-var jwt = require('passport-jwt');
+const passport = require('passport');
+require('../config/passport')(passport);
+const jwt = require('jsonwebtoken');
 const jwtSecret = 'secret';
 
 /* GET login page.*/
@@ -11,24 +11,26 @@ router.get('/', function(req, res) {
 });
 
 /* POST login page.*/
-router.post('/', async(ctx, next) => {
-    await passport.authenticate('local-login', {
+router.post('/', (req, res) => {
+    passport.authenticate('local-login', {
             successRedirect: '/profile',
-            failureRedirect: '/login',
-            failureFlash: true },
+            failureRedirect: '/login'},
         function(err, user) {
+        console.log(user);
             if (!user) {
-                ctx.body = 'Login failed';
+                req.body = 'Login failed';
             } else {
                 const payload = {
                     id: user.id,
                     userName: user.userName
                 };
-                const token = jwt.sign(payload, jwtSecret); //здесь создается JWT
+                const token = jwt.sign(payload, jwtSecret);
 
-                ctx.body = {user: user.displayName, token: 'JWT ' + token};
+                req.body = {user: user.displayName, token: 'JWT ' + token};
             }
-})(ctx, next)
+})(req, res);
 });
 
 module.exports = router;
+
+//TODO: action/login is not required now??? delete: do.smg;

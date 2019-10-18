@@ -20,6 +20,7 @@
     "passport-local": "latest",
     "express-session": "latest",
     "req-flash": "latest",
-    "passport-jwt": "latest"
+    "passport-jwt": "latest",
+    "jsonwebtoken": "latest"
   }
 }
