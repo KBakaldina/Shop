@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 
 /* POST registration page.*/
 router.post('/', function(req, res){
-    actionRegistration(userName, userPassword, userPassword2,
+    actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2,
         function(err, msg) {
         res.send(msg);
 })});

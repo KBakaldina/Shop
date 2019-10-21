@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
-require('../config/passport')(passport);
 
 /* GET profile page.*/
 router.get('/', (req, res) => {

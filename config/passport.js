@@ -12,7 +12,7 @@ module.exports = function(passport){
     passport.use(
         'jwt',
         new JwtStrategy(jwtOptions, function (payload, done) {
-            connection.query('SELECT * FROM users WHERE id = ?', [payload.id],
+            connection.query('SELECT * FROM users1 WHERE id = ?', [payload.id],
                 (err, user) => {
                     if (err) {
                         return done(err);
@@ -31,12 +31,12 @@ module.exports = function(passport){
         'local-login',
         new LocalStrategy({
                 usernameField : 'userName',
-                passwordField: 'password'
+                passwordField: 'userPassword'
             },
             function(req, done){
             console.log('here');
             if (req.body.userName && req.body.userPassword) {
-                connection.query('SELECT * FROM users WHERE userName = ?', [req.body.userName],
+                connection.query('SELECT * FROM users1 WHERE userName = ?', [req.body.userName],
                     function (err, rows) {
                         if (err) return done(err);
                         if (rows[0]) {
