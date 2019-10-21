@@ -11,9 +11,19 @@ var connection = mysql.createConnection({
 
 //TODO: add async await promise
 
-connection.connect();
-//проверить есть ли база
-
-
+connection.connect( (err) => {
+        if (err) throw err;
+        else {
+                console.log('DB connected');
+                connection.query('CREATE DATABASE IF NOT EXISTS registration', (err) => {
+                        if (err) throw err;
+                        else console.log('DB registration created');
+                        connection.query('CREATE TABLE IF NOT EXISTS users (' +
+                            'id INT(10) NOT NULL UNSIGNED AUTO_INCREMENT PRIMARY KEY,' +
+                            'userName VARCHAR(20) UNIQUE KEY NOT NULL,' +
+                            'password VARCHAR(100) NOT NULL)', (err) =>{
+                                if (err) throw err;
+                                else console.log('Table users created');
+});});}});
 
 module.exports = connection;
