@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
             successRedirect: '/profile',
             failureRedirect: '/login'},
         function(err, user) {
-        console.log(user);
+        console.log(req.body);
             if (!user) {
                 req.body = 'Login failed';
             } else {

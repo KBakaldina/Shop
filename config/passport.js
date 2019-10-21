@@ -1,6 +1,6 @@
-var LocalStrategy = require('passport-local').Strategy;
 var connection = require('../libs/dbConnection');
 var bcrypt = require('bcrypt');
+var LocalStrategy = require('passport-local').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwtOptions = {
@@ -30,9 +30,8 @@ module.exports = function(passport){
     passport.use(
         'local-login',
         new LocalStrategy({
-                usernameField : 'username',
-                passwordField: 'password',
-                passReqToCallback: true
+                usernameField : 'userName',
+                passwordField: 'password'
             },
             function(req, done){
             console.log('here');
