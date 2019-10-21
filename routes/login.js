@@ -11,21 +11,22 @@ router.get('/', function(req, res) {
 
 /* POST login page.*/
 router.post('/', (req, res) => {
-    passport.authenticate('local-login', {
-            successRedirect: '/profile',
-            failureRedirect: '/login'},
+    passport.authenticate('local-login',
+        {successRedirect: '/profile',
+                failureRedirect: '/login' },
         function(err, user) {
-        console.log(req.body);
-            if (!user) {
-                req.body = 'Login failed';
-            } else {
-                const payload = {
-                    id: user.id,
-                    userName: user.userName
-                };
-                const token = jwt.sign(payload, jwtSecret);
-
-                req.body = {user: user.displayName, token: 'JWT ' + token};
+        console.log(user);
+        if (!user) {
+            res.send = 'Login failed';
+        } else {
+            const payload = {
+                id: user.id,
+                userName: user.userName
+            };
+            const token = jwt.sign(payload, jwtSecret);
+            res.body = {user: user.userName, token: 'JWT ' + token};
+            //return res.json({user, token});
+            return res.redirect('/profile');
             }
 })(req, res);
 });

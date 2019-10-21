@@ -4,7 +4,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: ExtractJwt.fromBodyField('token'),
     secretOrKey: 'secret'
 };
 
@@ -12,7 +12,8 @@ module.exports = function(passport){
     passport.use(
         'jwt',
         new JwtStrategy(jwtOptions, function (payload, done) {
-            connection.query('SELECT * FROM users1 WHERE id = ?', [payload.id],
+            console.log('here');
+            connection.query('SELECT * FROM users WHERE id = ?', [payload.id],
                 (err, user) => {
                     if (err) {
                         return done(err);
@@ -33,14 +34,15 @@ module.exports = function(passport){
                 usernameField : 'userName',
                 passwordField: 'userPassword'
             },
-            function(req, done){
-            console.log('here');
-            if (req.body.userName && req.body.userPassword) {
-                connection.query('SELECT * FROM users1 WHERE userName = ?', [req.body.userName],
+            function(userName, userPassword, done){
+            //TODO: delete console.log?
+            console.log(userName+' '+userPassword);
+            if (userName && userPassword) {
+                connection.query('SELECT * FROM users WHERE userName = ?', [userName],
                     function (err, rows) {
                         if (err) return done(err);
                         if (rows[0]) {
-                            if (bcrypt.compareSync(req.body.userPassword, rows[0].password))
+                            if (bcrypt.compareSync(userPassword, rows[0].password))
                                 return done(null, rows[0]);
                             else
                             {

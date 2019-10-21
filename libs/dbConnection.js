@@ -14,10 +14,8 @@ var connection = mysql.createConnection({
 connection.connect( (err) => {
         if (err) console.log(err);
         else {
-                console.log('DB connected');
                 connection.query('CREATE DATABASE IF NOT EXISTS registration', (err) => {
                         if (err) console.log(err);
-                        console.log('DB registration created');
                 });
                 connection.query('USE registration', (err) =>{
                         if (err) console.log(err);
@@ -27,7 +25,6 @@ connection.connect( (err) => {
                             'userName VARCHAR(20) UNIQUE KEY NOT NULL, ' +
                             'password VARCHAR(100) NOT NULL)', (err) =>{
                                 if (err) console.log(err);
-                                else console.log('Table users created');
                 });
         }
 });

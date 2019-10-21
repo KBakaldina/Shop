@@ -5,11 +5,12 @@ const passport = require('passport');
 /* GET profile page.*/
 router.get('/', (req, res) => {
      passport.authenticate('jwt', function(err, user) {
+         console.log('user: '+user);
         if (user) {
-            req.body = "Hello " + user.userName;
+            res.send = "Hello " + user.userName;
         } else {
-            req.body = "No such user";
-            console.log("err", err);
+            res. send('No such user');
+            console.log("err: ", err);
         }
     })(req, res)
 });
