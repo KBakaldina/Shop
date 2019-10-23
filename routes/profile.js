@@ -6,13 +6,15 @@ const passport = require('passport');
 router.get('/', (req, res) => {
      passport.authenticate('jwt', {session: false}, (err, user) => {
         if (user) res.render('profile', {user: user});
-        else res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else if (user == false && err === null) return res.redirect('login');
+            else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res)
 });
 
 /* POST profile page.*/
 router.post('/', (req, res) => {
-    //TODO: log out
+    res.clearCookie('token');
+    res.redirect('login');
 });
 
 module.exports = router;

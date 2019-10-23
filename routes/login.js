@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     passport.authenticate('local-login',
         (user, msg) => {
-        console.log('user '+user);
         if (user) {
             const payload = {
                 id: user.id,
@@ -22,7 +21,8 @@ router.post('/', (req, res) => {
             res.cookie('token', token);
             return res.redirect('/profile');
         } else {
-            if (user === null && msg === false) msg='All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!';
+            if (user === null && msg === false)
+                msg = 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!';
             return res.send(msg);
         }
 })(req, res);
