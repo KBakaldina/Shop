@@ -1,5 +1,5 @@
-const connection = require('../libs/dbConnection');
 const bcrypt = require('bcrypt');
+const queryPromise = require('../libs/dbConnection').queryPromise;
 const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -21,17 +21,13 @@ module.exports = (passport) => {
     passport.use(
         'jwt',
         new JwtStrategy(jwtOptions, async(payload, done) => {
-            await connection.query('SELECT * FROM users WHERE id = ?', [payload.id],
-                (err, user) => {
-                    if (err) {
-                        return done(err);
-                    }
-                    if (user) {
-                        return done(null, user[0]);
-                    } else {
-                        return done(null, false);
-                    }
-            });
+            try {
+                let user = await queryPromise('SELECT * FROM users WHERE id = ?', [payload.id]);
+                if (user && user.length > 0) return done(null, user[0]);
+                else return done(null, false);
+            } catch(err) {
+                return done(err);
+            }
         })
     );
 
@@ -42,15 +38,16 @@ module.exports = (passport) => {
                 passwordField: 'userPassword'
             },
             async (userName, userPassword, done) => {
-            await connection.query('SELECT * FROM users WHERE userName = ?', [userName],
-                (err, rows) => {
-                if (err) return done(false, 'Error... Try again later, please!');
-                if (rows[0]) {
-                    if (bcrypt.compareSync(userPassword, rows[0].password))
-                        return done(rows[0]);
-                    else return done(false, 'Wrong password. Try again, please!');
-                } else return done(false, 'This is no such user. Please, try again or sign up!');
-            });
+                try {
+                    let rows = await queryPromise('SELECT * FROM users WHERE userName = ?', [userName]);
+                    if (rows[0]) {
+                        if (bcrypt.compareSync(userPassword, rows[0].password))
+                            return done(rows[0]);
+                        else return done(false, 'Wrong password. Try again, please!');
+                    } else return done(false, 'This is no such user. Please, try again or sign up!');
+                } catch(err) {
+                    return done(false, 'Error... Try again later, please! ' + err.message);
+                }
         })
     );
 };

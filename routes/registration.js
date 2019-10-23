@@ -9,9 +9,12 @@ router.get('/', (req, res) => {
 
 /* POST registration page.*/
 router.post('/', async(req, res) => {
-    await actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2,
-        (err, msg) => {
-        res.send(msg);
-})});
+    try {
+        let resultMsg = await actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2);
+        res.send(resultMsg);
+    } catch(err) {
+        res.send(err);
+    }
+});
 
 module.exports = router;

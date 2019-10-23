@@ -9,9 +9,6 @@ const connection = mysql.createConnection({
         database: process.env.DB_NAME
 });
 
-//TODO: add async await promise
-//TODO: all console.log should be replaced by res.render('error', {message: 'Error...', error: err}) or smg like this?
-
 connection.connect( (err) => {
         if (err) console.log(err);
         else {
@@ -30,4 +27,13 @@ connection.connect( (err) => {
         }
 });
 
-module.exports = connection;
+const queryPromise = (query, data) => {
+        return  new Promise ((resolve,reject)=>{
+                connection.query(query, data, (err, result) => {
+                        if (err) return reject(err);
+                        return resolve(result);
+                });
+        });
+};
+
+module.exports = {connection, queryPromise};

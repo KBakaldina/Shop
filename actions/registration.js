@@ -1,27 +1,24 @@
-const connection = require('../libs/dbConnection');
 const bcrypt = require('bcrypt');
+const queryPromise = require('../libs/dbConnection').queryPromise;
 
-module.exports = async  (userName, userPassword, userPassword2, done) => {
+module.exports = async  (userName, userPassword, userPassword2) => {
     if(userName && userPassword && userPassword2){
-        const sqlUserExist='SELECT * FROM users WHERE userName = ?';
-        const sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
+        try{
+            let rows = await queryPromise('SELECT * FROM users WHERE userName = ?', userName);
 
-        await connection.query(
-            sqlUserExist, userName, async(err, rows) => {
-                if (err) done(1, err);
-
-                if (!rows[0]) {
-                    if(userPassword == userPassword2){
-                        userPassword = bcrypt.hashSync(userPassword, 5);
-
-                        await connection.query(
-                            sqlCreateNewUser, [userName, userPassword],
-                            (err) => {
-                                if (err) done(1, err);
-                                else done(0, 'Thank you for registration! Now log in, please.');
-                            });
-                    } else done(0, 'Incorrect conformation of password. Try again, please!');
-                } else done(0, 'This user is already exists. Please, choose another name and try again!')
-            });
-    } else done(0, 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!')
+            if (!rows[0]) {
+                if(userPassword == userPassword2){
+                    userPassword = bcrypt.hashSync(userPassword, 5);
+                   try {
+                       await queryPromise('INSERT INTO users(userName, password) VALUES (?, ?)', [userName, userPassword]);
+                       return 'Thank you for registration! Now log in, please.';
+                   } catch(err){
+                       throw err;
+                   }
+                } return 'Incorrect conformation of password. Try again, please!';
+            } else return 'This user is already exists. Please, choose another name and try again!';
+        } catch(err){
+            throw err;
+        }
+    } else return 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!';
 };

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ async, await">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actions/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/registration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/registration.js" afterDir="false" />
@@ -137,7 +139,7 @@
       <workItem from="1571395730294" duration="14436000" />
       <workItem from="1571659245259" duration="11899000" />
       <workItem from="1571816284253" duration="13931000" />
-      <workItem from="1571835179948" duration="1027000" />
+      <workItem from="1571835179948" duration="7204000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -244,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571828927457</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="+ async, await">
+      <created>1571836472827</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1571836472827</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +275,8 @@
     <MESSAGE value="a try of jwt (with errors)" />
     <MESSAGE value="done: passport-jwt&amp;local (login, profile)" />
     <MESSAGE value="done: log out" />
-    <option name="LAST_COMMIT_MESSAGE" value="done: log out" />
+    <MESSAGE value="+ async, await" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ async, await" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -281,22 +291,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1076" y="332" width="612" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1571224637320" />
-    <state width="1210" height="359" key="GridCell.Tab.0.bottom" timestamp="1571835146606">
+    <state width="1358" height="171" key="GridCell.Tab.0.bottom" timestamp="1571842272064">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1210" height="359" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1571835146606" />
-    <state width="1210" height="359" key="GridCell.Tab.0.center" timestamp="1571835146605">
+    <state width="1358" height="171" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1571842272064" />
+    <state width="1358" height="171" key="GridCell.Tab.0.center" timestamp="1571842272064">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1210" height="359" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1571835146605" />
-    <state width="1210" height="359" key="GridCell.Tab.0.left" timestamp="1571835146604">
+    <state width="1358" height="171" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1571842272064" />
+    <state width="1358" height="171" key="GridCell.Tab.0.left" timestamp="1571842272063">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1210" height="359" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1571835146604" />
-    <state width="1210" height="359" key="GridCell.Tab.0.right" timestamp="1571835146605">
+    <state width="1358" height="171" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1571842272063" />
+    <state width="1358" height="171" key="GridCell.Tab.0.right" timestamp="1571842272064">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1210" height="359" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1571835146605" />
+    <state width="1358" height="171" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1571842272064" />
     <state width="961" height="321" key="GridCell.Tab.1.bottom" timestamp="1571671147122">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
 });
 
 /* POST login page.*/
-router.post('/', async(req, res) => {
-    await passport.authenticate('local-login',
+router.post('/', (req, res) => {
+    passport.authenticate('local-login',
         (user, msg) => {
         if (user) {
             const payload = {
