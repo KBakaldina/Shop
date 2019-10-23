@@ -1,8 +1,8 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 require('dotenv').config();
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
@@ -10,6 +10,7 @@ var connection = mysql.createConnection({
 });
 
 //TODO: add async await promise
+//TODO: all console.log should be replaced by res.render('error', {message: 'Error...', error: err}) or smg like this?
 
 connection.connect( (err) => {
         if (err) console.log(err);

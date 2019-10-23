@@ -1,14 +1,14 @@
-var connection = require('../libs/dbConnection');
-var bcrypt = require('bcrypt');
+const connection = require('../libs/dbConnection');
+const bcrypt = require('bcrypt');
 
-module.exports = function (userName, userPassword, userPassword2, callback) {
+module.exports = (userName, userPassword, userPassword2, done) => {
     if(userName && userPassword && userPassword2){
-        var sqlUserExist='SELECT * FROM users WHERE userName = ?';
-        var sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
+        const sqlUserExist='SELECT * FROM users WHERE userName = ?';
+        const sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
 
         connection.query(
-            sqlUserExist, userName, function (err, rows) {
-                if (err) callback(1, err);
+            sqlUserExist, userName, (err, rows) => {
+                if (err) done(1, err);
 
                 if (!rows[0]) {
                     if(userPassword == userPassword2){
@@ -16,12 +16,12 @@ module.exports = function (userName, userPassword, userPassword2, callback) {
 
                         connection.query(
                             sqlCreateNewUser, [userName, userPassword],
-                            function (err) {
-                                if (err) callback(1, err);
-                                else callback(0, 'Thank you for registration!');
+                            (err) => {
+                                if (err) done(1, err);
+                                else done(0, 'Thank you for registration! Now log in, please.');
                             });
-                    } else callback(0, 'Incorrect conformation of password. Try again, please!');
-                } else callback(0, 'This user is already exists. Please, choose another name and try again!')
+                    } else done(0, 'Incorrect conformation of password. Try again, please!');
+                } else done(0, 'This user is already exists. Please, choose another name and try again!')
             });
-    } else callback(0, 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!')
+    } else done(0, 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!')
 };

@@ -2,10 +2,14 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-<h1>HI, </h1>
-
+    <h1>Profile</h1>
+    <p>ID: <%-user.id%></p>
+    <p>Name: <%-user.userName%></p>
+    <form name="logoutForm" method="post">
+        <input type="submit" value="Log out">
+    </form>
 </body>
 </html>
