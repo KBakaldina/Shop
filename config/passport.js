@@ -20,8 +20,8 @@ const jwtOptions = {
 module.exports = (passport) => {
     passport.use(
         'jwt',
-        new JwtStrategy(jwtOptions, (payload, done) => {
-            connection.query('SELECT * FROM users WHERE id = ?', [payload.id],
+        new JwtStrategy(jwtOptions, async(payload, done) => {
+            await connection.query('SELECT * FROM users WHERE id = ?', [payload.id],
                 (err, user) => {
                     if (err) {
                         return done(err);
@@ -35,15 +35,14 @@ module.exports = (passport) => {
         })
     );
 
-    //TODO: add promise & async in a wrap function
     passport.use(
         'local-login',
         new LocalStrategy({
                 usernameField : 'userName',
                 passwordField: 'userPassword'
             },
-            (userName, userPassword, done) => {
-            connection.query('SELECT * FROM users WHERE userName = ?', [userName],
+            async (userName, userPassword, done) => {
+            await connection.query('SELECT * FROM users WHERE userName = ?', [userName],
                 (err, rows) => {
                 if (err) return done(false, 'Error... Try again later, please!');
                 if (rows[0]) {

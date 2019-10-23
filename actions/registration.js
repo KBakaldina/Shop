@@ -1,20 +1,20 @@
 const connection = require('../libs/dbConnection');
 const bcrypt = require('bcrypt');
 
-module.exports = (userName, userPassword, userPassword2, done) => {
+module.exports = async  (userName, userPassword, userPassword2, done) => {
     if(userName && userPassword && userPassword2){
         const sqlUserExist='SELECT * FROM users WHERE userName = ?';
         const sqlCreateNewUser='INSERT INTO users(userName, password) VALUES (?, ?)';
 
-        connection.query(
-            sqlUserExist, userName, (err, rows) => {
+        await connection.query(
+            sqlUserExist, userName, async(err, rows) => {
                 if (err) done(1, err);
 
                 if (!rows[0]) {
                     if(userPassword == userPassword2){
                         userPassword = bcrypt.hashSync(userPassword, 5);
 
-                        connection.query(
+                        await connection.query(
                             sqlCreateNewUser, [userName, userPassword],
                             (err) => {
                                 if (err) done(1, err);

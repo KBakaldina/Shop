@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
 });
 
 /* POST login page.*/
-router.post('/', (req, res) => {
-    passport.authenticate('local-login',
+router.post('/', async(req, res) => {
+    await passport.authenticate('local-login',
         (user, msg) => {
         if (user) {
             const payload = {
@@ -19,11 +19,11 @@ router.post('/', (req, res) => {
             };
             const token = jwt.sign(payload, 'secret');
             res.cookie('token', token);
-            return res.redirect('/profile');
+            res.redirect('/profile');
         } else {
             if (user === null && msg === false)
                 msg = 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!';
-            return res.send(msg);
+            res.send(msg);
         }
 })(req, res);
 });

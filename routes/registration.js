@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 });
 
 /* POST registration page.*/
-router.post('/', (req, res) => {
-    actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2,
+router.post('/', async(req, res) => {
+    await actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2,
         (err, msg) => {
         res.send(msg);
 })});

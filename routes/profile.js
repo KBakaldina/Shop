@@ -3,11 +3,11 @@ const router = express.Router();
 const passport = require('passport');
 
 /* GET profile page.*/
-router.get('/', (req, res) => {
-     passport.authenticate('jwt', {session: false}, (err, user) => {
+router.get('/', async(req, res) => {
+     await passport.authenticate('jwt', {session: false}, (err, user) => {
         if (user) res.render('profile', {user: user});
-        else if (user == false && err === null) return res.redirect('login');
-            else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else if (user == false && err === null) res.redirect('login');
+            else res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res)
 });
 
