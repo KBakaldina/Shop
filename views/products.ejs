@@ -10,7 +10,31 @@
     <form action="/newproduct">
         <button>Add new product</button>
     </form>
+    <br>
 
-    <p>Here will be shown your products...</p>
+    <table>
+        <tr>
+            <th>№</th>
+            <th>Picture</th>
+            <th>Product Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><p>1<p></td>
+            <td><img class="productPic" src="<%=rows[0].pictureLink%>" alt="No picture"></td>
+            <td><p><%=rows[0].productName%><p></td>
+            <td><p><%=rows[0].description%><p></td>
+        </tr>
+        <tr>
+            <td><p>2<p></td>
+            <td><img class="productPic" src="<%=rows[1].pictureLink%>" alt="No picture"></td>
+            <td><p><%=rows[1].productName%><p></td>
+            <td><p><%=rows[1].description%><p></td>
+        </tr>
+    </table>
+<!--check pic link , check is there any product?-->
+
+
+
 </body>
 </html>

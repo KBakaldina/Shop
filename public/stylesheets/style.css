@@ -7,3 +7,20 @@ a {
   color: #00B7FF;
 }
 
+table {
+    border: solid 1px blue;
+}
+th {
+     border: solid 1px blue;
+     text-align: center;
+ }
+
+td {
+    border: solid 1px blue;
+    text-align: center;
+}
+
+img.productPic{
+    max-height: 150px;
+    width: auto;
+ }
