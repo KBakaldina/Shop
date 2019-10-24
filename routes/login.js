@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
                 id: user.id,
                 userName: user.userName
             };
-            const token = jwt.sign(payload, 'secret');
+            const token = jwt.sign(payload, process.env.JWT_SECRET);
             res.cookie('token', token);
             res.redirect('/profile');
         } else { res.send(msg); }

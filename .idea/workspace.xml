@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ async, await">
-      <change afterPath="$PROJECT_DIR$/routes/newproduct.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/newproduct.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/products.ejs" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ user products db, router, view; view with form &quot;Add new product&quot;">
+      <change afterPath="$PROJECT_DIR$/actions/newproduct.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/registration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/registration.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/newproduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/newproduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/newproduct.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/newproduct.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +144,7 @@
       <workItem from="1571816284253" duration="13931000" />
       <workItem from="1571835179948" duration="7204000" />
       <workItem from="1571916314301" duration="577000" />
-      <workItem from="1571916953626" duration="5767000" />
+      <workItem from="1571916953626" duration="9159000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -263,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571836472827</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="+ user products db, router, view; view with form &quot;Add new product&quot;">
+      <created>1571923905195</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1571923905196</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +288,9 @@
     <MESSAGE value="done: passport-jwt&amp;local (login, profile)" />
     <MESSAGE value="done: log out" />
     <MESSAGE value="+ async, await" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ async, await" />
+    <MESSAGE value="+ user products db, router, view" />
+    <MESSAGE value="+ user products db, router, view; view with form &quot;Add new product&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ user products db, router, view; view with form &quot;Add new product&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -305,22 +309,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1105" height="181" key="GridCell.Tab.0.bottom" timestamp="1571923778225">
+    <state width="1105" height="181" key="GridCell.Tab.0.bottom" timestamp="1571927176109">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1105" height="181" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1571923778225" />
-    <state width="1105" height="181" key="GridCell.Tab.0.center" timestamp="1571923778224">
+    <state width="1105" height="181" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1571927176109" />
+    <state width="1105" height="181" key="GridCell.Tab.0.center" timestamp="1571927176108">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1105" height="181" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1571923778224" />
-    <state width="1105" height="181" key="GridCell.Tab.0.left" timestamp="1571923778224">
+    <state width="1105" height="181" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1571927176108" />
+    <state width="1105" height="181" key="GridCell.Tab.0.left" timestamp="1571927176107">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1105" height="181" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1571923778224" />
-    <state width="1105" height="181" key="GridCell.Tab.0.right" timestamp="1571923778224">
+    <state width="1105" height="181" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1571927176107" />
+    <state width="1105" height="181" key="GridCell.Tab.0.right" timestamp="1571927176108">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1105" height="181" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1571923778224" />
+    <state width="1105" height="181" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1571927176108" />
     <state width="961" height="321" key="GridCell.Tab.1.bottom" timestamp="1571671147122">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

@@ -14,7 +14,7 @@ const fromCookie = (req) => {
 
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromExtractors([fromCookie]),
-    secretOrKey: 'secret'
+    secretOrKey: process.env.JWT_SECRET
 };
 
 module.exports = (passport) => {

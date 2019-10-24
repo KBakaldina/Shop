@@ -3,12 +3,9 @@ const router = express.Router();
 
 /* GET product page. */
 router.get('/', (req, res) => {
-    res.render('products');
-});
-
-/* POST product page. */
-router.post('/', (req, res) => {
-    //
+    if(req.cookies.token)
+        res.render('products');
+    else res.redirect('login');
 });
 
 module.exports = router;
