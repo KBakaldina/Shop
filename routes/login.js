@@ -20,11 +20,7 @@ router.post('/', (req, res) => {
             const token = jwt.sign(payload, 'secret');
             res.cookie('token', token);
             res.redirect('/profile');
-        } else {
-            if (user === null && msg === false)
-                msg = 'All fields (\"Name\", \"Create password\", \"Confirm password\") are required. Please, try again by completing them!';
-            res.send(msg);
-        }
+        } else { res.send(msg); }
 })(req, res);
 });
 
