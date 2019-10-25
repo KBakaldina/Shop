@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         if (user) res.render('profile', {user: user});
         else if (user == false && err === null) return res.redirect('login');
             else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
-    })(req, res)
+    })(req, res);
 });
 
 /* POST profile page.*/

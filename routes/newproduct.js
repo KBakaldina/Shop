@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const actionNewProduct = require('../actions/newproduct');
 const jwt = require('jsonwebtoken');
 
 /* GET newproduct page. */
 router.get('/', (req, res) => {
-    if(req.cookies.token)
-        res.render('newproduct');
-    else res.redirect('login');
+    passport.authenticate('jwt', {session: false}, (err, user) => {
+        if (user) res.render('newproduct');
+        else if (user == false && err === null) return res.redirect('login');
+        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+    })(req, res);
 });
 
 /* POST newproduct page. */
