@@ -7,18 +7,18 @@
 <body>
     <h1>New product</h1>
     <form name="newproductForm" method="post">
-            <table>
+            <table class="newproduct-table">
                 <tr>
                     <td> <label for="productNameId">Name: </label> </td>
                     <td> <input id="productNameId" type="text" maxlength="25" name="productName" required> </td>
                 </tr>
                 <tr>
                     <td> <label for="descriptionId">Description: </label> </td>
-                    <td> <textarea id="descriptionId" maxlength="300" cols="20" rows="5" name="description" required></textarea> </td>
+                    <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required></textarea> </td>
                 </tr>
                 <tr>
                     <td> <label for="picLinkId">Picture link: </label> </td>
-                    <td> <input id="picLinkId" type="text" maxlength="150" name="picLink"> </td>
+                    <td> <input id="picLinkId" type="text" maxlength="400" name="picLink"> </td>
                 </tr>
                 <tr>
                     <td> <input type="submit" value="Add" > </td>

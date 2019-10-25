@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 16px "Times New Roman", Times, sans-serif;
 }
 
 a {
@@ -9,8 +9,7 @@ a {
 
 
 table.user-products {
-    font-size: 15px;
-    font-family: "Times New Roman", Times, serif;
+    font: inherit;
     border-collapse: collapse;
 }
 
@@ -25,10 +24,17 @@ img.product-pic {
     border: 1px solid blue;
 }
 
-.user-products textarea {
+textarea {
     font: inherit;
     color: inherit;
+    resize: none;
+}
+
+.user-products textarea {
     border: 0px;
     background-color: white;
-    resize: none;
+}
+
+.newproduct-table input[type="text"] {
+    width: 470px;
 }
