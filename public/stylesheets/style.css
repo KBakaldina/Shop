@@ -7,20 +7,28 @@ a {
   color: #00B7FF;
 }
 
-table {
-    border: solid 1px blue;
-}
-th {
-     border: solid 1px blue;
-     text-align: center;
- }
 
-td {
-    border: solid 1px blue;
-    text-align: center;
+table.user-products {
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+    border-collapse: collapse;
 }
 
-img.productPic{
-    max-height: 150px;
+img.product-pic {
+    max-height:100px;
     width: auto;
- }
+}
+
+.user-products td, .user-products th {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid blue;
+}
+
+.user-products textarea {
+    font: inherit;
+    color: inherit;
+    border: 0px;
+    background-color: white;
+    resize: none;
+}
