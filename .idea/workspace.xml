@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="just commit">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="redid: the process of deleting products">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/update.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/edit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/delete.ejs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/update.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/edit.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,7 @@
       <workItem from="1571916314301" duration="577000" />
       <workItem from="1571916953626" duration="14893000" />
       <workItem from="1572000333507" duration="13520000" />
-      <workItem from="1572257427338" duration="19130000" />
+      <workItem from="1572257427338" duration="20531000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -324,14 +321,20 @@
       <option name="project" value="LOCAL" />
       <updated>1572275197497</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="redid: the process of deleting products">
+      <created>1572277187902</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1572277187902</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+ action registration" />
     <MESSAGE value="+ action login" />
     <MESSAGE value="changes in registration action and route + small changes in login action and route" />
     <MESSAGE value="+ bcrypt" />
@@ -356,7 +359,8 @@
     <MESSAGE value="jwt authentication to protected(secure) routes" />
     <MESSAGE value="changed: the process of adding new product (moved into products route)&#10;added: the process of deleting product (a part of products route + action)" />
     <MESSAGE value="just commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="just commit" />
+    <MESSAGE value="redid: the process of deleting products" />
+    <option name="LAST_COMMIT_MESSAGE" value="redid: the process of deleting products" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -379,22 +383,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1338" height="246" key="GridCell.Tab.0.bottom" timestamp="1572277130866">
+    <state width="1338" height="246" key="GridCell.Tab.0.bottom" timestamp="1572278490010">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572277130866" />
-    <state width="1338" height="246" key="GridCell.Tab.0.center" timestamp="1572277130865">
+    <state width="1338" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572278490010" />
+    <state width="1338" height="246" key="GridCell.Tab.0.center" timestamp="1572278490009">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572277130865" />
-    <state width="1338" height="246" key="GridCell.Tab.0.left" timestamp="1572277130864">
+    <state width="1338" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572278490009" />
+    <state width="1338" height="246" key="GridCell.Tab.0.left" timestamp="1572278490008">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572277130864" />
-    <state width="1338" height="246" key="GridCell.Tab.0.right" timestamp="1572277130865">
+    <state width="1338" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572278490008" />
+    <state width="1338" height="246" key="GridCell.Tab.0.right" timestamp="1572278490009">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572277130865" />
+    <state width="1338" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572278490009" />
     <state width="1104" height="340" key="GridCell.Tab.1.bottom" timestamp="1572273277502">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

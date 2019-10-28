@@ -10,12 +10,6 @@
     <form action="/products/add">
         <button>Add</button>
     </form>
-    <form action="/products/update">
-        <button>Update</button>
-    </form>
-    <form action="/products/delete">
-        <button>Delete</button>
-    </form>
     <br>
 
     <table class="user-products">
@@ -27,7 +21,7 @@
                 <td><p><%= rows[i].productName %></p></td>
                 <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
                 <td>
-                    <form action="/products/update/<%=rows[i].id%>">
+                    <form action="/products/edit/<%=rows[i].id%>">
                         <button>Edit</button>
                     </form>
                     <form action="/products/delete/<%=rows[i].id%>">
