@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete product</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+<h1>New product</h1>
+<form class="delete-product-form" method="post">
+    <label for="productNameId">Product </label>
+    <select name="productIdToDelete">
+        <% for (var i=0; rows[i]; i++) { %>
+            <option value="<%= rows[i].id %>"> <%=i+1%>: <%=rows[i].productName%></option>
+        <% } %>
+    </select>
+    <input type="submit" onclick="return confirm('Are you sure to delete this product?');" value="Delete">
+</form>
+</body>
+</html>

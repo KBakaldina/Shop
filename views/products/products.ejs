@@ -7,15 +7,20 @@
 <body>
     <h1>Products</h1>
 
-    <form action="/newproduct">
-        <button>Add new product</button>
+    <form action="/products/add">
+        <button>Add</button>
+    </form>
+    <form action="/products/update">
+        <button>Update</button>
+    </form>
+    <form action="/products/delete">
+        <button>Delete</button>
     </form>
     <br>
 
-
     <table class="user-products">
         <tr><th>№</th><th>Photo</th><th>Name</th><th>Description</th></tr>
-        <% for (var i=0; rows[i]; i++){ %>
+        <% for (var i=0; rows[i]; i++) { %>
             <tr>
                 <td><%= i+1 %></td>
                 <td><img class="product-pic" src="<%= rows[i].pictureLink %>" alt="No picture"></td>

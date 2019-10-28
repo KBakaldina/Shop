@@ -35,6 +35,6 @@ textarea {
     background-color: white;
 }
 
-.newproduct-table input[type="text"] {
+.add-product-form input[type="text"] {
     width: 470px;
 }

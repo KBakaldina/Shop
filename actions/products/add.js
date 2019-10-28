@@ -1,4 +1,4 @@
-const queryPromise = require('../libs/dbConnection').queryPromise;
+const queryPromise = require('../../libs/dbConnection').queryPromise;
 
 module.exports = async  (productName, description, picLink, userId) => {
     try{

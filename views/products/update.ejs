@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update product</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+<h1>New product</h1>
+<form class="update-product-form" method="post">
+    <table>
+        <tr>
+            <td> <label for="productNameId">Name: </label> </td>
+            <--list of products-->
+            <td> <input id="productNameId" type="text" maxlength="25" name="productName" required> </td>
+        </tr>
+        <tr>
+            <td> <label for="descriptionId">Description: </label> </td>
+            <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required></textarea> </td>
+        </tr>
+        <tr>
+            <td> <label for="picLinkId">Picture link: </label> </td>
+            <td> <input id="picLinkId" type="text" maxlength="400" name="picLink"> </td>
+        </tr>
+        <tr>
+            <td> <input type="submit" value="Update" > </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
