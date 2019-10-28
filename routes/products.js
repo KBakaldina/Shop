@@ -4,7 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const queryPromise = require('../libs/dbConnection').queryPromise;
 const actionAddProduct = require('../actions/products/add');
-const actionUpdateProduct = require('../actions/products/update');
+const actionUpdateProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
 
 /* GET product page. */
@@ -66,30 +66,13 @@ router.post('/update/:id()/:name', (req, res) => {
     res.send("product was updated");
 });
 
-/* GET delete product page. */
-router.get('/delete', (req, res) => {
-    passport.authenticate('jwt', {session: false}, async (err, user) => {
-        if (user) {
-            //TODO: передать rows из products.ejs(прочитать из req?)
-            try{
-                let rows = await queryPromise(
-                    'SELECT * FROM products WHERE userId=?',
-                    jwt.verify(req.cookies.token, process.env.JWT_SECRET).id);
-                res.render('products/delete', {rows: rows});
-            } catch(err) {res.send(err);}
-        }
-        else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
-    })(req, res);
-});
-
 /* POST delete product page. */
-router.post('/delete', async (req, res) => {
-    console.log(typeof req.body.productIdToDelete);
+router.get('/delete/:id', async (req, res) => {
     try {
+        console.log(req.params.id);
         await actionDeleteProduct(
-            req.body.productIdToDelete);
-        res.redirect('/products')
+            req.params.id);
+        res.redirect('/products');
     } catch(err) { res.send(err);}
 });
 

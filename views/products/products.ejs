@@ -26,6 +26,14 @@
                 <td><img class="product-pic" src="<%= rows[i].pictureLink %>" alt="No picture"></td>
                 <td><p><%= rows[i].productName %></p></td>
                 <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
+                <td>
+                    <form action="/products/update/<%=rows[i].id%>">
+                        <button>Edit</button>
+                    </form>
+                    <form action="/products/delete/<%=rows[i].id%>">
+                        <button onclick="return confirm('Are you sure to delete this product?');">Delete</button>
+                    </form>
+                </td>
             </tr>
         <% } %>
     </table>
