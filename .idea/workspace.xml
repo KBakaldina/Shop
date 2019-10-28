@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="jwt authentication to protected(secure) routes">
-      <change afterPath="$PROJECT_DIR$/actions/products/delete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actions/products/update.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/products/delete.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/products/update.ejs" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="changed: the process of adding new product (moved into products route)&#10;added: the process of deleting product (a part of products route + action)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/newproduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/newproduct.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/newproduct.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/add.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/products/delete.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/delete.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/products/update.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/update.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +146,7 @@
       <workItem from="1571916314301" duration="577000" />
       <workItem from="1571916953626" duration="14893000" />
       <workItem from="1572000333507" duration="13520000" />
-      <workItem from="1572257427338" duration="10899000" />
+      <workItem from="1572257427338" duration="17235000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -316,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572013437499</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="changed: the process of adding new product (moved into products route)&#10;added: the process of deleting product (a part of products route + action)">
+      <created>1572268517580</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1572268517580</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +347,8 @@
     <MESSAGE value="done: showing current user his products" />
     <MESSAGE value="some view changes" />
     <MESSAGE value="jwt authentication to protected(secure) routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="jwt authentication to protected(secure) routes" />
+    <MESSAGE value="changed: the process of adding new product (moved into products route)&#10;added: the process of deleting product (a part of products route + action)" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed: the process of adding new product (moved into products route)&#10;added: the process of deleting product (a part of products route + action)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -370,70 +371,70 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1104" height="246" key="GridCell.Tab.0.bottom" timestamp="1572268248122">
+    <state width="1104" height="246" key="GridCell.Tab.0.bottom" timestamp="1572275183744">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572268248122" />
-    <state width="1104" height="246" key="GridCell.Tab.0.center" timestamp="1572268248121">
+    <state width="1104" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572275183744" />
+    <state width="1104" height="246" key="GridCell.Tab.0.center" timestamp="1572275183743">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572268248121" />
-    <state width="1104" height="246" key="GridCell.Tab.0.left" timestamp="1572268248121">
+    <state width="1104" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572275183743" />
+    <state width="1104" height="246" key="GridCell.Tab.0.left" timestamp="1572275183743">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572268248121" />
-    <state width="1104" height="246" key="GridCell.Tab.0.right" timestamp="1572268248121">
+    <state width="1104" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572275183743" />
+    <state width="1104" height="246" key="GridCell.Tab.0.right" timestamp="1572275183743">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572268248121" />
-    <state width="1104" height="340" key="GridCell.Tab.1.bottom" timestamp="1572264925616">
+    <state width="1104" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572275183743" />
+    <state width="1104" height="340" key="GridCell.Tab.1.bottom" timestamp="1572273277502">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925616" />
-    <state width="1104" height="340" key="GridCell.Tab.1.center" timestamp="1572264925615">
+    <state width="1104" height="340" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277502" />
+    <state width="1104" height="340" key="GridCell.Tab.1.center" timestamp="1572273277501">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925615" />
-    <state width="1104" height="340" key="GridCell.Tab.1.left" timestamp="1572264925615">
+    <state width="1104" height="340" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277501" />
+    <state width="1104" height="340" key="GridCell.Tab.1.left" timestamp="1572273277501">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925615" />
-    <state width="1104" height="340" key="GridCell.Tab.1.right" timestamp="1572264925616">
+    <state width="1104" height="340" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277501" />
+    <state width="1104" height="340" key="GridCell.Tab.1.right" timestamp="1572273277502">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925616" />
-    <state width="1104" height="340" key="GridCell.Tab.2.bottom" timestamp="1572264925623">
+    <state width="1104" height="340" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277502" />
+    <state width="1104" height="340" key="GridCell.Tab.2.bottom" timestamp="1572273277503">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.2.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925623" />
-    <state width="1104" height="340" key="GridCell.Tab.2.center" timestamp="1572264925617">
+    <state width="1104" height="340" key="GridCell.Tab.2.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277503" />
+    <state width="1104" height="340" key="GridCell.Tab.2.center" timestamp="1572273277502">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.2.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925617" />
-    <state width="1104" height="340" key="GridCell.Tab.2.left" timestamp="1572264925616">
+    <state width="1104" height="340" key="GridCell.Tab.2.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277502" />
+    <state width="1104" height="340" key="GridCell.Tab.2.left" timestamp="1572273277502">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.2.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925616" />
-    <state width="1104" height="340" key="GridCell.Tab.2.right" timestamp="1572264925617">
+    <state width="1104" height="340" key="GridCell.Tab.2.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277502" />
+    <state width="1104" height="340" key="GridCell.Tab.2.right" timestamp="1572273277503">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.2.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925617" />
-    <state width="1104" height="340" key="GridCell.Tab.3.bottom" timestamp="1572264925630">
+    <state width="1104" height="340" key="GridCell.Tab.2.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277503" />
+    <state width="1104" height="340" key="GridCell.Tab.3.bottom" timestamp="1572273277504">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.3.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925630" />
-    <state width="1104" height="340" key="GridCell.Tab.3.center" timestamp="1572264925630">
+    <state width="1104" height="340" key="GridCell.Tab.3.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277504" />
+    <state width="1104" height="340" key="GridCell.Tab.3.center" timestamp="1572273277503">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.3.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925630" />
-    <state width="1104" height="340" key="GridCell.Tab.3.left" timestamp="1572264925629">
+    <state width="1104" height="340" key="GridCell.Tab.3.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277503" />
+    <state width="1104" height="340" key="GridCell.Tab.3.left" timestamp="1572273277503">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.3.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925629" />
-    <state width="1104" height="340" key="GridCell.Tab.3.right" timestamp="1572264925630">
+    <state width="1104" height="340" key="GridCell.Tab.3.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277503" />
+    <state width="1104" height="340" key="GridCell.Tab.3.right" timestamp="1572273277503">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1104" height="340" key="GridCell.Tab.3.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572264925630" />
+    <state width="1104" height="340" key="GridCell.Tab.3.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572273277503" />
     <state x="1127" y="264" width="426" height="574" key="RollbackChangesDialog" timestamp="1572009161004">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -474,9 +475,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1073" y="240" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1571817626609" />
-    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1571662522773">
+    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1572272304744">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1571662522773" />
+    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1572272304744" />
   </component>
 </project>

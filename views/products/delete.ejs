@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-<h1>New product</h1>
+<h1>Delete product</h1>
 <form class="delete-product-form" method="post">
     <label for="productNameId">Product </label>
-    <select name="productIdToDelete">
+    <select name="productIdToDelete" required>
+        <option disabled value="">Choose one product:</option>
         <% for (var i=0; rows[i]; i++) { %>
             <option value="<%= rows[i].id %>"> <%=i+1%>: <%=rows[i].productName%></option>
         <% } %>

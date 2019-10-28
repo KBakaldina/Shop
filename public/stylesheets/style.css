@@ -38,3 +38,7 @@ textarea {
 .add-product-form input[type="text"] {
     width: 470px;
 }
+
+.update-product-form {
+    display: none;
+}
