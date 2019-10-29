@@ -35,10 +35,6 @@ textarea {
     background-color: white;
 }
 
-.add-product-form input[type="text"] {
+.add-product-form input[type="text"], .update-product-form input[type="text"]{
     width: 470px;
-}
-
-.update-product-form {
-    display: none;
 }

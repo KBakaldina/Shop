@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update product</title>
+    <title>Product editing</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
-<h1>Update product</h1>
-<label for="selectForProductNumber">Product: </label>
-<select id="selectForProductNumber" required>
-    <option disabled value="" selected>Choose one:</option>
-    <% for (var i=0; rows[i]; i++) { %>
-        <option value="<%= i %>"> <%=i+1%>. <%=rows[i].productName%></option>
-        <% } %>
-</select>
+<h1>Product editing</h1>
 
-
- <form class="update-product-form" id="updateProductForm" method="post">
+ <form class="update-product-form" method="post">
         <table>
             <tr>
                 <td> <label for="productNameId">Product: </label> </td>
-                <td> <input type="text" id="productNameId" required></td>
+                <td> <input type="text" id="productNameId" name="productName" required value="<%=product.productName%>"></td>
             </tr>
             <tr>
                 <td> <label for="descriptionId">Description: </label> </td>
-                <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required></textarea> </td>
+                <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required><%=product.description%></textarea> </td>
             </tr>
             <tr>
-                <td> <label for="picLinkId">Picture link: </label> </td>
-                <td> <input id="picLinkId" type="text" maxlength="400" name="picLink"> </td>
+                <td> <label for="pictureLinkId">Picture link: </label> </td>
+                <td> <input id="pictureLinkId" type="text" maxlength="400" name="pictureLink" required value="<%=product.pictureLink%>"></td>
             </tr>
             <tr>
-                <td> <input type="submit" value="Update" onclick="return confirm('Are you sure to update this product?')" > </td>
+                <td> <input type="submit" value="Edit" onclick="return confirm('Are you sure to edit this product?')" > </td>
             </tr>
         </table>
 </form>

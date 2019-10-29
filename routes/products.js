@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
 const queryPromise = require('../libs/dbConnection').queryPromise;
 const actionAddProduct = require('../actions/products/add');
+const actionVerifyProduct =require('../actions/products/verify');
 const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
 
@@ -13,8 +13,7 @@ router.get('/', (req, res) => {
         if (user) {
             try {
                 let rows = await queryPromise(
-                    'SELECT * FROM products WHERE userId=?',
-                    jwt.verify(req.cookies.token, process.env.JWT_SECRET).id);
+                    'SELECT * FROM products WHERE userId=?', user.id);
                 res.render('products/products', {rows: rows});
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
@@ -37,8 +36,7 @@ router.post('/add', (req, res) => {
         if (user) {
             try {
                 await actionAddProduct(
-                    req.body.productName, req.body.description, req.body.picLink,
-                    jwt.verify(req.cookies.token, process.env.JWT_SECRET).id);
+                    req.body.productName, req.body.description, req.body.pictureLink, user.id);
                 res.redirect('/products')
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
@@ -47,33 +45,31 @@ router.post('/add', (req, res) => {
 });
 
 /* GET edit product page. */
-router.get('/edit', (req, res) => {
+router.get('/edit/:id', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
             try {
-                let rows = await queryPromise(
-                    'SELECT * FROM products WHERE userId=?',
-                    jwt.verify(req.cookies.token, process.env.JWT_SECRET).id);
-                res.render('products/edit', {rows: rows});
-            } catch (err) { res.render('error', {message: 'Ooops...', error: err}); }
+                let product = await actionVerifyProduct(req.params.id, user.id);
+                if (product)
+                    res.render('products/edit', {product: product});
+                else res.send('This is not your product!');
+            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);
 });
 
-//TODO:
 /* POST edit product page. */
-//'/edit/:id(pattern)/:name'
-router.get('/edit/:id', (req, res) => {
+router.post('/edit/:id', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
             try {
-                let rows = await queryPromise(
-                    'SELECT * FROM products WHERE userId=?',
-                    jwt.verify(req.cookies.token, process.env.JWT_SECRET).id);
-                res.render('products/products', {rows: rows});
+                let product = await actionVerifyProduct(req.params.id, user.id);
+                if (product) {
+                    await actionEditProduct(req.params.id, req.body.productName, req.body.description, req.body.pictureLink);
+                    res.redirect('/products');
+                    } else res.send('This is not your product! You can change only your products.');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
-            res.render('products/edit', {rows: rows});
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);
@@ -84,10 +80,11 @@ router.get('/delete/:id', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
             try {
-                console.log(req.params.id);
-                await actionDeleteProduct(
-                    req.params.id);
-                res.redirect('/products');
+                let product = await actionVerifyProduct(req.params.id, user.id);
+                if (product) {
+                    await actionDeleteProduct(req.params.id);
+                    res.redirect('/products');
+                } else res.send('This is not your product! You can delete only your products.');
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
