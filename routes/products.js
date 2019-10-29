@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const multer = require('multer');
+const upload = multer({dest: 'libs/uploads'});
 const queryPromise = require('../libs/dbConnection').queryPromise;
 const actionAddProduct = require('../actions/products/add');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
+
 
 /* GET product page. */
 router.get('/', (req, res) => {
@@ -31,12 +34,12 @@ router.get('/add', (req, res) => {
 });
 
 /* POST add new product page. */
-router.post('/add', (req, res) => {
+router.post('/add', upload.single('pictureFile'), (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
             try {
                 await actionAddProduct(
-                    req.body.productName, req.body.description, req.body.pictureLink, user.id);
+                    req.body.productName, req.body.description, req.file.path, user.id);
                 res.redirect('/products')
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
