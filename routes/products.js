@@ -69,8 +69,7 @@ router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
                 let product = await actionVerifyProduct(req.params.id, user.id);
                 if (product) {
                     let pictureLink = (req.file)? req.file.path: null;
-                    if (!req.file)
-                        await actionEditProduct(req.params.id, req.body.productName, req.body.description, pictureLink);
+                    await actionEditProduct(req.params.id, req.body.productName, req.body.description, pictureLink);
                     res.redirect('/products');
                     } else res.send('This is not your product! You can change only your products.');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
