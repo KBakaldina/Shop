@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const multer = require('multer');
-const upload = multer({dest: 'libs/uploads'});
+const upload = require('../libs/multer');
+
 const queryPromise = require('../libs/dbConnection').queryPromise;
 const actionAddProduct = require('../actions/products/add');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
-
-
 /* GET product page. */
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
@@ -53,6 +51,7 @@ router.get('/edit/:id', (req, res) => {
         if (user) {
             try {
                 let product = await actionVerifyProduct(req.params.id, user.id);
+                console.log(product);
                 if (product)
                     res.render('products/edit', {product: product});
                 else res.send('This is not your product!');
@@ -63,13 +62,15 @@ router.get('/edit/:id', (req, res) => {
 });
 
 /* POST edit product page. */
-router.post('/edit/:id', (req, res) => {
+router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
             try {
                 let product = await actionVerifyProduct(req.params.id, user.id);
                 if (product) {
-                    await actionEditProduct(req.params.id, req.body.productName, req.body.description, req.body.pictureLink);
+                    let pictureLink = (req.file)? req.file.path: null;
+                    if (!req.file)
+                        await actionEditProduct(req.params.id, req.body.productName, req.body.description, pictureLink);
                     res.redirect('/products');
                     } else res.send('This is not your product! You can change only your products.');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }

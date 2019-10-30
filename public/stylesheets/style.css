@@ -15,7 +15,7 @@ table.user-products {
 
 img.product-pic {
     max-height:100px;
-    width: auto;
+    max-width: 200px;
 }
 
 .user-products td, .user-products th {

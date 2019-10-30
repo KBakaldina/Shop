@@ -17,7 +17,7 @@
         <% for (var i=0; rows[i]; i++) { %>
             <tr>
                 <td><%= i+1 %></td>
-                <td><img class="product-pic" src="<%= rows[i].pictureLink %>" alt="No picture"></td>
+                <td><img class="product-pic" src="<%=rows[i].pictureLink%>" alt="No picture"></td>
                 <td><p><%= rows[i].productName %></p></td>
                 <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
                 <td>

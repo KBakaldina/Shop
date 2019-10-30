@@ -8,7 +8,7 @@
 <body>
 <h1>Product editing</h1>
 
- <form class="update-product-form" method="post">
+ <form class="update-product-form" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td> <label for="productNameId">Product: </label> </td>
@@ -19,8 +19,12 @@
                 <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required><%=product.description%></textarea> </td>
             </tr>
             <tr>
-                <td> <label for="pictureLinkId">Picture link: </label> </td>
-                <td> <input id="pictureLinkId" type="text" maxlength="400" name="pictureLink" required value="<%=product.pictureLink%>"></td>
+                <td><label for="picturePhotoId">Photo: </label></td>
+                <td><img id="picturePhotoId" class="product-pic" src="<%=product.pictureLink%>" alt="No picture"></td>
+            </tr>
+            <tr>
+                <td> <label for="pictureFileId">To change photo: </label> </td>
+                <td> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" > </td>
             </tr>
             <tr>
                 <td> <input type="submit" value="Edit" onclick="return confirm('Are you sure to edit this product?')" > </td>
