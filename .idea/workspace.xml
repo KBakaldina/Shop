@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="log out button was added to products page and changed its position">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="product photos moved to public">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/multer.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/multer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430440252.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/1572430440252.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430460331.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/1572430460331.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430471997.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/1572430471997.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430482975.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430525869.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/1572430525869.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430553605.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/1572430553605.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/1572430579688.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/1572430579688.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/registration.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +148,7 @@
       <workItem from="1572000333507" duration="13520000" />
       <workItem from="1572257427338" duration="20628000" />
       <workItem from="1572349063798" duration="12381000" />
-      <workItem from="1572422631779" duration="12963000" />
+      <workItem from="1572422631779" duration="15311000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -371,14 +360,20 @@
       <option name="project" value="LOCAL" />
       <updated>1572433465938</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="product photos moved to public">
+      <created>1572436773745</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1572436773745</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NOT finished passport-local strategy" />
     <MESSAGE value="commit some changes" />
     <MESSAGE value="changes in passport. + jwt, changed local, changed login router" />
     <MESSAGE value="commit" />
@@ -403,7 +398,8 @@
     <MESSAGE value="trying to add multer (uploading images)" />
     <MESSAGE value="now user can upload photo of product, change or delete it (multer used)" />
     <MESSAGE value="log out button was added to products page and changed its position" />
-    <option name="LAST_COMMIT_MESSAGE" value="log out button was added to products page and changed its position" />
+    <MESSAGE value="product photos moved to public" />
+    <option name="LAST_COMMIT_MESSAGE" value="product photos moved to public" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -426,22 +422,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1338" height="246" key="GridCell.Tab.0.bottom" timestamp="1572436725112">
+    <state width="1338" height="246" key="GridCell.Tab.0.bottom" timestamp="1572439657946">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572436725112" />
-    <state width="1338" height="246" key="GridCell.Tab.0.center" timestamp="1572436725111">
+    <state width="1338" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572439657946" />
+    <state width="1338" height="246" key="GridCell.Tab.0.center" timestamp="1572439657945">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572436725111" />
-    <state width="1338" height="246" key="GridCell.Tab.0.left" timestamp="1572436725111">
+    <state width="1338" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572439657945" />
+    <state width="1338" height="246" key="GridCell.Tab.0.left" timestamp="1572439657945">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572436725111" />
-    <state width="1338" height="246" key="GridCell.Tab.0.right" timestamp="1572436725111">
+    <state width="1338" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572439657945" />
+    <state width="1338" height="246" key="GridCell.Tab.0.right" timestamp="1572439657945">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572436725111" />
+    <state width="1338" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572439657945" />
     <state width="1338" height="340" key="GridCell.Tab.1.bottom" timestamp="1572426103284">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

@@ -11,7 +11,8 @@ module.exports = async  (userName, userPassword, userPassword2) => {
 
                  try {
                      await queryPromise('INSERT INTO users(userName, password) VALUES (?, ?)', [userName, userPassword]);
-                     return 'Thank you for registration! Now log in, please.';
+                     rows = await queryPromise('SELECT * FROM users WHERE userName = ?', userName);
+                     return rows[0].id;
                  } catch(err){ throw err; }
 
              } return 'Incorrect conformation of password. Try again, please!';

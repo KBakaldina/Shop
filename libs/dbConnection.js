@@ -30,6 +30,7 @@ connection.connect( (err) => {
         connection.query('CREATE TABLE IF NOT EXISTS products (' +
             'id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, ' +
             'productName VARCHAR(25) NOT NULL, ' +
+            'price VARCHAR(25) NOT NULL, ' +
             'description VARCHAR(150) NOT NULL, ' +
             'pictureLink VARCHAR(150), ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
