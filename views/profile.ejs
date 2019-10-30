@@ -5,14 +5,16 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+    <form method="post">
+        <button class="logout-button">Log out</button>
+    </form>
+
     <h1>Profile</h1>
     <p>ID: <%=user.id%></p>
     <p>Name: <%=user.userName%></p>
+    <br>
     <form action="/products">
         <button>My products</button>
-    </form>
-    <form name="logoutForm" method="post">
-        <input type="submit" value="Log out">
     </form>
 </body>
 </html>

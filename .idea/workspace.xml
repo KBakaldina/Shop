@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="trying to add multer (uploading images)">
-      <change afterPath="$PROJECT_DIR$/libs/multer.js" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="now user can upload photo of product, change or delete it (multer used)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/add.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/6012649e7a0dcd9dc1abe2e6064c1f29" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/849b2dd40599ff35855582de31058500" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/uploads/d37b834e2f162a7e13246cc12d7cb293.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/edit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/edit.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +147,7 @@
       <workItem from="1572000333507" duration="13520000" />
       <workItem from="1572257427338" duration="20628000" />
       <workItem from="1572349063798" duration="12381000" />
-      <workItem from="1572422631779" duration="6347000" />
+      <workItem from="1572422631779" duration="9499000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -354,14 +345,20 @@
       <option name="project" value="LOCAL" />
       <updated>1572354246603</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="now user can upload photo of product, change or delete it (multer used)">
+      <created>1572429304410</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1572429304410</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+ bcrypt" />
     <MESSAGE value="correction of dotenv using" />
     <MESSAGE value="NOT finished passport-local strategy" />
     <MESSAGE value="commit some changes" />
@@ -386,7 +383,8 @@
     <MESSAGE value="just commit" />
     <MESSAGE value="done: routes and actions to add, edit, delete products" />
     <MESSAGE value="trying to add multer (uploading images)" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to add multer (uploading images)" />
+    <MESSAGE value="now user can upload photo of product, change or delete it (multer used)" />
+    <option name="LAST_COMMIT_MESSAGE" value="now user can upload photo of product, change or delete it (multer used)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="985" y="188" width="800" height="677" key="#Deployment" timestamp="1570718702576">
@@ -409,22 +407,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1338" height="246" key="GridCell.Tab.0.bottom" timestamp="1572429208846">
+    <state width="1338" height="246" key="GridCell.Tab.0.bottom" timestamp="1572433335226">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572429208846" />
-    <state width="1338" height="246" key="GridCell.Tab.0.center" timestamp="1572429208845">
+    <state width="1338" height="246" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572433335226" />
+    <state width="1338" height="246" key="GridCell.Tab.0.center" timestamp="1572433335226">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572429208845" />
-    <state width="1338" height="246" key="GridCell.Tab.0.left" timestamp="1572429208844">
+    <state width="1338" height="246" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572433335226" />
+    <state width="1338" height="246" key="GridCell.Tab.0.left" timestamp="1572433335226">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572429208844" />
-    <state width="1338" height="246" key="GridCell.Tab.0.right" timestamp="1572429208846">
+    <state width="1338" height="246" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572433335226" />
+    <state width="1338" height="246" key="GridCell.Tab.0.right" timestamp="1572433335226">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1338" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572429208846" />
+    <state width="1338" height="246" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572433335226" />
     <state width="1338" height="340" key="GridCell.Tab.1.bottom" timestamp="1572426103284">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

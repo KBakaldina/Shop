@@ -24,6 +24,11 @@ img.product-pic {
     border: 1px solid blue;
 }
 
+.logout-button {
+    position: absolute;
+    right: 35px;
+}
+
 textarea {
     font: inherit;
     color: inherit;
