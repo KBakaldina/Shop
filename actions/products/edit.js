@@ -8,11 +8,11 @@ module.exports = async  (id, productName, description, pictureLink) => {
             let rows = await queryPromise(
                 'SELECT * FROM products WHERE id=?',
                 [id]);
-            fs.unlinkSync(rows[0].pictureLink.substring(1));
+            fs.unlinkSync('public'+rows[0].pictureLink);
 
             await queryPromise(
                 'UPDATE products SET productName=?, description=?, pictureLink=? WHERE id=?',
-                [productName, description, '/'+pictureLink, id]);
+                [productName, description, '/'+pictureLink.substring(7), id]);
         } else
             await queryPromise(
                 'UPDATE products SET productName=?, description=? WHERE id=?',

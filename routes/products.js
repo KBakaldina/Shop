@@ -51,7 +51,6 @@ router.get('/edit/:id', (req, res) => {
         if (user) {
             try {
                 let product = await actionVerifyProduct(req.params.id, user.id);
-                console.log(product);
                 if (product)
                     res.render('products/edit', {product: product});
                 else res.send('This is not your product!');

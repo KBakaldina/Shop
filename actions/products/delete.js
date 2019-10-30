@@ -6,8 +6,7 @@ module.exports = async  (productIdToDelete) => {
         let rows = await queryPromise(
         'SELECT * FROM products WHERE id=?',
         [productIdToDelete]);
-        let pictureLink = rows[0].pictureLink.substring(1);
-        fs.unlinkSync(pictureLink);
+        fs.unlinkSync('public'+rows[0].pictureLink);
 
         await queryPromise(
             'DELETE FROM products WHERE id=?',

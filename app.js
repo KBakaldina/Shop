@@ -34,8 +34,6 @@ app.use('/registration', registrationRouter);
 app.use('/profile', profileRouter);
 app.use('/products', productsRouter);
 
-app.use('/libs/uploads', express.static('libs/uploads'));
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
