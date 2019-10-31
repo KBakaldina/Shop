@@ -12,19 +12,24 @@
         <table>
             <tr>
                 <td> <label for="productNameId">Product: </label> </td>
-                <td> <input type="text" id="productNameId" name="productName" required value="<%=product.productName%>"></td>
+                <td colspan="2"> <input type="text" id="productNameId" name="productName" required value="<%=product.productName%>"></td>
+            </tr>
+            <tr>
+                <td> <label for="priceId">Price: </label> </td>
+                <td> $ </td>
+                <td> <input type="text" name="price" id="priceId" pattern="\d{1,7}\.\d{2}" placeholder="75.20" required value="<%=product.price%>"></td>
             </tr>
             <tr>
                 <td> <label for="descriptionId">Description: </label> </td>
-                <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required><%=product.description%></textarea> </td>
+                <td colspan="2"> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required><%=product.description%></textarea> </td>
             </tr>
             <tr>
                 <td><label for="picturePhotoId">Photo: </label></td>
-                <td><img id="picturePhotoId" class="product-pic" src="<%=product.pictureLink%>" alt="No picture"></td>
+                <td colspan="2"><img id="picturePhotoId" class="product-pic" src="<%=product.pictureLink%>" alt="No picture"></td>
             </tr>
             <tr>
                 <td> <label for="pictureFileId">To change photo: </label> </td>
-                <td> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" > </td>
+                <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" > </td>
             </tr>
             <tr>
                 <td> <input type="submit" value="Edit" onclick="return confirm('Are you sure to edit this product?')" > </td>

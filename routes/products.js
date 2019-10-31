@@ -8,6 +8,7 @@ const actionAddProduct = require('../actions/products/add');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
+
 /* GET product page. */
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
@@ -37,7 +38,7 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
         if (user) {
             try {
                 await actionAddProduct(
-                    req.body.productName, req.body.description, req.file.path, user.id);
+                    req.body.productName, req.body.price, req.body.description, req.file.path, user.id);
                 res.redirect('/products')
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
@@ -68,7 +69,7 @@ router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
                 let product = await actionVerifyProduct(req.params.id, user.id);
                 if (product) {
                     let pictureLink = (req.file)? req.file.path: null;
-                    await actionEditProduct(req.params.id, req.body.productName, req.body.description, pictureLink);
+                    await actionEditProduct(req.params.id, req.body.productName, req.body.price, req.body.description, pictureLink);
                     res.redirect('/products');
                     } else res.send('This is not your product! You can change only your products.');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }

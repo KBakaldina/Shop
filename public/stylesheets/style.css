@@ -33,6 +33,7 @@ textarea {
     font: inherit;
     color: inherit;
     resize: none;
+    width: 468px;
 }
 
 .user-products textarea {
@@ -42,4 +43,8 @@ textarea {
 
 .add-product-form input[type="text"], .update-product-form input[type="text"]{
     width: 470px;
+}
+
+#priceId {
+    width: 458px;
 }

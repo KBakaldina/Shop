@@ -10,15 +10,20 @@
             <table>
                 <tr>
                     <td> <label for="productNameId">Name: </label> </td>
-                    <td> <input id="productNameId" type="text" maxlength="25" name="productName" required> </td>
+                    <td colspan="2"> <input id="productNameId" type="text" maxlength="25" name="productName" required> </td>
+                </tr>
+                <tr>
+                    <td> <label for="priceId">Price: </label> </td>
+                    <td> $ </td>
+                    <td> <input type="text" name="price" id="priceId" pattern="\d{1,7}\.\d{2}" placeholder="75.20" required></td>
                 </tr>
                 <tr>
                     <td> <label for="descriptionId">Description: </label> </td>
-                    <td> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required></textarea> </td>
+                    <td colspan="2"> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required></textarea> </td>
                 </tr>
                 <tr>
                     <td> <label for="pictureFileId">Upload picture: </label> </td>
-                    <td> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" required> </td>
+                    <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" required> </td>
                 </tr>
                 <tr>
                     <td> <input type="submit" onclick="return confirm('Are you sure to add this product?');" value="Add" > </td>
