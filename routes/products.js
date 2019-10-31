@@ -23,6 +23,22 @@ router.get('/', (req, res) => {
     })(req, res);
 });
 
+//TODO: searching LIKE pattern
+router.get('/search', (req, res) => {
+    passport.authenticate('jwt', {session: false}, async (err, user) => {
+        if (user) {
+            try {
+                console.log(req.query.request);
+                let pattern = '%' + req.query.request + '%';
+                let rows = await queryPromise(
+                    'SELECT * FROM products WHERE userId=? AND productName like ?', [user.id, pattern]);
+                res.render('products/products', {rows: rows});
+            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+        } else if (user == false && err === null) return res.redirect('login');
+        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+    })(req, res);
+});
+
 /* GET add new product page. */
 router.get('/add', (req, res) => {
     passport.authenticate('jwt', {session: false}, (err, user) => {
