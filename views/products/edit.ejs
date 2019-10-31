@@ -8,7 +8,7 @@
 <body>
 <h1>Product editing</h1>
 
- <form class="update-product-form" method="post" enctype="multipart/form-data">
+ <form class="edit-product-form" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td> <label for="productNameId">Product: </label> </td>
@@ -24,12 +24,23 @@
                 <td colspan="2"> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required><%=product.description%></textarea> </td>
             </tr>
             <tr>
-                <td><label for="picturePhotoId">Photo: </label></td>
-                <td colspan="2"><img id="picturePhotoId" class="product-pic" src="<%=product.pictureLink%>" alt="No picture"></td>
+                <td> <label for="pictureFileId">To change photo: </label> </td>
+                <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" onchange="showFile(event)" > </td>
             </tr>
             <tr>
-                <td> <label for="pictureFileId">To change photo: </label> </td>
-                <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" > </td>
+                <td><label for="fileImgId">Photo: </label> </td>
+                <td colspan="2"><img id="fileImgId" class="product-pic" src="<%=product.pictureLink%>" alt="No picture"></td>
+                <script>
+                    function showFile(event) {
+                        let reader = new FileReader();
+
+                        reader.onload = (event) => {
+                            document.getElementById('fileImgId').src = event.target.result;
+                        };
+
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                </script>
             </tr>
             <tr>
                 <td> <input type="submit" value="Edit" onclick="return confirm('Are you sure to edit this product?')" > </td>

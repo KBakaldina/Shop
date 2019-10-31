@@ -22,8 +22,23 @@
                     <td colspan="2"> <textarea id="descriptionId" maxlength="300" cols="50" rows="6" name="description" required></textarea> </td>
                 </tr>
                 <tr>
-                    <td> <label for="pictureFileId">Upload picture: </label> </td>
-                    <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" required> </td>
+                    <td> <label for="pictureFileId">Upload Photo: </label> </td>
+                    <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" onchange="showFile(event)" required> </td>
+                </tr>
+                <tr>
+                    <td><label for="fileImgId">Photo: </label> </td>
+                    <td colspan="2"><img id="fileImgId" class="product-pic" alt="No picture"></td>
+                    <script>
+                        function showFile(event) {
+                            let reader = new FileReader();
+
+                            reader.onload = (event) => {
+                                document.getElementById('fileImgId').src = event.target.result;
+                            };
+
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    </script>
                 </tr>
                 <tr>
                     <td> <input type="submit" onclick="return confirm('Are you sure to add this product?');" value="Add" > </td>
