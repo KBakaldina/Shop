@@ -10,9 +10,10 @@ const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
 
 /* GET product page. */
-router.get('/', (req, res) => {
+router.get('/:page', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
+            let currentPage = 'page-'+req.params.page;
             let order = 'id', desc, search;
 
             if (req.query.order) {
@@ -26,7 +27,7 @@ router.get('/', (req, res) => {
 
             try {
                 let rows = await actionShowProducts(user.id, order, desc, search);
-                res.render('products/products', {rows: rows});
+                res.render('products/products', {rows: rows, currentPage: currentPage});
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
@@ -49,7 +50,7 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
             try {
                 await actionAddProduct(
                     req.body.productName, req.body.price, req.body.description, req.file.path, user.id);
-                res.redirect('/products')
+                res.redirect('/products/1')
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
@@ -80,7 +81,7 @@ router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
                 if (product) {
                     let pictureLink = (req.file)? req.file.path: null;
                     await actionEditProduct(req.params.id, req.body.productName, req.body.price, req.body.description, pictureLink);
-                    res.redirect('/products');
+                    res.redirect('/products/1');
                     } else res.send('This is not your product! You can change only your products.');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
@@ -96,7 +97,7 @@ router.get('/delete/:id', (req, res) => {
                 let product = await actionVerifyProduct(req.params.id, user.id);
                 if (product) {
                     await actionDeleteProduct(req.params.id);
-                    res.redirect('/products');
+                    res.redirect('/products/1');
                 } else res.send('This is not your product! You can delete only your products.');
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
