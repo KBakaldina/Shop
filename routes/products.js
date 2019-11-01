@@ -31,7 +31,8 @@ router.get('/search', (req, res) => {
                 console.log(req.query.request);
                 let pattern = '%' + req.query.request + '%';
                 let rows = await queryPromise(
-                    'SELECT * FROM products WHERE userId=? AND productName like ?', [user.id, pattern]);
+                    'SELECT * FROM products WHERE userId=? AND (productName like ? OR description LIKE ?)',
+                    [user.id, pattern, pattern]);
                 res.render('products/products', {rows: rows});
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
