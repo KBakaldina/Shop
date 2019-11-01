@@ -23,6 +23,15 @@
     </form>
     <br>
 
+    <form action="/products/order">
+        <input type="submit" value="Order by:">
+        <input type="radio" name="order" value="id" required> Time
+        <input type="radio" name="order" value="productName"> Name
+        <input type="radio" name="order" value="price"> Price
+        <input type="checkbox" name="desc" value="true"> descend
+    </form>
+    <br>
+
     <table class="user-products">
         <tr><th>№</th><th>Photo</th><th>Name</th><th>Price</th><th>Description</th></tr>
         <% for (var i=0; rows[i]; i++) { %>
