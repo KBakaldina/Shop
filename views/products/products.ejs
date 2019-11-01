@@ -12,18 +12,13 @@
 
     <h1>Products</h1>
 
-    <form action="/products/add">
-        <button>Add</button>
-    </form>
-    <br>
-
-    <form action="/products/search">
-        <input type="search" name="request" required>
+    <form action="/products">
+        <input type="text" name="search" required>
         <input type="submit" value="Search">
     </form>
     <br>
 
-    <form action="/products/order">
+    <form action="/products">
         <input type="submit" value="Order by:">
         <input type="radio" name="order" value="id" required> Time
         <input type="radio" name="order" value="productName"> Name
@@ -33,7 +28,20 @@
     <br>
 
     <table class="user-products">
-        <tr><th>№</th><th>Photo</th><th>Name</th><th>Price</th><th>Description</th></tr>
+        <tr>
+            <th>№</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+
+            <th>
+                <form action="/products/add">
+                    <button>Add new product</button>
+                </form>
+            </th>
+        </tr>
+
         <% for (var i=0; rows[i]; i++) { %>
             <tr>
                 <td><%= i+1 %></td>

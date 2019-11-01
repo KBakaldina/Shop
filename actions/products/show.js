@@ -1,6 +1,6 @@
 const queryPromise = require('../../libs/dbConnection').queryPromise;
 
-module.exports = async(userId, order, desc) => {
+module.exports = async(userId, order, desc, search) => {
     try{
         let rows;
 
@@ -12,6 +12,13 @@ module.exports = async(userId, order, desc) => {
             rows = await queryPromise(
                 'SELECT * FROM products WHERE userId=? ORDER BY ' + order,
                 userId);
+        }
+
+        if (search) {
+            let pattern = '%' + search + '%';
+            rows = await queryPromise(
+                'SELECT * FROM products WHERE userId=? AND (productName like ? OR description LIKE ?)',
+                [userId, pattern, pattern]);
         }
 
         return rows;

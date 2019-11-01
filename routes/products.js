@@ -3,8 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const upload = require('../libs/multer');
 
-const queryPromise = require('../libs/dbConnection').queryPromise;
-const actionProductsOrder = require('../actions/products/order');
+const actionShowProducts = require('../actions/products/show');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionAddProduct = require('../actions/products/add');
 const actionEditProduct = require('../actions/products/edit');
@@ -14,37 +13,19 @@ const actionDeleteProduct = require('../actions/products/delete');
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
-            try {
-                let rows = await actionProductsOrder(user.id, 'id');
-                res.render('products/products', {rows: rows});
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
-        } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
-    })(req, res);
-});
+            let order = 'id', desc, search;
 
-/* GET search page. */
-router.get('/search', (req, res) => {
-    passport.authenticate('jwt', {session: false}, async (err, user) => {
-        if (user) {
-            try {
-                let pattern = '%' + req.query.request + '%';
-                let rows = await queryPromise(
-                    'SELECT * FROM products WHERE userId=? AND (productName like ? OR description LIKE ?)',
-                    [user.id, pattern, pattern]);
-                res.render('products/products', {rows: rows});
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
-        } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
-    })(req, res);
-});
+            if (req.query.order) {
+                order = req.query.order;
+                desc = req.query.desc;
+            }
 
-/* GET order page. */
-router.get('/order', (req, res) => {
-    passport.authenticate('jwt', {session: false}, async (err, user) => {
-        if (user) {
+            if (req.query.search) {
+                search = req.query.search;
+            }
+
             try {
-                let rows = await actionProductsOrder(user.id, req.query.order, req.query.desc);
+                let rows = await actionShowProducts(user.id, order, desc, search);
                 res.render('products/products', {rows: rows});
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');

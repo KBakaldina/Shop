@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="added: ordering by time/name/price with descend option">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="small commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/products/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/show.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +151,7 @@
       <workItem from="1572422631779" duration="17144000" />
       <workItem from="1572528375712" duration="29000" />
       <workItem from="1572528427401" duration="9783000" />
-      <workItem from="1572609037411" duration="6616000" />
+      <workItem from="1572609037411" duration="10357000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -409,14 +412,20 @@
       <option name="project" value="LOCAL" />
       <updated>1572615224629</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="small commit">
+      <created>1572615688662</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1572615688662</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="done: passport-jwt&amp;local (login, profile)" />
     <MESSAGE value="done: log out" />
     <MESSAGE value="+ async, await" />
     <MESSAGE value="+ user products db, router, view" />
@@ -441,7 +450,8 @@
     <MESSAGE value="added: searching for product(s) by its name" />
     <MESSAGE value="updated: searching for product(s) by its name and description" />
     <MESSAGE value="added: ordering by time/name/price with descend option" />
-    <option name="LAST_COMMIT_MESSAGE" value="added: ordering by time/name/price with descend option" />
+    <MESSAGE value="small commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="small commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -472,22 +482,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="840" height="217" key="GridCell.Tab.0.bottom" timestamp="1572615147346">
+    <state width="1167" height="217" key="GridCell.Tab.0.bottom" timestamp="1572621311646">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="840" height="217" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572615147346" />
-    <state width="840" height="217" key="GridCell.Tab.0.center" timestamp="1572615147345">
+    <state width="1167" height="217" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1572621311646" />
+    <state width="1167" height="217" key="GridCell.Tab.0.center" timestamp="1572621311646">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="840" height="217" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572615147345" />
-    <state width="840" height="217" key="GridCell.Tab.0.left" timestamp="1572615147345">
+    <state width="1167" height="217" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1572621311646" />
+    <state width="1167" height="217" key="GridCell.Tab.0.left" timestamp="1572621311646">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="840" height="217" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572615147345" />
-    <state width="840" height="217" key="GridCell.Tab.0.right" timestamp="1572615147346">
+    <state width="1167" height="217" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1572621311646" />
+    <state width="1167" height="217" key="GridCell.Tab.0.right" timestamp="1572621311646">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="840" height="217" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572615147346" />
+    <state width="1167" height="217" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1572621311646" />
     <state width="1338" height="340" key="GridCell.Tab.1.bottom" timestamp="1572441468037">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
