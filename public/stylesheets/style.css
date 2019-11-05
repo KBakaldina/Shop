@@ -48,3 +48,8 @@ textarea {
 #priceId {
     width: 458px;
 }
+
+.sort-table input[type="button"], .sort-table input[type="submit"] {
+    height: 50px;
+    width: 50px;
+}

@@ -12,26 +12,24 @@
 
     <h1>Products</h1>
 
-    <form action="/products">
-        <input type="text" name="search" required>
-        <input type="submit" value="Search">
+    <form action="/products/1">
+        <table class="sort-table">
+            <tr>
+                <td> <label>Search: </label> </td>
+                <td colspan="4"> <input type="text" name="search" style="width: 290px"> </td>
+                <td rowspan="2"> <input type="submit" value="OK"> </td>
+                <td rowspan="2"> <input type="button" onclick="window.location.href='/products/1'" value="Reset"> </td>
+            </tr>
+            <tr>
+                <td> <label>Order by:</label> </td>
+                <td> <input type="radio" name="order" value="id" checked> Time </td>
+                <td> <input type="radio" name="order" value="productName"> Name </td>
+                <td> <input type="radio" name="order" value="price"> Price </td>
+                <td> <input type="checkbox" name="desc" value="true"> descend </td>
+            </tr>
+        </table>
     </form>
-    <br>
-
-    <form action="/products">
-        <input type="submit" value="Order by:">
-        <input type="radio" name="order" value="id" required> Time
-        <input type="radio" name="order" value="productName"> Name
-        <input type="radio" name="order" value="price"> Price
-        <input type="checkbox" name="desc" value="true"> descend
-    </form>
-    <br>
-
-    <form action="/products">
-        <input type="button" value="Reset">
-    </form>
-    <br>
-
+<br>
     <table class="user-products">
         <tr>
             <th>№</th>
@@ -49,7 +47,7 @@
 
         <% for (var i=0; rows[i]; ++i) { %>
             <tr>
-                <td><%= i+1 %></td>
+                <td><%= (3*(currentPage-1))+i+1 %></td>
                 <td><img class="product-pic" src="<%=rows[i].pictureLink%>" alt="No picture"></td>
                 <td><p><%= rows[i].productName %></p></td>
                 <td><p>$<%= rows[i].price%></p></td>
@@ -69,12 +67,16 @@
     <div style="text-align: center;">
         <p>Pages:</p>
         <div>
-            <% for (var i=1; i<=5; ++i) {
-                    let pageLink = '/products/'+i;
-                    let pageId = 'page-'+i%>
+            <% for (var i=1; i<=lastPage; ++i) {
+                    let pageLink = '/products/' + i + query;
+                    let pageId = 'page-'+i; %>
+
                     <button onclick="window.location.href='<%=pageLink%>'" id="<%=pageId%>"><%=i%></button>
             <% } %>
-            <script> document.getElementById('page-1').style='background-color: lightblue;' </script>
+            <script>
+                var currentPage = window.location.href.substring(32, 31);
+                document.getElementById('page-'+currentPage).style.backgroundColor = "lightblue";
+            </script>
         </div>
     </div>
 </body>

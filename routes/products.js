@@ -9,26 +9,28 @@ const actionAddProduct = require('../actions/products/add');
 const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
 
+/* GET product page without options. */
+router.get('/', (req, res) => {
+            res.redirect('/products/1');
+});
+
 /* GET product page. */
 router.get('/:page', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
-            let currentPage = 'page-'+req.params.page;
-            let order = 'id', desc, search;
+            if (!isNaN(req.params.page)) {
+                let order = (req.query.order) ? req.query.order : 'id';
+                let desc = (req.query.desc) ? req.query.desc : false;
+                let search = (req.query.search) ? req.query.search: '';
 
-            if (req.query.order) {
-                order = req.query.order;
-                desc = req.query.desc;
-            }
+                let query = '?search=' + search + '&order=' + order + '&desc=' + desc;
 
-            if (req.query.search) {
-                search = req.query.search;
-            }
-
-            try {
-                let rows = await actionShowProducts(user.id, order, desc, search);
-                res.render('products/products', {rows: rows, currentPage: currentPage});
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+                try {
+                    let lastPage = await actionShowProducts(false, user.id, order, desc, search);
+                    let rows = await actionShowProducts(true, user.id, order, desc, search, req.params.page);
+                    res.render('products/products', {rows: rows, currentPage: req.params.page, lastPage: lastPage, query: query});
+                } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+            } else res.redirect('/products/1');
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);

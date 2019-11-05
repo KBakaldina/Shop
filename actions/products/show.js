@@ -1,26 +1,24 @@
 const queryPromise = require('../../libs/dbConnection').queryPromise;
 
-module.exports = async(userId, order, desc, search) => {
+module.exports = async(isLimited, userId, order, desc, search, page) => {
     try{
-        let rows;
+        let limit = 3;
 
-        if (desc) {
-            rows = await queryPromise(
-                'SELECT * FROM products WHERE userId=? ORDER BY ' + order + ' DESC',
-                userId);
+        let sql='SELECT * FROM products WHERE userId=?'
+        if (search) sql += ' AND (productName like \'%'+search+'%\' OR description LIKE \'%'+search+'%\')';
+        sql += ' ORDER BY ' + order;
+        if (desc == true || desc == 'true') sql += ' DESC';
+
+        if (isLimited){
+            sql += ' LIMIT ? OFFSET ?';
+            let offset = (page - 1) * limit;
+            let rows = await queryPromise( sql,[userId, limit, offset]);
+            return rows;
         } else {
-            rows = await queryPromise(
-                'SELECT * FROM products WHERE userId=? ORDER BY ' + order,
-                userId);
+            sql = sql.replace('*', 'COUNT(id)');
+            let rows = await queryPromise(sql, userId);
+            let count = rows[0]['COUNT(id)'];
+            return Math.ceil(count/limit);
         }
-
-        if (search) {
-            let pattern = '%' + search + '%';
-            rows = await queryPromise(
-                'SELECT * FROM products WHERE userId=? AND (productName like ? OR description LIKE ?)',
-                [userId, pattern, pattern]);
-        }
-
-        return rows;
     } catch(err) { throw err; }
 };
