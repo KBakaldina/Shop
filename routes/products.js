@@ -9,28 +9,21 @@ const actionAddProduct = require('../actions/products/add');
 const actionEditProduct = require('../actions/products/edit');
 const actionDeleteProduct = require('../actions/products/delete');
 
-/* GET product page without options. */
-router.get('/', (req, res) => {
-            res.redirect('/products/1');
-});
-
 /* GET product page. */
-router.get('/:page', (req, res) => {
+router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
-            if (!isNaN(req.params.page)) {
-                let order = (req.query.order) ? req.query.order : 'id';
-                let desc = (req.query.desc) ? req.query.desc : false;
-                let search = (req.query.search) ? req.query.search: '';
+            let order = (req.query.order) ? req.query.order : 'id';
+            let desc = (req.query.desc) ? req.query.desc : true;
+            let search = (req.query.search) ? req.query.search: '';
+            let query = '&search=' + search + '&order=' + order + '&desc=' + desc;
 
-                let query = '?search=' + search + '&order=' + order + '&desc=' + desc;
-
+            if (!isNaN(req.query.page)) {
                 try {
-                    let lastPage = await actionShowProducts(false, user.id, order, desc, search);
-                    let rows = await actionShowProducts(true, user.id, order, desc, search, req.params.page);
-                    res.render('products/products', {rows: rows, currentPage: req.params.page, lastPage: lastPage, query: query});
+                    let result = await actionShowProducts (user.id, order, desc, search, req.query.page);
+                    res.render('products/products', {rows: result.rows, currentPage: req.query.page, lastPage: result.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
-            } else res.redirect('/products/1');
+            } else res.redirect('/products/?page=1'+query);
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);
@@ -52,7 +45,7 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
             try {
                 await actionAddProduct(
                     req.body.productName, req.body.price, req.body.description, req.file.path, user.id);
-                res.redirect('/products/1')
+                res.redirect('/products')
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
@@ -83,7 +76,7 @@ router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
                 if (product) {
                     let pictureLink = (req.file)? req.file.path: null;
                     await actionEditProduct(req.params.id, req.body.productName, req.body.price, req.body.description, pictureLink);
-                    res.redirect('/products/1');
+                    res.redirect('/products');
                     } else res.send('This is not your product! You can change only your products.');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
@@ -99,7 +92,7 @@ router.get('/delete/:id', (req, res) => {
                 let product = await actionVerifyProduct(req.params.id, user.id);
                 if (product) {
                     await actionDeleteProduct(req.params.id);
-                    res.redirect('/products/1');
+                    res.redirect('/products');
                 } else res.send('This is not your product! You can delete only your products.');
             } catch(err) { res.send(err);}
         } else if (user == false && err === null) return res.redirect('login');

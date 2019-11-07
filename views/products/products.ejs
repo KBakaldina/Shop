@@ -12,20 +12,20 @@
 
     <h1>Products</h1>
 
-    <form action="/products/1">
+    <form action="/products">
         <table class="sort-table">
             <tr>
                 <td> <label>Search: </label> </td>
                 <td colspan="4"> <input type="text" name="search" style="width: 290px"> </td>
                 <td rowspan="2"> <input type="submit" value="OK"> </td>
-                <td rowspan="2"> <input type="button" onclick="window.location.href='/products/1'" value="Reset"> </td>
+                <td rowspan="2"> <input type="button" onclick="window.location.href='/products'" value="Reset"> </td>
             </tr>
             <tr>
                 <td> <label>Order by:</label> </td>
                 <td> <input type="radio" name="order" value="id" checked> Time </td>
                 <td> <input type="radio" name="order" value="productName"> Name </td>
                 <td> <input type="radio" name="order" value="price"> Price </td>
-                <td> <input type="checkbox" name="desc" value="true"> descend </td>
+                <td> <input type="checkbox" name="desc" value="true" checked> descend </td>
             </tr>
         </table>
     </form>
@@ -37,12 +37,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
-
-            <th>
-                <form action="/products/add">
-                    <button>Add new product</button>
-                </form>
-            </th>
+            <th> <button onclick="window.location.href='/products/add'">Add new product</button> </th>
         </tr>
 
         <% for (var i=0; rows[i]; ++i) { %>
@@ -68,7 +63,7 @@
         <p>Pages:</p>
         <div>
             <% for (var i=1; i<=lastPage; ++i) {
-                    let pageLink = '/products/' + i + query;
+                    let pageLink = '/products/?page=' + i + query;
                     let pageId = 'page-'+i; %>
 
                     <button onclick="window.location.href='<%=pageLink%>'" id="<%=pageId%>"><%=i%></button>
