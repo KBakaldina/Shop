@@ -5,10 +5,16 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-
+<div>
+    <form action="/profile">
+        <button class="logout-button">Profile</button>
+    </form>
+</div>
+<div>
     <form action="/profile" method="post">
       <button class="logout-button">Log out</button>
     </form>
+</div>
 
     <h1>Products</h1>
 
@@ -16,16 +22,33 @@
         <table class="sort-table">
             <tr>
                 <td> <label>Search: </label> </td>
-                <td colspan="4"> <input type="text" name="search" style="width: 290px"> </td>
+                <td colspan="4"> <input type="text" name="search" id="searchId" style="width: 290px"> </td>
                 <td rowspan="2"> <input type="submit" value="OK"> </td>
                 <td rowspan="2"> <input type="button" onclick="window.location.href='/products'" value="Reset"> </td>
             </tr>
             <tr>
                 <td> <label>Order by:</label> </td>
-                <td> <input type="radio" name="order" value="id" checked> Time </td>
-                <td> <input type="radio" name="order" value="productName"> Name </td>
-                <td> <input type="radio" name="order" value="price"> Price </td>
-                <td> <input type="checkbox" name="desc" value="true" checked> descend </td>
+                <td> <input type="radio" name="order" id="order-id" value="id"> Time </td>
+                <td> <input type="radio" name="order" id="order-productName" value="productName"> Name </td>
+                <td> <input type="radio" name="order" id="order-price" value="price"> Price </td>
+                <td> <input type="checkbox" name="desc" id="checkbox-desc" value="true"> descend </td>
+                <script>
+                    if (window.location.href.includes('search=')) {
+                        let search = window.location.href
+                            .split('search=')[1]
+                            .split('&')[0];;
+                        document.getElementById('searchId').value = search;
+                    }
+
+                    let desc = window.location.href
+                        .split('desc=')[1];
+                    document.getElementById('checkbox-desc').checked = (desc=='true')? true: false;
+
+                    let order = window.location.href
+                        .split('order=')[1]
+                        .split('&')[0];
+                    document.getElementById('order-'+order).checked = true;
+                </script>
             </tr>
         </table>
     </form>
@@ -42,7 +65,7 @@
 
         <% for (var i=0; rows[i]; ++i) { %>
             <tr>
-                <td><%= (3*(currentPage-1))+i+1 %></td>
+                <td><%= (limit*(currentPage-1))+i+1 %></td>
                 <td><img class="product-pic" src="<%=rows[i].pictureLink%>" alt="No picture"></td>
                 <td><p><%= rows[i].productName %></p></td>
                 <td><p>$<%= rows[i].price%></p></td>
@@ -63,7 +86,7 @@
         <p>Pages:</p>
         <div>
             <%if (currentPage!=1) { %>
-            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)-1%><%=query%>'" id=""><<</button>
+            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)-1%><%query%>'" id=""><<</button>
             <% } %>
 
             <% for (var i=1; i<=lastPage; ++i) {
@@ -76,8 +99,11 @@
             <%if (currentPage!=lastPage) { %>
             <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)+1%><%=query%>'" id="">>></button>
             <% } %>
+
             <script>
-                var currentPage = window.location.href.split('page=')[1].split('&')[0];
+                var currentPage = window.location.href
+                    .split('page=')[1]
+                    .split('&')[0];
                 document.getElementById('page-'+currentPage).style.backgroundColor = "lightblue";
             </script>
         </div>

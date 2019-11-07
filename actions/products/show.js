@@ -16,5 +16,5 @@ module.exports = async(userId, order, desc, search, page) => {
     let countRows = await queryPromise(sqlCount, userId);
     let count = Math.ceil(countRows[0]['COUNT(id)']/limit);
 
-    return {rows: rows, count: count};
+    return {rows: rows, count: count, limit: limit};
 };
