@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="some fixes">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="added: buttons to go to the next or previous page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actions/products/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +153,7 @@
       <workItem from="1572609037411" duration="13769000" />
       <workItem from="1572954624831" duration="58000" />
       <workItem from="1572954705572" duration="15733000" />
-      <workItem from="1573117588333" duration="6910000" />
+      <workItem from="1573117588333" duration="7496000" />
     </task>
     <task id="LOCAL-00001" summary="+mysql">
       <created>1570718612158</created>
@@ -450,14 +449,20 @@
       <option name="project" value="LOCAL" />
       <updated>1573122386006</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="added: buttons to go to the next or previous page">
+      <created>1573125500785</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1573125500785</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+ now user can add new product" />
     <MESSAGE value="now user can add new product" />
     <MESSAGE value="showing current user his products (not done)" />
     <MESSAGE value="done: showing current user his products" />
@@ -482,7 +487,8 @@
     <MESSAGE value="not done: product pages" />
     <MESSAGE value="done: product pages;&#10;updated: user can use searching and ordering at the same time;" />
     <MESSAGE value="some fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fixes" />
+    <MESSAGE value="added: buttons to go to the next or previous page" />
+    <option name="LAST_COMMIT_MESSAGE" value="added: buttons to go to the next or previous page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -513,22 +519,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1068" height="219" key="GridCell.Tab.0.bottom" timestamp="1573125430508">
+    <state width="1068" height="219" key="GridCell.Tab.0.bottom" timestamp="1573125944379">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1068" height="219" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573125430508" />
-    <state width="1068" height="219" key="GridCell.Tab.0.center" timestamp="1573125430507">
+    <state width="1068" height="219" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573125944379" />
+    <state width="1068" height="219" key="GridCell.Tab.0.center" timestamp="1573125944378">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1068" height="219" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573125430507" />
-    <state width="1068" height="219" key="GridCell.Tab.0.left" timestamp="1573125430507">
+    <state width="1068" height="219" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573125944378" />
+    <state width="1068" height="219" key="GridCell.Tab.0.left" timestamp="1573125944378">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1068" height="219" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573125430507" />
-    <state width="1068" height="219" key="GridCell.Tab.0.right" timestamp="1573125430507">
+    <state width="1068" height="219" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573125944378" />
+    <state width="1068" height="219" key="GridCell.Tab.0.right" timestamp="1573125944378">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1068" height="219" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573125430507" />
+    <state width="1068" height="219" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573125944378" />
     <state width="1068" height="340" key="GridCell.Tab.1.bottom" timestamp="1573124896583">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
