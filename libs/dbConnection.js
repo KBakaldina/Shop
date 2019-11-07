@@ -37,6 +37,15 @@ connection.connect( (err) => {
             'CONSTRAINT FK_userId FOREIGN KEY (userId) REFERENCES users(id))', (err) => {
             if (err) console.log(err);
         });
+
+        connection.query('CREATE TABLE IF NOT EXISTS likes (' +
+            'productId INT(10) UNSIGNED NOT NULL,' +
+            'CONSTRAINT FK_idProduct FOREIGN KEY (productId) REFERENCES products(id), ' +
+            'userId INT(10) UNSIGNED NOT NULL, ' +
+            'CONSTRAINT FK_idUser FOREIGN KEY (userId) REFERENCES users(id), '+
+            'PRIMARY KEY (productId, userId))', (err) => {
+            if (err) console.log(err);
+        });
     }
 });
 

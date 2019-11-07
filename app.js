@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome/css'));
 app.use(passport.initialize());
 
 app.use('/', indexRouter);
