@@ -6,7 +6,7 @@ module.exports = async  (id, productName, price, description, pictureLink) => {
             let rows = await queryPromise(
                 'SELECT * FROM products WHERE id=?',
                 [id]);
-            fs.unlinkSync('public'+rows[0].pictureLink);
+            fs.unlink(`public${rows[0].pictureLink}`);
 
             await queryPromise(
                 'UPDATE products SET productName=?, price=?, description=?, pictureLink=? WHERE id=?',

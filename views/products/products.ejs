@@ -62,14 +62,22 @@
     <div style="text-align: center;">
         <p>Pages:</p>
         <div>
+            <%if (currentPage!=1) { %>
+            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)-1%><%=query%>'" id=""><<</button>
+            <% } %>
+
             <% for (var i=1; i<=lastPage; ++i) {
                     let pageLink = '/products/?page=' + i + query;
                     let pageId = 'page-'+i; %>
 
                     <button onclick="window.location.href='<%=pageLink%>'" id="<%=pageId%>"><%=i%></button>
             <% } %>
+
+            <%if (currentPage!=lastPage) { %>
+            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)+1%><%=query%>'" id="">>></button>
+            <% } %>
             <script>
-                var currentPage = window.location.href.substring(32, 31);
+                var currentPage = window.location.href.split('page=')[1].split('&')[0];
                 document.getElementById('page-'+currentPage).style.backgroundColor = "lightblue";
             </script>
         </div>
