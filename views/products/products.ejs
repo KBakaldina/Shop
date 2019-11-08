@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Products</title>
+    <title><%=pageName%></title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <!--<link href="/font-awesome/font-awesome.css" rel="stylesheet" type="text/css">-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-<div>
-    <form action="/profile">
-        <button class="logout-button">Profile</button>
-    </form>
-</div>
-<div>
-    <form action="/profile" method="post">
-      <button class="logout-button">Log out</button>
-    </form>
-</div>
+    <div>
+       <form action="/profile">
+          <button class="profile-button">Profile</button>
+     </form>
+    </div>
+    <div>
+     <form action="/profile" method="post">
+         <button class="logout-button">Log out</button>
+      </form>
+    </div>
 
-    <h1>Products</h1>
-<i class="fas fa-heart fa-2x"></i>
-<i class="far fa-heart fa-2x"></i>
+    <br>
+    <h1><%=pageName%></h1>
 
     <form action="/products">
         <table class="sort-table">
@@ -64,7 +61,13 @@
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
-            <th> <button onclick="window.location.href='/products/add'">Add new product</button> </th>
+            <th>
+            <% if (pageName == 'Shop') {%>
+                Likes
+            <% } else { %>
+                <button onclick="window.location.href='/products/add'">Add new product</button>
+            <% } %>
+            </th>
         </tr>
 
         <% for (var i=0; rows[i]; ++i) { %>
@@ -75,12 +78,39 @@
                 <td><p>$<%= rows[i].price%></p></td>
                 <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
                 <td>
+                <% if (pageName == 'Shop') {
+                    let likeId = 'like-'+i%>
+                    <th> <button id="<%=likeId%>" onclick = "like(<%=likeId%>)"></button>
+                        <label><%=rows[i].likes%></label>
+                    </th>
+                    <script>
+                        function like(likeId) {
+                            alert(document.getElementById(likeId).textContent);
+//TODO: XHR like count (+ or -) + change content?
+                           /* var xhr = new XMLHttpRequest();
+
+                            xhr.open('POST', '/shop', true);
+                            xhr.send();
+
+                            if (xhr.status != 200) {
+                                // обработать ошибку
+                                alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+                            } else {
+                                // вывести результат
+                                alert(xhr.responseText);
+                            }*/
+                        }
+                    </script>
+                <% } else { %>
                     <form action="/products/edit/<%=rows[i].id%>">
                         <button>Edit</button>
                     </form>
+                    <br>
                     <form action="/products/delete/<%=rows[i].id%>">
                         <button onclick="return confirm('Are you sure to delete this product?');">Delete</button>
                     </form>
+                <% } %>
+
                 </td>
             </tr>
         <% } %>
@@ -88,9 +118,12 @@
 
     <div style="text-align: center;">
         <p>Pages:</p>
+        <script>
+//TODO: pages links to shop
+        </script>
         <div>
             <%if (currentPage!=1) { %>
-            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)-1%><%query%>'" id=""><<</button>
+            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)-1%><%query%>'"> &#9668; </button>
             <% } %>
 
             <% for (var i=1; i<=lastPage; ++i) {
@@ -101,7 +134,7 @@
             <% } %>
 
             <%if (currentPage!=lastPage) { %>
-            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)+1%><%=query%>'" id="">>></button>
+            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)+1%><%=query%>'"> &#9658; </button>
             <% } %>
 
             <script>

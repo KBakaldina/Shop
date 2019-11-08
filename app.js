@@ -14,6 +14,7 @@ const loginRouter = require('./routes/login');
 const registrationRouter = require('./routes/registration');
 const profileRouter = require('./routes/profile');
 const productsRouter = require('./routes/products');
+const shopRouter = require('./routes/shop');
 
 const app = express();
 
@@ -26,7 +27,6 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome/css'));
 app.use(passport.initialize());
 
 app.use('/', indexRouter);
@@ -34,6 +34,7 @@ app.use('/login', loginRouter);
 app.use('/registration', registrationRouter);
 app.use('/profile', profileRouter);
 app.use('/products', productsRouter);
+app.use('/shop', shopRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const upload = require('../libs/multer');
 
-const actionShowProducts = require('../actions/products/show');
+const actionShowUserProducts = require('../actions/products/show');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionAddProduct = require('../actions/products/add');
 const actionEditProduct = require('../actions/products/edit');
@@ -21,8 +21,8 @@ router.get('/', (req, res) => {
 
             if (req.query.page && req.query.desc && req.query.order) {
                 try {
-                    let products = await actionShowProducts (user.id, order, desc, search, page);
-                    res.render('products/products', {rows: products.rows, limit: products.limit,
+                    let products = await actionShowUserProducts (user.id, order, desc, search, page);
+                    res.render('products/products', {pageName: 'My products', rows: products.rows, limit: products.limit,
                             currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/products/?page='+page+query);
@@ -48,7 +48,7 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
                 await actionAddProduct(
                     req.body.productName, req.body.price, req.body.description, req.file.path, user.id);
                 res.redirect('/products')
-            } catch(err) { res.send(err);}
+            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);
@@ -96,7 +96,7 @@ router.get('/delete/:id', (req, res) => {
                     await actionDeleteProduct(req.params.id);
                     res.redirect('/products');
                 } else res.send('This is not your product! You can delete only your products.');
-            } catch(err) { res.send(err);}
+            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);

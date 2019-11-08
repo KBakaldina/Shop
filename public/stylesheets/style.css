@@ -29,6 +29,11 @@ img.product-pic {
     right: 35px;
 }
 
+.profile-button {
+    position: absolute;
+    left: 60px;
+}
+
 textarea {
     font: inherit;
     color: inherit;
