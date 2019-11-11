@@ -21,8 +21,8 @@ router.get('/', (req, res) => {
 
             if (req.query.page && req.query.desc && req.query.order) {
                 try {
-                    let products = await actionShowUserProducts (user.id, order, desc, search, page);
-                    res.render('products/products', {pageName: 'My products', rows: products.rows, limit: products.limit,
+                    let products = await actionShowUserProducts(user.id, order, desc, search, page, 'user\'s');
+                    res.render('products/products', {pageName: 'My products', linkStart: '/products', rows: products.rows, limit: products.limit,
                             currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/products/?page='+page+query);

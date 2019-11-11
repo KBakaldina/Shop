@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const actionShowAllProducts = require('../actions/products/show');
-const actionLike = require('../actions/products/like');
 
-/* GET shop page. */
+const actionShowFavoriteProducts = require('../actions/products/show');
+
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
@@ -16,25 +15,15 @@ router.get('/', (req, res) => {
 
             if (req.query.page && req.query.desc && req.query.order) {
                 try {
-                    let products = await actionShowAllProducts (user.id, order, desc, search, page, 'shop');
-                    res.render('products/products', {pageName: 'Shop', linkStart: '/shop', rows: products.rows, limit: products.limit,
+                    let products = await actionShowFavoriteProducts(user.id, order, desc, search, page, 'favorites');
+                    res.render('products/products', {pageName: 'Favorites', linkStart: '/favorites', rows: products.rows, limit: products.limit,
                         currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
-            } else res.redirect('/shop/?page='+page+query);
+            } else res.redirect('/favorites/?page='+page+query);
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
     })(req, res);
 });
 
-router.post('/', (req, res) => {
-    passport.authenticate('jwt', {session: false}, async (err, user) => {
-        if (user) {
-            try {
-                await actionLike(user.id, parseInt(req.query.id));
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
-        } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
-    })(req, res);
-});
 
 module.exports = router;

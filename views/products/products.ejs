@@ -7,9 +7,6 @@
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
-
-    <% const linkStart = (pageName == 'Shop') ? '/shop': '/products';%>
-
     <div>
        <form action="/profile">
           <button class="profile-button">Profile</button>
@@ -66,14 +63,12 @@
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
-            <th>
-            <% if (pageName == 'Shop') {%>
-                Likes
-            <% } else { %>
-                <button onclick="window.location.href='/products/add'">Add new product</button>
+            <th>Likes</th>
+            <% if (pageName == 'My products') {%>
+                <th>
+                    <button onclick="window.location.href='/products/add'">Add new product</button>
+                </th>
             <% } %>
-            </th>
-        </tr>
 
         <% for (var i=0; rows[i]; ++i) { %>
             <tr>
@@ -83,10 +78,10 @@
                 <td><p>$<%= rows[i].price%></p></td>
                 <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
                 <td>
-                <% if (pageName == 'Shop') {
-                    let likeCountId = 'count-'+ rows[i].id; %>
+                    <% let likeCountId = 'count-'+ rows[i].id; %>
 
                     <a id="<%=rows[i].id%>" href="javascript:like('<%=rows[i].id%>')" style="text-decoration: none;">
+
                     <% if(rows[i].liked) {%> <i class="fas fa-heart fa-2x"></i>
                     <% } else { %> <i class="far fa-heart fa-2x"></i> <% } %>
                     </a>
@@ -110,17 +105,19 @@
                             xhr.send();
                         }
                     </script>
-                <% } else { %>
-                    <form action="/products/edit/<%=rows[i].id%>">
-                        <button>Edit</button>
-                    </form>
-                    <br>
-                    <form action="/products/delete/<%=rows[i].id%>">
-                        <button onclick="return confirm('Are you sure to delete this product?');">Delete</button>
-                    </form>
-                <% } %>
                 </td>
-            </tr>
+            <% if (pageName == 'My products') { %>
+            <td>
+                <form action="/products/edit/<%=rows[i].id%>">
+                    <button>Edit</button>
+                </form>
+                <br>
+                <form action="/products/delete/<%=rows[i].id%>">
+                    <button onclick="return confirm('Are you sure to delete this product?');">Delete</button>
+                </form>
+            </td>
+            <% } %>
+        </tr>
         <% } %>
     </table>
 
