@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const actionShowAllProducts = require('../actions/shop/show');
+const actionShowAllProducts = require('../actions/products/show');
+const actionLike = require('../actions/products/like');
 
-//TODO: change to shop with likes
 /* GET shop page. */
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
             if (req.query.page && req.query.desc && req.query.order) {
                 try {
-                    let products = await actionShowAllProducts (user.id, order, desc, search, page);
+                    let products = await actionShowAllProducts (user.id, order, desc, search, page, true);
                     res.render('products/products', {pageName: 'Shop', rows: products.rows, limit: products.limit,
                         currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
@@ -26,6 +26,15 @@ router.get('/', (req, res) => {
     })(req, res);
 });
 
-//TODO: POST shop page
+router.post('/', (req, res) => {
+    passport.authenticate('jwt', {session: false}, async (err, user) => {
+        if (user) {
+            try {
+                await actionLike(user.id, parseInt(req.query.id));
+            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+        } else if (user == false && err === null) return res.redirect('login');
+        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+    })(req, res);
+});
 
 module.exports = router;

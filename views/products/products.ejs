@@ -3,8 +3,13 @@
 <head>
     <title><%=pageName%></title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
+
+    <% const linkStart = (pageName == 'Shop') ? '/shop': '/products';%>
+
     <div>
        <form action="/profile">
           <button class="profile-button">Profile</button>
@@ -19,13 +24,13 @@
     <br>
     <h1><%=pageName%></h1>
 
-    <form action="/products">
+    <form action="<%=linkStart%>">
         <table class="sort-table">
             <tr>
                 <td> <label>Search: </label> </td>
                 <td colspan="4"> <input type="text" name="search" id="searchId" style="width: 290px"> </td>
                 <td rowspan="2"> <input type="submit" value="OK"> </td>
-                <td rowspan="2"> <input type="button" onclick="window.location.href='/products'" value="Reset"> </td>
+                <td rowspan="2"> <input type="button" onclick="window.location.href='<%=linkStart%>'" value="Reset"> </td>
             </tr>
             <tr>
                 <td> <label>Order by:</label> </td>
@@ -37,7 +42,7 @@
                     if (window.location.href.includes('search=')) {
                         let search = window.location.href
                             .split('search=')[1]
-                            .split('&')[0];;
+                            .split('&')[0];
                         document.getElementById('searchId').value = search;
                     }
 
@@ -79,26 +84,30 @@
                 <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
                 <td>
                 <% if (pageName == 'Shop') {
-                    let likeId = 'like-'+i%>
-                    <th> <button id="<%=likeId%>" onclick = "like(<%=likeId%>)"></button>
-                        <label><%=rows[i].likes%></label>
-                    </th>
+                    let likeCountId = 'count-'+ rows[i].id; %>
+
+                    <a id="<%=rows[i].id%>" href="javascript:like('<%=rows[i].id%>')" style="text-decoration: none;">
+                    <% if(rows[i].liked) {%> <i class="fas fa-heart fa-2x"></i>
+                    <% } else { %> <i class="far fa-heart fa-2x"></i> <% } %>
+                    </a>
+                    <label id="<%=likeCountId%>"><%=rows[i].likes%></label>
+
                     <script>
                         function like(likeId) {
-                            alert(document.getElementById(likeId).textContent);
-//TODO: XHR like count (+ or -) + change content?
-                           /* var xhr = new XMLHttpRequest();
+                            let pic = document.getElementById(likeId);
+                            let label = document.getElementById('count-'.concat(likeId));
 
-                            xhr.open('POST', '/shop', true);
+                            if (pic.innerHTML.includes('fas')) { //if liked
+                                pic.innerHTML = '<i class="far fa-heart fa-2x"></i>';
+                                label.innerHTML = (parseInt(label.innerHTML)-1).toString();
+                            } else { // if not liked
+                                pic.innerHTML = '<i class="fas fa-heart fa-2x"></i>';
+                                label.innerHTML = (parseInt(label.innerHTML)+1).toString();
+                            }
+
+                            let xhr = new XMLHttpRequest();
+                            xhr.open('POST', '/shop?id='+likeId, true);
                             xhr.send();
-
-                            if (xhr.status != 200) {
-                                // обработать ошибку
-                                alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
-                            } else {
-                                // вывести результат
-                                alert(xhr.responseText);
-                            }*/
                         }
                     </script>
                 <% } else { %>
@@ -110,7 +119,6 @@
                         <button onclick="return confirm('Are you sure to delete this product?');">Delete</button>
                     </form>
                 <% } %>
-
                 </td>
             </tr>
         <% } %>
@@ -118,23 +126,20 @@
 
     <div style="text-align: center;">
         <p>Pages:</p>
-        <script>
-//TODO: pages links to shop
-        </script>
         <div>
-            <%if (currentPage!=1) { %>
-            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)-1%><%query%>'"> &#9668; </button>
+            <% if (currentPage!=1) { %>
+                    <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)-1%><%query%>'"> &#9668; </button>
             <% } %>
 
             <% for (var i=1; i<=lastPage; ++i) {
-                    let pageLink = '/products/?page=' + i + query;
-                    let pageId = 'page-'+i; %>
+                    let pageLink = linkStart +'/?page=' + i + query;
+                    let pageId = 'page-'+ i; %>
 
                     <button onclick="window.location.href='<%=pageLink%>'" id="<%=pageId%>"><%=i%></button>
             <% } %>
 
             <%if (currentPage!=lastPage) { %>
-            <button onclick="window.location.href='/products/?page=<%=parseInt(currentPage)+1%><%=query%>'"> &#9658; </button>
+            <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)+1%><%=query%>'"> &#9658; </button>
             <% } %>
 
             <script>
