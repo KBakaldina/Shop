@@ -16,13 +16,14 @@ router.get('/', (req, res) => {
             let page = (req.query.page) ? req.query.page : 1;
             let order = (req.query.order) ? req.query.order : 'id';
             let desc = (req.query.desc) ? req.query.desc : false;
-            let search = (req.query.search) ? req.query.search: '';
-            let query = '&search=' + search + '&order=' + order + '&desc=' + desc;
+            let search = (req.query.search) ? req.query.search : '';
+            let limit = (req.query.limit) ? req.query.limit : 4;
+            let query = '&search=' + search + '&order=' + order + '&desc=' + desc + '&limit=' + limit;
 
-            if (req.query.page && req.query.desc && req.query.order) {
+            if (req.query.page && req.query.desc && req.query.order && req.query.limit) {
                 try {
-                    let products = await actionShowUserProducts(user.id, order, desc, search, page, 'user\'s');
-                    res.render('products/products', {pageName: 'My products', linkStart: '/products', rows: products.rows, limit: products.limit,
+                    let products = await actionShowUserProducts(user.id, order, desc, search, limit, page, 'user\'s');
+                    res.render('products/products', {pageName: 'My products', linkStart: '/products', rows: products.rows, limit: limit,
                             currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/products/?page='+page+query);

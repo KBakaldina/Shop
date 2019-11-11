@@ -11,12 +11,13 @@ router.get('/', (req, res) => {
             let order = (req.query.order) ? req.query.order : 'id';
             let desc = (req.query.desc) ? req.query.desc : false;
             let search = (req.query.search) ? req.query.search: '';
-            let query = '&search=' + search + '&order=' + order + '&desc=' + desc;
+            let limit = (req.query.limit) ? req.query.limit : 4;
+            let query = '&search=' + search + '&order=' + order + '&desc=' + desc + '&limit=' + limit;
 
-            if (req.query.page && req.query.desc && req.query.order) {
+            if (req.query.page && req.query.desc && req.query.order && req.query.limit) {
                 try {
-                    let products = await actionShowFavoriteProducts(user.id, order, desc, search, page, 'favorites');
-                    res.render('products/products', {pageName: 'Favorites', linkStart: '/favorites', rows: products.rows, limit: products.limit,
+                    let products = await actionShowFavoriteProducts(user.id, order, desc, search, limit, page, 'favorites');
+                    res.render('products/products', {pageName: 'Favorites', linkStart: '/favorites', rows: products.rows, limit: limit,
                         currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/favorites/?page='+page+query);

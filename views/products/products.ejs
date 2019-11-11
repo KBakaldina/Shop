@@ -26,8 +26,8 @@
             <tr>
                 <td> <label>Search: </label> </td>
                 <td colspan="4"> <input type="text" name="search" id="searchId" style="width: 290px"> </td>
-                <td rowspan="2"> <input type="submit" value="OK"> </td>
-                <td rowspan="2"> <input type="button" onclick="window.location.href='<%=linkStart%>'" value="Reset"> </td>
+                <td rowspan="3"> <input type="submit" value="OK"> </td>
+                <td rowspan="3"> <input type="button" onclick="window.location.href='<%=linkStart%>'" value="Reset"> </td>
             </tr>
             <tr>
                 <td> <label>Order by:</label> </td>
@@ -52,6 +52,10 @@
                         .split('&')[0];
                     document.getElementById('order-'+order).checked = true;
                 </script>
+            </tr>
+            <tr>
+                <td> <label>Limit on page: </label> </td>
+                <td colspan="4"> <input type="number" min="1" value="<%=limit%>" style="width: 290px;" name="limit" required></td>
             </tr>
         </table>
     </form>
