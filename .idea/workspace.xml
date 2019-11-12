@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="pool instead of connection (mysql); some bugs are fixed">
-      <change afterPath="$PROJECT_DIR$/actions/products/showAll.js" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="'favorites' now is a part of filter in shop page;&#10;action show for products page and action showAll for shop page;&#10;some visual changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/like.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/like.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/show.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/show.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/favorites.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,14 +166,7 @@
       <workItem from="1573117588333" duration="20222000" />
       <workItem from="1573223539619" duration="7221000" />
       <workItem from="1573465792439" duration="19180000" />
-      <workItem from="1573550392840" duration="17260000" />
-    </task>
-    <task id="LOCAL-00003" summary="+ action login">
-      <created>1570809513082</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1570809513082</updated>
+      <workItem from="1573550392840" duration="18066000" />
     </task>
     <task id="LOCAL-00004" summary="changes in registration action and route + small changes in login action and route">
       <created>1571054395942</created>
@@ -519,14 +504,20 @@
       <option name="project" value="LOCAL" />
       <updated>1573552191023</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="'favorites' now is a part of filter in shop page;&#10;action show for products page and action showAll for shop page;&#10;some visual changes">
+      <created>1573568547746</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1573568547746</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="done: routes and actions to add, edit, delete products" />
     <MESSAGE value="trying to add multer (uploading images)" />
     <MESSAGE value="now user can upload photo of product, change or delete it (multer used)" />
     <MESSAGE value="log out button was added to products page and changed its position" />
@@ -551,7 +542,8 @@
     <MESSAGE value="+ page with favorite products" />
     <MESSAGE value="+ user can change limit of products on one page" />
     <MESSAGE value="pool instead of connection (mysql); some bugs are fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="pool instead of connection (mysql); some bugs are fixed" />
+    <MESSAGE value="'favorites' now is a part of filter in shop page;&#10;action show for products page and action showAll for shop page;&#10;some visual changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="'favorites' now is a part of filter in shop page;&#10;action show for products page and action showAll for shop page;&#10;some visual changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -586,22 +578,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="988" height="268" key="GridCell.Tab.0.bottom" timestamp="1573568373193">
+    <state width="988" height="268" key="GridCell.Tab.0.bottom" timestamp="1573569345684">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="988" height="268" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573568373193" />
-    <state width="988" height="268" key="GridCell.Tab.0.center" timestamp="1573568373192">
+    <state width="988" height="268" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573569345684" />
+    <state width="988" height="268" key="GridCell.Tab.0.center" timestamp="1573569345683">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="988" height="268" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573568373192" />
-    <state width="988" height="268" key="GridCell.Tab.0.left" timestamp="1573568373192">
+    <state width="988" height="268" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573569345683" />
+    <state width="988" height="268" key="GridCell.Tab.0.left" timestamp="1573569345682">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="988" height="268" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573568373192" />
-    <state width="988" height="268" key="GridCell.Tab.0.right" timestamp="1573568373193">
+    <state width="988" height="268" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573569345682" />
+    <state width="988" height="268" key="GridCell.Tab.0.right" timestamp="1573569345683">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="988" height="268" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573568373193" />
+    <state width="988" height="268" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573569345683" />
     <state width="988" height="340" key="GridCell.Tab.1.bottom" timestamp="1573485297120">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
