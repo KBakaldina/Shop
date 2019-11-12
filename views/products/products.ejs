@@ -8,9 +8,24 @@
 </head>
 <body>
     <div>
-       <form action="/profile">
-          <button class="profile-button">Profile</button>
-     </form>
+        <form action="/profile">
+            <button class="profile-button">Profile</button>
+        </form>
+    </div>
+    <div>
+        <form action="/products">
+            <button class="profile-button">My products</button>
+        </form>
+    </div>
+    <div>
+        <form action="/shop">
+            <button class="profile-button">Shop</button>
+        </form>
+    </div>
+    <div>
+        <form action="/favorites">
+            <button class="profile-button">Favorites</button>
+        </form>
     </div>
     <div>
      <form action="/profile" method="post">
@@ -39,17 +54,18 @@
                     if (window.location.href.includes('search=')) {
                         let search = window.location.href
                             .split('search=')[1]
-                            .split('&')[0];
+                            .split('&order')[0];
                         document.getElementById('searchId').value = search;
                     }
 
                     let desc = window.location.href
-                        .split('desc=')[1];
+                        .split('desc=')[1]
+                        .split('&limit')[0];
                     document.getElementById('checkbox-desc').checked = (desc=='true')? true: false;
 
                     let order = window.location.href
                         .split('order=')[1]
-                        .split('&')[0];
+                        .split('&desc')[0];
                     document.getElementById('order-'+order).checked = true;
                 </script>
             </tr>

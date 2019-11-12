@@ -2,24 +2,17 @@ const mysql = require('mysql');
 
 require('dotenv').config();
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    password: process.env.DB_PASS
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 //TODO: what to do with console.log?
-connection.connect( (err) => {
+connection.getConnection( (err) => {
     if (err) console.log(err);
     else {
-        connection.query('CREATE DATABASE IF NOT EXISTS ' + process.env.DB_NAME, (err) => {
-            if (err) console.log(err);
-        });
-
-        connection.query('USE ' + process.env.DB_NAME, (err) => {
-            if (err) console.log(err);
-        });
-
         connection.query('CREATE TABLE IF NOT EXISTS users (' +
             'id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, ' +
             'userName VARCHAR(20) UNIQUE KEY NOT NULL, ' +
@@ -50,7 +43,7 @@ connection.connect( (err) => {
 });
 
 const queryPromise = (query, data) => {
-    return  new Promise ((resolve,reject)=>{
+    return new Promise ((resolve,reject) => {
         connection.query(query, data, (err, result) => {
             if (err) return reject(err);
             else return resolve(result);

@@ -7,6 +7,9 @@ a {
   color: #00B7FF;
 }
 
+form, button {
+    font: inherit;
+}
 
 table.user-products {
     font: inherit;
@@ -57,4 +60,5 @@ textarea {
 .sort-table input[type="button"], .sort-table input[type="submit"] {
     height: 80px;
     width: 50px;
+    font: inherit;
 }
