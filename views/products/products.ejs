@@ -7,33 +7,25 @@
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
-    <div>
+    <div class="menu-div">
         <form action="/profile">
-            <button class="profile-button">Profile</button>
+            <button id="page-Profile">Profile</button>
         </form>
-    </div>
-    <div>
         <form action="/products">
-            <button class="profile-button">My products</button>
+            <button id="page-Myproducts">My products</button>
         </form>
-    </div>
-    <div>
         <form action="/shop">
-            <button class="profile-button">Shop</button>
+            <button id="page-Shop">Shop</button>
         </form>
-    </div>
-    <div>
-        <form action="/favorites">
-            <button class="profile-button">Favorites</button>
+        <form action="/profile" method="post">
+            <button class="logout-button">Log out</button>
         </form>
+        <script>
+            document.getElementById('page-<%=pageName.replace(/\s/g, '')%>').style.backgroundColor = "lightblue";
+        </script>
     </div>
-    <div>
-     <form action="/profile" method="post">
-         <button class="logout-button">Log out</button>
-      </form>
-    </div>
-
     <br>
+
     <h1><%=pageName%></h1>
 
     <form action="<%=linkStart%>">
@@ -50,29 +42,39 @@
                 <td> <input type="radio" name="order" id="order-productName" value="productName"> Name </td>
                 <td> <input type="radio" name="order" id="order-price" value="price"> Price </td>
                 <td> <input type="checkbox" name="desc" id="checkbox-desc" value="true"> descend </td>
-                <script>
-                    if (window.location.href.includes('search=')) {
-                        let search = window.location.href
-                            .split('search=')[1]
-                            .split('&order')[0];
-                        document.getElementById('searchId').value = search;
-                    }
-
-                    let desc = window.location.href
-                        .split('desc=')[1]
-                        .split('&limit')[0];
-                    document.getElementById('checkbox-desc').checked = (desc=='true')? true: false;
-
-                    let order = window.location.href
-                        .split('order=')[1]
-                        .split('&desc')[0];
-                    document.getElementById('order-'+order).checked = true;
-                </script>
             </tr>
             <tr>
                 <td> <label>Limit on page: </label> </td>
-                <td colspan="4"> <input type="number" min="1" value="<%=limit%>" style="width: 290px;" name="limit" required></td>
+                <td colspan="4"> <input type="number" min="1" style="width: 290px;" name="limit" value="<%=limit%>" required></td>
             </tr>
+            <%if (pageName == 'Shop') { %>
+                <tr>
+                    <td> <label>Favorites: </label> </td>
+                    <td> <input type="checkbox" name="fav" id="checkbox-fav" value="true"> </td>
+                </tr>
+            <% } %>
+            <script>
+                let search = "<%=query%>"
+                    .split('&search=')[1]
+                    .split('&order')[0];
+                document.getElementById('searchId').value = search;
+
+                let order = "<%=query%>"
+                    .split('&order=')[1]
+                    .split('&desc')[0];
+                document.getElementById('order-'+order).checked = true;
+
+                let desc = "<%=query%>"
+                    .split('&desc=')[1]
+                    .split('&limit')[0];
+                document.getElementById('checkbox-desc').checked = (desc == 'true')? true: false;
+
+                if ("<%=query%>".includes('&fav=')) {
+                    let fav = "<%=query%>"
+                        .split('&fav=')[1]
+                    document.getElementById('checkbox-fav').checked = (fav == 'true')? true: false;
+                }
+            </script>
         </table>
     </form>
 <br>
@@ -89,6 +91,7 @@
                     <button onclick="window.location.href='/products/add'">Add new product</button>
                 </th>
             <% } %>
+        </tr>
 
         <% for (var i=0; rows[i]; ++i) { %>
             <tr>
@@ -96,33 +99,43 @@
                 <td><img class="product-pic" src="<%=rows[i].pictureLink%>" alt="No picture"></td>
                 <td><p><%= rows[i].productName %></p></td>
                 <td><p>$<%= rows[i].price%></p></td>
-                <td><textarea cols="50" rows="6" readonly disabled><%= rows[i].description %></textarea></td>
+                <td><textarea cols="50" rows="6" readonly disabled><%=rows[i].description%></textarea></td>
                 <td>
-                    <% let likeCountId = 'count-'+ rows[i].id; %>
+                    <% if (pageName == 'Shop') { %>
+                        <a id="<%=rows[i].id%>" href="javascript:like('<%=rows[i].id%>')" style="text-decoration: none;">
 
-                    <a id="<%=rows[i].id%>" href="javascript:like('<%=rows[i].id%>')" style="text-decoration: none;">
+                            <% if(rows[i].liked) {%> <i class="fas fa-heart fa-2x"></i>
+                            <% } else { %> <i class="far fa-heart fa-2x"></i> <% } %>
+                        </a>
+                    <% } %>
 
-                    <% if(rows[i].liked) {%> <i class="fas fa-heart fa-2x"></i>
-                    <% } else { %> <i class="far fa-heart fa-2x"></i> <% } %>
-                    </a>
-                    <label id="<%=likeCountId%>"><%=rows[i].likes%></label>
+                    <label id="count-<%=rows[i].id%>"><%=rows[i].likes%></label>
 
                     <script>
                         function like(likeId) {
-                            let pic = document.getElementById(likeId);
-                            let label = document.getElementById('count-'.concat(likeId));
-
-                            if (pic.innerHTML.includes('fas')) { //if liked
-                                pic.innerHTML = '<i class="far fa-heart fa-2x"></i>';
-                                label.innerHTML = (parseInt(label.innerHTML)-1).toString();
-                            } else { // if not liked
-                                pic.innerHTML = '<i class="fas fa-heart fa-2x"></i>';
-                                label.innerHTML = (parseInt(label.innerHTML)+1).toString();
-                            }
-
                             let xhr = new XMLHttpRequest();
-                            xhr.open('POST', '/shop?id='+likeId, true);
-                            xhr.send();
+
+                            xhr.open('POST', '/shop', true);
+                            xhr.send(likeId);
+
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState != 4) return;
+
+                                if (xhr.status != 200) {
+                                    alert( 'Error: ' + (xhr.status ? xhr.statusText : 'Try later, please!') );
+                                } else {
+                                    let pic = document.getElementById(likeId);
+                                    let label = document.getElementById(`count-${likeId}`);
+
+                                    if (pic.innerHTML.includes('fas')) { //if liked
+                                        pic.innerHTML = '<i class="far fa-heart fa-2x"></i>';
+                                        label.innerHTML = (parseInt(label.innerHTML)-1).toString();
+                                    } else { // if not liked
+                                        pic.innerHTML = '<i class="fas fa-heart fa-2x"></i>';
+                                        label.innerHTML = (parseInt(label.innerHTML)+1).toString();
+                                    }
+                                }
+                            }
                         }
                     </script>
                 </td>
@@ -145,25 +158,19 @@
         <p>Pages:</p>
         <div>
             <% if (currentPage!=1) { %>
-                    <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)-1%><%query%>'"> &#9668; </button>
+                    <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)-1%><%=query%>'"> &#9668; </button>
             <% } %>
 
-            <% for (var i=1; i<=lastPage; ++i) {
-                    let pageLink = linkStart +'/?page=' + i + query;
-                    let pageId = 'page-'+ i; %>
-
-                    <button onclick="window.location.href='<%=pageLink%>'" id="<%=pageId%>"><%=i%></button>
+            <% for (var i=1; i<=lastPage; ++i) { %>
+                <button onclick="window.location.href='<%=linkStart%>/?page=<%=i%><%=query%>'" id="page-<%=i%>"><%=i%></button>
             <% } %>
 
             <%if (currentPage!=lastPage) { %>
-            <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)+1%><%=query%>'"> &#9658; </button>
+                <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)+1%><%=query%>'"> &#9658; </button>
             <% } %>
 
             <script>
-                var currentPage = window.location.href
-                    .split('page=')[1]
-                    .split('&')[0];
-                document.getElementById('page-'+currentPage).style.backgroundColor = "lightblue";
+                document.getElementById('page-<%=currentPage%>').style.backgroundColor = "lightblue";
             </script>
         </div>
     </div>

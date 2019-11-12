@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const upload = require('../libs/multer');
 
-const actionShowUserProducts = require('../actions/products/show');
+const actionShowProducts = require('../actions/products/show');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionAddProduct = require('../actions/products/add');
 const actionEditProduct = require('../actions/products/edit');
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
             if (req.query.page && req.query.desc && req.query.order && req.query.limit) {
                 try {
-                    let products = await actionShowUserProducts(user.id, order, desc, search, limit, page, 'user\'s');
+                    let products = await actionShowProducts(user.id, order, desc, search, limit, page);
                     res.render('products/products', {pageName: 'My products', linkStart: '/products', rows: products.rows, limit: limit,
                             currentPage: page, lastPage: products.count, query: query});
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }

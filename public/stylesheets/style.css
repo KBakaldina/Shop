@@ -27,14 +27,13 @@ img.product-pic {
     border: 1px solid blue;
 }
 
+.menu-div form {
+    display: inline;
+}
+
 .logout-button {
     position: absolute;
     right: 35px;
-}
-
-.profile-button {
-    position: absolute;
-    left: 60px;
 }
 
 textarea {

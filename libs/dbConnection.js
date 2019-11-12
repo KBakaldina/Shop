@@ -27,15 +27,15 @@ connection.getConnection( (err) => {
             'description VARCHAR(150) NOT NULL, ' +
             'pictureLink VARCHAR(150), ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
-            'CONSTRAINT FK_userId FOREIGN KEY (userId) REFERENCES users(id))', (err) => {
+            'CONSTRAINT FK_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });
 
         connection.query('CREATE TABLE IF NOT EXISTS likes (' +
             'productId INT(10) UNSIGNED NOT NULL,' +
-            'CONSTRAINT FK_idProduct FOREIGN KEY (productId) REFERENCES products(id), ' +
+            'CONSTRAINT FK_idProduct FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE, ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
-            'CONSTRAINT FK_idUser FOREIGN KEY (userId) REFERENCES users(id), '+
+            'CONSTRAINT FK_idUser FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE, '+
             'PRIMARY KEY (productId, userId))', (err) => {
             if (err) console.log(err);
         });

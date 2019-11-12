@@ -9,5 +9,4 @@ module.exports = async (userId, productId) => {
 
     if (rows[0]) await queryPromise(sqlDislike, [productId, userId]);
     else await queryPromise(sqlLike, [productId, userId]);
-
 };
