@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out">
-      <change afterPath="$PROJECT_DIR$/views/partials/topNavigation.ejs" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ partial 'topNavigation'">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,37 +27,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - registration@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - registration@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - registration@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="registration: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - registration@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="registration: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="likes: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - registration@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="registration: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="products: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FavoritesManager">
@@ -166,14 +136,7 @@
       <workItem from="1573223539619" duration="7221000" />
       <workItem from="1573465792439" duration="19180000" />
       <workItem from="1573550392840" duration="20065000" />
-      <workItem from="1573635730166" duration="16626000" />
-    </task>
-    <task id="LOCAL-00006" summary="correction of dotenv using">
-      <created>1571229195248</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1571229195248</updated>
+      <workItem from="1573635730166" duration="17761000" />
     </task>
     <task id="LOCAL-00007" summary="NOT finished passport-local strategy">
       <created>1571238235785</created>
@@ -511,14 +474,20 @@
       <option name="project" value="LOCAL" />
       <updated>1573655380035</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="+ partial 'topNavigation'">
+      <created>1573656217309</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1573656217309</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="product photos moved to public" />
     <MESSAGE value="auto login after registration" />
     <MESSAGE value="added: product price" />
     <MESSAGE value="added: showing products`s photo in &quot;add&quot; and &quot;edit&quot; forms" />
@@ -543,7 +512,8 @@
     <MESSAGE value="some changes in login and registration pages" />
     <MESSAGE value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting" />
     <MESSAGE value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out" />
+    <MESSAGE value="+ partial 'topNavigation'" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ partial 'topNavigation'" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -558,10 +528,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="940" y="212" width="800" height="677" key="#Template_Data_Languages/67.27.1853.1053@67.27.1853.1053" timestamp="1573129142852" />
-    <state x="985" y="188" width="817" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1571916814904">
+    <state x="985" y="188" width="817" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1573657159761">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="985" y="188" width="817" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1571916814904" />
+    <state x="985" y="188" width="817" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573657159761" />
     <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1573229800505">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -578,22 +548,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1037" height="333" key="GridCell.Tab.0.bottom" timestamp="1573656187702">
+    <state width="1017" height="333" key="GridCell.Tab.0.bottom" timestamp="1573657187648">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
-    <state width="1037" height="333" key="GridCell.Tab.0.center" timestamp="1573656187702">
+    <state width="1017" height="333" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573657187648" />
+    <state width="1017" height="333" key="GridCell.Tab.0.center" timestamp="1573657187647">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
-    <state width="1037" height="333" key="GridCell.Tab.0.left" timestamp="1573656187702">
+    <state width="1017" height="333" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573657187647" />
+    <state width="1017" height="333" key="GridCell.Tab.0.left" timestamp="1573657187647">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
-    <state width="1037" height="333" key="GridCell.Tab.0.right" timestamp="1573656187702">
+    <state width="1017" height="333" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573657187647" />
+    <state width="1017" height="333" key="GridCell.Tab.0.right" timestamp="1573657187648">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
+    <state width="1017" height="333" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573657187648" />
     <state width="1037" height="340" key="GridCell.Tab.1.bottom" timestamp="1573652614112">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -642,6 +612,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1037" height="340" key="GridCell.Tab.3.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573652614114" />
+    <state width="263" height="500" key="HiddenNamespacesPopup" timestamp="1573657096920">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="263" height="500" key="HiddenNamespacesPopup/67.27.1853.1053@67.27.1853.1053" timestamp="1573657096920" />
     <state x="810" y="297" width="825" height="508" key="IDE.errors.dialog" timestamp="1573480013120">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -674,10 +648,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1079" y="167" width="552" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573552948058" />
-    <state x="1024" y="293" width="287" height="468" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1571916853000">
+    <state x="1024" y="293" width="287" height="468" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1573657131829">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1024" y="293" width="287" height="468" key="com.intellij.database.view.ui.DbObjectDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1571916853000" />
+    <state x="1024" y="293" width="287" height="468" key="com.intellij.database.view.ui.DbObjectDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573657131829" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1573635809444">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
