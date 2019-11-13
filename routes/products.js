@@ -13,18 +13,27 @@ const actionDeleteProduct = require('../actions/products/delete');
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
-            let page = (req.query.page) ? req.query.page : 1;
+            let isPageOk = true;
+            let page = req.query.page;
+            if (!page || isNaN(page) || page<1 || page%1!==0)
+            {
+                page = 1;
+                isPageOk = false;
+            }
             let order = (req.query.order) ? req.query.order : 'id';
             let desc = (req.query.desc) ? req.query.desc : false;
             let search = (req.query.search) ? req.query.search : '';
             let limit = (req.query.limit) ? req.query.limit : 4;
             let query = '&search=' + search + '&order=' + order + '&desc=' + desc + '&limit=' + limit;
 
-            if (req.query.page && req.query.desc && req.query.order && req.query.limit) {
+            if (isPageOk && req.query.desc && req.query.order && req.query.limit) {
                 try {
                     let products = await actionShowProducts(user.id, order, desc, search, limit, page);
-                    res.render('products/products', {pageName: 'My products', linkStart: '/products', rows: products.rows, limit: limit,
+                    if (page <= products.count) {
+                        res.render('products/products', {pageName: 'My products', linkStart: '/products',
+                            rows: products.rows, limit: limit,
                             currentPage: page, lastPage: products.count, query: query});
+                    } else res.redirect('/products/?page=1'+query);
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/products/?page='+page+query);
         } else if (user == false && err === null) return res.redirect('login');

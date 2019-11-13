@@ -8,7 +8,13 @@ const actionLike = require('../actions/products/like');
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
-            let page = (req.query.page) ? req.query.page : 1;
+            let isPageOk = true;
+            let page = req.query.page;
+            if (!page || isNaN(page) || page<1 || page%1!==0)
+            {
+                page = 1;
+                isPageOk = false;
+            }
             let order = (req.query.order) ? req.query.order : 'id';
             let desc = (req.query.desc) ? req.query.desc : false;
             let search = (req.query.search) ? req.query.search: '';
@@ -16,12 +22,13 @@ router.get('/', (req, res) => {
             let fav = (req.query.fav) ? req.query.fav : false;
             let query = '&search=' + search + '&order=' + order + '&desc=' + desc + '&limit=' + limit + '&fav=' + fav;
 
-            if (req.query.page && req.query.desc && req.query.order && req.query.limit) {
+            if (isPageOk && req.query.desc && req.query.order && req.query.limit) {
                 try {
                     let products = await actionShowAllProducts(user.id, order, desc, search, limit, fav, page);
-                    console.log(query);
-                    res.render('products/products', {pageName: 'Shop', linkStart: '/shop', limit: limit,
-                        rows: products.rows, currentPage: page, lastPage: products.count, query: query});
+                    if (page <= products.count) {
+                        res.render('products/products', {pageName: 'Shop', linkStart: '/shop', limit: limit,
+                            rows: products.rows, currentPage: page, lastPage: products.count, query: query});
+                    } else res.redirect('/shop/?page=1'+query);
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/shop/?page='+page+query);
         } else if (user == false && err === null) return res.redirect('login');

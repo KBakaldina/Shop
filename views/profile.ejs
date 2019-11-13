@@ -16,7 +16,7 @@
             <button id="page-Shop">Shop</button>
         </form>
         <form action="/profile" method="post">
-            <button class="logout-button">Log out</button>
+            <button class="logout-button" onclick="return confirm('Do you really want to log out?');">Log out</button>
         </form>
         <script>
             document.getElementById('page-Profile').style.backgroundColor = "lightblue";

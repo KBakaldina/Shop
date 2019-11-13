@@ -18,7 +18,7 @@
             <button id="page-Shop">Shop</button>
         </form>
         <form action="/profile" method="post">
-            <button class="logout-button">Log out</button>
+            <button class="logout-button" onclick="return confirm('Do you really want to log out?');">Log out</button>
         </form>
         <script>
             document.getElementById('page-<%=pageName.replace(/\s/g, '')%>').style.backgroundColor = "lightblue";
@@ -54,24 +54,25 @@
                 </tr>
             <% } %>
             <script>
-                let search = "<%=query%>"
+
+                let search = window.location.search
                     .split('&search=')[1]
                     .split('&order')[0];
                 document.getElementById('searchId').value = search;
 
-                let order = "<%=query%>"
+                let order = window.location.search
                     .split('&order=')[1]
                     .split('&desc')[0];
                 document.getElementById('order-'+order).checked = true;
 
-                let desc = "<%=query%>"
+                let desc = window.location.search
                     .split('&desc=')[1]
                     .split('&limit')[0];
                 document.getElementById('checkbox-desc').checked = (desc == 'true')? true: false;
 
-                if ("<%=query%>".includes('&fav=')) {
-                    let fav = "<%=query%>"
-                        .split('&fav=')[1]
+                if (window.location.search.includes('&fav=')) {
+                    let fav = window.location.search
+                        .split('&fav=')[1];
                     document.getElementById('checkbox-fav').checked = (fav == 'true')? true: false;
                 }
             </script>
@@ -157,7 +158,7 @@
     <div style="text-align: center;">
         <p>Pages:</p>
         <div>
-            <% if (currentPage!=1) { %>
+            <% if (currentPage>1) { %>
                     <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)-1%><%=query%>'"> &#9668; </button>
             <% } %>
 
@@ -165,7 +166,7 @@
                 <button onclick="window.location.href='<%=linkStart%>/?page=<%=i%><%=query%>'" id="page-<%=i%>"><%=i%></button>
             <% } %>
 
-            <%if (currentPage!=lastPage) { %>
+            <%if (currentPage<lastPage) { %>
                 <button onclick="window.location.href='<%=linkStart%>/?page=<%=parseInt(currentPage)+1%><%=query%>'"> &#9658; </button>
             <% } %>
 
