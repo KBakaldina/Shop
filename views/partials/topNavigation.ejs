@@ -1,0 +1,19 @@
+<div class="menu-div">
+    <form action="/profile">
+        <button id="page-Profile">Profile</button>
+    </form>
+    <form action="/products">
+        <button id="page-Myproducts">My products</button>
+    </form>
+    <form action="/shop">
+        <button id="page-Shop">Shop</button>
+    </form>
+    <form action="/profile" method="post">
+        <button class="logout-button" onclick="return confirm('Do you really want to log out?');">Log out</button>
+    </form>
+    <script>
+        document.getElementById('page-<%=pageName.replace(/\s/g, '')%>').style.backgroundColor = "lightblue";
+    </script>
+</div>
+
+<br>

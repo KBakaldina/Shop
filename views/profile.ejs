@@ -5,24 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-    <div class="menu-div">
-        <form action="/profile">
-            <button id="page-Profile">Profile</button>
-        </form>
-        <form action="/products">
-            <button id="page-Myproducts">My products</button>
-        </form>
-        <form action="/shop">
-            <button id="page-Shop">Shop</button>
-        </form>
-        <form action="/profile" method="post">
-            <button class="logout-button" onclick="return confirm('Do you really want to log out?');">Log out</button>
-        </form>
-        <script>
-            document.getElementById('page-Profile').style.backgroundColor = "lightblue";
-        </script>
-    </div>
-    <br>
+    <% include ./partials/topNavigation %>
 
     <h1>Profile</h1>
     <p>ID: <%=user.id%></p>

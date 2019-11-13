@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out">
+      <change afterPath="$PROJECT_DIR$/views/partials/topNavigation.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/show.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/show.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/products/showAll.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/products/showAll.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,14 +166,7 @@
       <workItem from="1573223539619" duration="7221000" />
       <workItem from="1573465792439" duration="19180000" />
       <workItem from="1573550392840" duration="20065000" />
-      <workItem from="1573635730166" duration="15947000" />
-    </task>
-    <task id="LOCAL-00005" summary="+ bcrypt">
-      <created>1571061454600</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1571061454600</updated>
+      <workItem from="1573635730166" duration="16626000" />
     </task>
     <task id="LOCAL-00006" summary="correction of dotenv using">
       <created>1571229195248</created>
@@ -515,14 +504,20 @@
       <option name="project" value="LOCAL" />
       <updated>1573569391924</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out">
+      <created>1573655380035</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1573655380035</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="log out button was added to products page and changed its position" />
     <MESSAGE value="product photos moved to public" />
     <MESSAGE value="auto login after registration" />
     <MESSAGE value="added: product price" />
@@ -547,7 +542,8 @@
     <MESSAGE value="'favorites' now is a part of filter in shop page;&#10;action show for products page and action showAll for shop page;&#10;some visual changes" />
     <MESSAGE value="some changes in login and registration pages" />
     <MESSAGE value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting" />
+    <MESSAGE value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting;&#10;added: confirmation before logging out" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -582,22 +578,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1037" height="333" key="GridCell.Tab.0.bottom" timestamp="1573655171066">
+    <state width="1037" height="333" key="GridCell.Tab.0.bottom" timestamp="1573656187702">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573655171066" />
-    <state width="1037" height="333" key="GridCell.Tab.0.center" timestamp="1573655171066">
+    <state width="1037" height="333" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
+    <state width="1037" height="333" key="GridCell.Tab.0.center" timestamp="1573656187702">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573655171066" />
-    <state width="1037" height="333" key="GridCell.Tab.0.left" timestamp="1573655171065">
+    <state width="1037" height="333" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
+    <state width="1037" height="333" key="GridCell.Tab.0.left" timestamp="1573656187702">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573655171065" />
-    <state width="1037" height="333" key="GridCell.Tab.0.right" timestamp="1573655171066">
+    <state width="1037" height="333" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
+    <state width="1037" height="333" key="GridCell.Tab.0.right" timestamp="1573656187702">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1037" height="333" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573655171066" />
+    <state width="1037" height="333" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573656187702" />
     <state width="1037" height="340" key="GridCell.Tab.1.bottom" timestamp="1573652614112">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
