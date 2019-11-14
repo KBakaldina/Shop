@@ -16,7 +16,8 @@ connection.getConnection( (err) => {
         connection.query('CREATE TABLE IF NOT EXISTS users (' +
             'id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, ' +
             'userName VARCHAR(20) UNIQUE KEY NOT NULL, ' +
-            'password VARCHAR(100) NOT NULL)', (err) => {
+            'password VARCHAR(100) NOT NULL, ' +
+            'email VARCHAR(100) NOT NULL UNIQUE)', (err) => {
             if (err) console.log(err);
         });
 

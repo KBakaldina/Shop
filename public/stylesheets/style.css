@@ -60,3 +60,7 @@ textarea {
     height: 80px;
     width: 50px;
 }
+
+.center {
+    text-align: center;
+}

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 /* POST registration page.*/
 router.post('/', async(req, res) => {
     try {
-        let result = await actionRegistration(req.body.userName, req.body.userPassword, req.body.userPassword2);
+        let result = await actionRegistration(req.body.userName, req.body.email, req.body.userPassword, req.body.userPassword2);
 
         if(result.id)
         {
