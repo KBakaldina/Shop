@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
             if (isPageOk && req.query.desc && req.query.order && req.query.limit) {
                 try {
                     let products = await actionShowProducts(user.id, order, desc, search, limit, page);
-                    if (page <= products.count) {
+                    if (page <= products.count || products.count == 0) {
                         res.render('products/products', {pageName: 'My products', linkStart: '/products',
                             rows: products.rows, limit: limit,
                             currentPage: page, lastPage: products.count, query: query});
