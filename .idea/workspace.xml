@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ resetting password (part 1: route, router, view);&#10;some bugs fixed">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ handling the event if zero products to show">
+      <change afterPath="$PROJECT_DIR$/libs/mailer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/changePassword.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/products/products.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/products.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bcrypt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bcrypt/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/forgot.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/forgot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/registration.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +42,13 @@
         <item name="shop@localhost [2]" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="shop: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="shop@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="shop: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="users: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -90,14 +102,15 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/actions/products" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$/public/uploads" />
       <recent name="$PROJECT_DIR$/actions/products" />
       <recent name="$PROJECT_DIR$/views/products" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/actions/products" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -153,14 +166,7 @@
       <workItem from="1573550392840" duration="20065000" />
       <workItem from="1573635730166" duration="18373000" />
       <workItem from="1573737518787" duration="5979000" />
-      <workItem from="1573816821786" duration="4644000" />
-    </task>
-    <task id="LOCAL-00009" summary="changes in passport. + jwt, changed local, changed login router">
-      <created>1571410323787</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1571410323787</updated>
+      <workItem from="1573816821786" duration="17600000" />
     </task>
     <task id="LOCAL-00010" summary="commit">
       <created>1571661035676</created>
@@ -498,14 +504,20 @@
       <option name="project" value="LOCAL" />
       <updated>1573743250647</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="+ handling the event if zero products to show">
+      <created>1573822050744</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1573822050746</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added: searching for product(s) by its name" />
     <MESSAGE value="updated: searching for product(s) by its name and description" />
     <MESSAGE value="added: ordering by time/name/price with descend option" />
     <MESSAGE value="small commit" />
@@ -530,7 +542,8 @@
     <MESSAGE value="database name is changed from 'registration' to 'shop'" />
     <MESSAGE value="+ resetting password (part 1: route, router, view)" />
     <MESSAGE value="+ resetting password (part 1: route, router, view);&#10;some bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ resetting password (part 1: route, router, view);&#10;some bugs fixed" />
+    <MESSAGE value="+ handling the event if zero products to show" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ handling the event if zero products to show" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -549,10 +562,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="985" y="188" width="817" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573657159761" />
-    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1573229800505">
+    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1573831241482">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1573229800505" />
+    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1573831241482" />
     <state x="1025" y="279" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1572954678152">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -569,22 +582,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1003" height="196" key="GridCell.Tab.0.bottom" timestamp="1573821921998">
+    <state width="1330" height="229" key="GridCell.Tab.0.bottom" timestamp="1573834935527">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1003" height="196" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573821921998" />
-    <state width="1003" height="196" key="GridCell.Tab.0.center" timestamp="1573821921998">
+    <state width="1330" height="229" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1573834935527" />
+    <state width="1330" height="229" key="GridCell.Tab.0.center" timestamp="1573834935526">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1003" height="196" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573821921998" />
-    <state width="1003" height="196" key="GridCell.Tab.0.left" timestamp="1573821921998">
+    <state width="1330" height="229" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1573834935526" />
+    <state width="1330" height="229" key="GridCell.Tab.0.left" timestamp="1573834935526">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1003" height="196" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573821921998" />
-    <state width="1003" height="196" key="GridCell.Tab.0.right" timestamp="1573821921998">
+    <state width="1330" height="229" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1573834935526" />
+    <state width="1330" height="229" key="GridCell.Tab.0.right" timestamp="1573834935527">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1003" height="196" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573821921998" />
+    <state width="1330" height="229" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1573834935527" />
     <state width="1003" height="340" key="GridCell.Tab.1.bottom" timestamp="1573821267819">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -657,18 +670,18 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="823" y="287" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1572278542542" />
-    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1573134009413">
+    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1573828287906">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/67.27.1853.1053@67.27.1853.1053" timestamp="1573134009413" />
-    <state x="1201" y="354" width="484" height="318" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1571665051792">
+    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/67.27.1853.1053@67.27.1853.1053" timestamp="1573828287906" />
+    <state x="1201" y="354" width="484" height="310" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1573828532894">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1201" y="354" width="484" height="318" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1571665051792" />
-    <state x="1079" y="167" width="552" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1573740781263">
+    <state x="1201" y="354" width="484" height="310" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573828532894" />
+    <state x="1079" y="167" width="552" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1573828094134">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1079" y="167" width="552" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573740781263" />
+    <state x="1079" y="167" width="552" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573828094134" />
     <state x="1024" y="293" width="287" height="468" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1573657131829">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -693,9 +706,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1073" y="240" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1573636231508" />
-    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1573229549793">
+    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1573824998699">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1573229549793" />
+    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1573824998699" />
   </component>
 </project>

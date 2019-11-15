@@ -23,6 +23,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "latest",
     "passport-local": "latest",
-    "req-flash": "latest"
+    "req-flash": "latest",
+    "nodemailer": "latest"
   }
 }

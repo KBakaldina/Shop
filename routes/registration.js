@@ -14,8 +14,7 @@ router.post('/', async(req, res) => {
     try {
         let result = await actionRegistration(req.body.userName, req.body.email, req.body.userPassword, req.body.userPassword2);
 
-        if(result.id)
-        {
+        if(result.id) {
             const payload = {
                 id: result.id,
                 userName: req.body.userName

@@ -28,16 +28,23 @@ connection.getConnection( (err) => {
             'description VARCHAR(150) NOT NULL, ' +
             'pictureLink VARCHAR(150), ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
-            'CONSTRAINT FK_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
+            'CONSTRAINT FK_products_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });
 
         connection.query('CREATE TABLE IF NOT EXISTS likes (' +
             'productId INT(10) UNSIGNED NOT NULL,' +
-            'CONSTRAINT FK_idProduct FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE, ' +
+            'CONSTRAINT FK_likes_productId FOREIGN KEY (productId) REFERENCES products(id) ON DELETE CASCADE, ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
-            'CONSTRAINT FK_idUser FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE, '+
+            'CONSTRAINT FK_likes_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE, '+
             'PRIMARY KEY (productId, userId))', (err) => {
+            if (err) console.log(err);
+        });
+
+        connection.query('CREATE TABLE IF NOT EXISTS tokens (' +
+            'userId INT(10) UNSIGNED NOT NULL, ' +
+            'token VARCHAR(500) NOT NULL, ' +
+            'CONSTRAINT FK_tokens_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });
     }
