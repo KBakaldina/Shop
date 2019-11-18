@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="resetting password (part 3)">
-      <change afterPath="$PROJECT_DIR$/views/change-password.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/forgot.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/forgot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changePassword.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bcrypt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bcrypt/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +165,7 @@
       <workItem from="1573816821786" duration="17760000" />
       <workItem from="1574078081714" duration="3262000" />
       <workItem from="1574081606814" duration="322000" />
+      <workItem from="1574084574734" duration="484000" />
     </task>
     <task id="LOCAL-00012" summary="REDID: CREATE database or/and table IF NOT EXISTS">
       <created>1571664801015</created>
@@ -581,22 +581,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1218" height="229" key="GridCell.Tab.0.bottom" timestamp="1574080830252">
+    <state width="1218" height="255" key="GridCell.Tab.0.bottom" timestamp="1574085054116">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1218" height="229" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1574080830252" />
-    <state width="1218" height="229" key="GridCell.Tab.0.center" timestamp="1574080830251">
+    <state width="1218" height="255" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1574085054116" />
+    <state width="1218" height="255" key="GridCell.Tab.0.center" timestamp="1574085054115">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1218" height="229" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1574080830251" />
-    <state width="1218" height="229" key="GridCell.Tab.0.left" timestamp="1574080830251">
+    <state width="1218" height="255" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1574085054115" />
+    <state width="1218" height="255" key="GridCell.Tab.0.left" timestamp="1574085054115">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1218" height="229" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1574080830251" />
-    <state width="1218" height="229" key="GridCell.Tab.0.right" timestamp="1574080830252">
+    <state width="1218" height="255" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1574085054115" />
+    <state width="1218" height="255" key="GridCell.Tab.0.right" timestamp="1574085054116">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1218" height="229" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1574080830252" />
+    <state width="1218" height="255" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1574085054116" />
     <state width="1218" height="340" key="GridCell.Tab.1.bottom" timestamp="1574080776406">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
