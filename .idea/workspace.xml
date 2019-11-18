@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ resetting password (part 2)">
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="resetting password (part 3)">
+      <change afterPath="$PROJECT_DIR$/views/change-password.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/registration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/forgot.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/forgot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changePassword.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/changePassword.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/registration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/registration.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changePassword.ejs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,12 +76,13 @@
   <component name="PropertiesComponent">
     <property name="Database.Console.ShowToolbar" value="false" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowAnt.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="8.10.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/actions/products" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -165,14 +164,8 @@
       <workItem from="1573635730166" duration="18373000" />
       <workItem from="1573737518787" duration="5979000" />
       <workItem from="1573816821786" duration="17760000" />
-      <workItem from="1574078081714" duration="2752000" />
-    </task>
-    <task id="LOCAL-00011" summary="+ CREATE database or/and table IF NOT EXISTS">
-      <created>1571662531982</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1571662531982</updated>
+      <workItem from="1574078081714" duration="3262000" />
+      <workItem from="1574081606814" duration="322000" />
     </task>
     <task id="LOCAL-00012" summary="REDID: CREATE database or/and table IF NOT EXISTS">
       <created>1571664801015</created>
@@ -510,15 +503,20 @@
       <option name="project" value="LOCAL" />
       <updated>1573834972504</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="resetting password (part 3)">
+      <created>1574080874707</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1574080874708</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added: ordering by time/name/price with descend option" />
-    <MESSAGE value="small commit" />
     <MESSAGE value="redone: searching and ordering are in '/products' route now" />
     <MESSAGE value="not done: product pages" />
     <MESSAGE value="done: product pages;&#10;updated: user can use searching and ordering at the same time;" />
@@ -542,7 +540,9 @@
     <MESSAGE value="+ resetting password (part 1: route, router, view);&#10;some bugs fixed" />
     <MESSAGE value="+ handling the event if zero products to show" />
     <MESSAGE value="+ resetting password (part 2)" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ resetting password (part 2)" />
+    <MESSAGE value="+ resetting password (part 3)" />
+    <MESSAGE value="resetting password (part 3)" />
+    <option name="LAST_COMMIT_MESSAGE" value="resetting password (part 3)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
