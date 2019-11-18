@@ -6,7 +6,7 @@ module.exports = async  (userName, email, userPassword, userPassword2) => {
 
     if (!rows[0]) {
         if(userPassword === userPassword2){
-            userPassword = bcrypt.hashSync(userPassword, 5);
+            userPassword = bcrypt.hashSync(userPassword, process.env.HASH_SALT);
 
             await queryPromise(
                 'INSERT INTO users(userName, password, email) VALUES (?, ?, ?)',

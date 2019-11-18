@@ -22,18 +22,30 @@ router.post('/', async (req, res) => {
 
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 7200 });   // expires in 2 hours
 
+            await queryPromise('DELETE FROM tokens WHERE userId=?', [result[0].id]);
+
             await queryPromise('INSERT INTO tokens (userId, token) VALUES (?, ?)', [result[0].id, token]);
 
             await transporter.sendMail({
                 from: '"Test" <'+process.env.GMAIL_USER+'>',
                 to: req.body.email,
                 subject: 'Resetting password',
-                text: 'Click the link to reset your password: http://localhost:3000/forgot/'+token
-                //TODO: add link in case if user do not want to reset password, then token should be deleted
+                text: 'Click the link to reset your password: http://localhost:3000/forgot/'+token+'\n'+
+                    'IF YOU DID NOT WANT TO RESET THE PASSWORD click this link: http://localhost:3000/forgot/deny/'+token
             });
 
             res.send('Check your email!');
         } else res.send('No user with such email! Change the email address and try again or sign up, please!');
+    } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }
+});
+
+router.get('/deny/:token', async (req, res) => {
+    try {
+        let result = await queryPromise('SELECT * FROM tokens WHERE token=?',[req.params.token]);
+        if (result[0]) {
+            await queryPromise('DELETE FROM tokens WHERE token=?', [req.params.token]);
+        }
+        res.send('The token was delete! Do not worry :)');
     } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }
 });
 
@@ -63,7 +75,7 @@ router.post('/:token', async (req, res) => {
                 }
 
                 if (req.body.userPassword == req.body.userPassword2) {
-                    await queryPromise('UPDATE users SET password=? WHERE id=?', [bcrypt.hashSync(req.body.userPassword, 5), decoded.id]);
+                    await queryPromise('UPDATE users SET password=? WHERE id=?', [bcrypt.hashSync(req.body.userPassword, process.env.HASH_SALT), decoded.id]);
                     await queryPromise('DELETE FROM tokens WHERE token=?', [req.params.token]);
 
                     const payload = {
