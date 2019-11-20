@@ -1,5 +1,5 @@
 const queryPromise = require('../../libs/dbConnection').queryPromise;
-var fs = require('fs');
+const fs = require('fs');
 
 module.exports = async  (productIdToDelete) => {
     let rows = await queryPromise(

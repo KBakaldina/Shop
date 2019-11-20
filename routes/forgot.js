@@ -58,7 +58,7 @@ router.get('/:token', async (req, res) => {
                     await queryPromise('DELETE FROM tokens WHERE token=?', [req.params.token]);
                     res.send('Your token is not valid!');
                 }
-                else res.render('change-password', {pageName: 'Change password', userName: decoded.userName});
+                else res.render('changePassword', {pageName: 'Change password', userName: decoded.userName});
             });
         } else res.send('There is no such token!');
     } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }

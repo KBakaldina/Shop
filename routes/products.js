@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const upload = require('../libs/multer');
 
+const actionSharpPic = require('../actions/products/sharp');
 const actionShowProducts = require('../actions/products/show');
 const actionVerifyProduct =require('../actions/products/verify');
 const actionAddProduct = require('../actions/products/add');
@@ -55,8 +56,9 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
         if (user) {
             try {
-                await actionAddProduct(
-                    req.body.productName, req.body.price, req.body.description, req.file.path, user.id);
+                let pictureLink = await actionSharpPic(req.file.path);
+                await actionAddProduct(req.body.productName, req.body.price, req.body.description,
+                    pictureLink, user.id);
                 res.redirect('/products')
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
@@ -86,7 +88,7 @@ router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
             try {
                 let product = await actionVerifyProduct(req.params.id, user.id);
                 if (product) {
-                    let pictureLink = (req.file)? req.file.path: null;
+                    let pictureLink = (req.file)? await actionSharpPic(req.file.path): null;
                     await actionEditProduct(req.params.id, req.body.productName, req.body.price, req.body.description, pictureLink);
                     res.redirect('/products');
                     } else res.send('This is not your product! You can change only your products.');
