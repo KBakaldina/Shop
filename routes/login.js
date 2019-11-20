@@ -24,4 +24,23 @@ router.post('/', (req, res) => {
 })(req, res);
 });
 
+/* GET FB-login page.*/
+router.get('/facebook', passport.authenticate("facebook",{scope:"email"}));
+
+router.get('/facebook/callback', (req, res) => {
+    passport.authenticate('facebook',
+        (user, msg) => {
+        if (user) {
+            const payload = {
+                id: user.id,
+                userName: user.userName
+            };
+            const token = jwt.sign(payload, process.env.JWT_SECRET);
+            res.cookie('token', token);
+            res.redirect('/profile');
+        } else { res.send(msg); }
+    })(req, res);
+});
+
+
 module.exports = router;

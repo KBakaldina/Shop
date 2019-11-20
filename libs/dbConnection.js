@@ -47,6 +47,13 @@ connection.getConnection( (err) => {
             'CONSTRAINT FK_tokens_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });
+
+        connection.query('CREATE TABLE IF NOT EXISTS facebook (' +
+            'id BIGINT(40) UNSIGNED NOT NULL PRIMARY KEY, ' +
+            'userName VARCHAR(50) NOT NULL, ' +
+            'email VARCHAR(100) NOT NULL UNIQUE)', (err) => {
+            if (err) console.log(err);
+        });
     }
 });
 
