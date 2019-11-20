@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ cropping pictures of products with 'sharp'">
-      <change afterPath="$PROJECT_DIR$/public/pictures/facebook-login-icon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="+ login with facebook (part 1)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bcrypt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bcrypt/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/req-flash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/req-flash/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,14 +158,7 @@
       <workItem from="1574078081714" duration="3262000" />
       <workItem from="1574081606814" duration="322000" />
       <workItem from="1574084574734" duration="8342000" />
-      <workItem from="1574243169366" duration="15635000" />
-    </task>
-    <task id="LOCAL-00014" summary="done: passport-jwt&amp;local (login, profile)">
-      <created>1571825399669</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1571825399669</updated>
+      <workItem from="1574243169366" duration="16230000" />
     </task>
     <task id="LOCAL-00015" summary="done: log out">
       <created>1571828927457</created>
@@ -511,14 +496,20 @@
       <option name="project" value="LOCAL" />
       <updated>1574250332421</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="+ login with facebook (part 1)">
+      <created>1574260220691</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1574260220691</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="done: product pages;&#10;updated: user can use searching and ordering at the same time;" />
     <MESSAGE value="some fixes" />
     <MESSAGE value="added: buttons to go to the next or previous page" />
     <MESSAGE value="some fixes with fs.unlink" />
@@ -543,7 +534,8 @@
     <MESSAGE value="resetting password (part 3)" />
     <MESSAGE value="checking is email unique while registration" />
     <MESSAGE value="+ cropping pictures of products with 'sharp'" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ cropping pictures of products with 'sharp'" />
+    <MESSAGE value="+ login with facebook (part 1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ login with facebook (part 1)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -582,22 +574,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="977" height="191" key="GridCell.Tab.0.bottom" timestamp="1574260178628">
+    <state width="977" height="191" key="GridCell.Tab.0.bottom" timestamp="1574260646930">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="977" height="191" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1574260178628" />
-    <state width="977" height="191" key="GridCell.Tab.0.center" timestamp="1574260178628">
+    <state width="977" height="191" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1574260646930" />
+    <state width="977" height="191" key="GridCell.Tab.0.center" timestamp="1574260646929">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="977" height="191" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1574260178628" />
-    <state width="977" height="191" key="GridCell.Tab.0.left" timestamp="1574260178627">
+    <state width="977" height="191" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1574260646929" />
+    <state width="977" height="191" key="GridCell.Tab.0.left" timestamp="1574260646929">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="977" height="191" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1574260178627" />
-    <state width="977" height="191" key="GridCell.Tab.0.right" timestamp="1574260178628">
+    <state width="977" height="191" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1574260646929" />
+    <state width="977" height="191" key="GridCell.Tab.0.right" timestamp="1574260646930">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="977" height="191" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1574260178628" />
+    <state width="977" height="191" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1574260646930" />
     <state width="1218" height="340" key="GridCell.Tab.1.bottom" timestamp="1574243917753">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

@@ -66,8 +66,8 @@ module.exports = (passport) => {
                     if (!rows[0]) {
                         // TODO: to get the email from FB and check if it exists in users-DB
                         await queryPromise("INSERT INTO facebook(id, userName, email) VALUES(?, ?, ?)",[profile.id, profile.displayName, 'kr.bakaldina@gmail.com']);
-                        return done({id: profile.id, userName: profile.displayName});
-                    } else return done(null, new Error('User already exists in database'));
+                    }
+                    return done({id: profile.id, userName: profile.displayName});
                 } catch (err) { done(null, err); }
             });
         }
