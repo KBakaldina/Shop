@@ -26,5 +26,9 @@
     "passport-jwt": "latest",
     "passport-local": "latest",
     "sharp": "latest"
+  },
+  "devDependencies": {
+    "facebook-node-sdk": "^0.2.0",
+    "request": "^2.88.0"
   }
 }

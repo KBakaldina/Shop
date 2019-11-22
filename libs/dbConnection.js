@@ -51,6 +51,7 @@ connection.getConnection( (err) => {
         connection.query('CREATE TABLE IF NOT EXISTS facebook (' +
             'fbId BIGINT(40) UNSIGNED NOT NULL PRIMARY KEY, ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
+            'token VARCHAR(500) NOT NULL, ' +
             'CONSTRAINT FK_facebook_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });

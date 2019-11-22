@@ -16,6 +16,7 @@ const forgotRouter = require('./routes/forgot');
 const profileRouter = require('./routes/profile');
 const productsRouter = require('./routes/products');
 const shopRouter = require('./routes/shop');
+const facebookRouter = require('./routes/facebook');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/forgot', forgotRouter);
 app.use('/profile', profileRouter);
 app.use('/products', productsRouter);
 app.use('/shop', shopRouter);
+app.use('/facebook', facebookRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

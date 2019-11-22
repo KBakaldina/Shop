@@ -60,16 +60,19 @@ module.exports = (passport) => {
         (accessToken, refreshToken, profile, done) => {
             process.nextTick(async () => {
                 try {
-                    let rows = await queryPromise("SELECT * from facebook where fbId=?", [profile.id]);
-                    if (rows[0]) return done({id: rows[0].userId, userName: profile.displayName});
+                    let rows = await queryPromise('SELECT * FROM facebook WHERE fbId=?', [profile.id]);
+                    if (rows[0]) {
+                        await queryPromise('UPDATE facebook SET token=? WHERE fbId=?', [accessToken, profile.id]);
+                        return done({id: rows[0].userId, userName: profile.displayName});
+                    }
                     if (profile._json.email)  {
-                        rows = await queryPromise("SELECT * from users where email=?", [profile._json.email]);
+                        rows = await queryPromise('SELECT * FROM users WHERE email=?', [profile._json.email]);
                         if (rows[0]) return done(false, 'Your email is already used! Log in without Facebook, please!')
                     }
                     rows = await queryPromise("INSERT INTO users(userName, email) VALUES(?, ?)",
                         [profile.displayName, profile._json.email]);
-                    await queryPromise("INSERT INTO facebook(fbId, userId) VALUES(?, ?)",
-                        [profile.id, rows.insertId]);
+                    await queryPromise("INSERT INTO facebook(fbId, userId, token) VALUES(?, ?, ?)",
+                        [profile.id, rows.insertId, accessToken]);
                     return done({id: rows.insertId, userName: profile.displayName});
                 } catch (err) { done(false, err); }
             });

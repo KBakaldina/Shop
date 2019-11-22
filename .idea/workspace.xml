@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="login with facebook (part 3);&#10;+ action loginToken">
-      <change afterPath="$PROJECT_DIR$/actions/loginToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/facebook.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/facebook.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/dbConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/dbConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/registration.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/registration.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,14 +173,7 @@
       <workItem from="1574081606814" duration="322000" />
       <workItem from="1574084574734" duration="8342000" />
       <workItem from="1574243169366" duration="16347000" />
-      <workItem from="1574420582177" duration="7946000" />
-    </task>
-    <task id="LOCAL-00016" summary="+ async, await">
-      <created>1571836472827</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1571836472827</updated>
+      <workItem from="1574420582177" duration="15964000" />
     </task>
     <task id="LOCAL-00017" summary="+ user products db, router, view; view with form &quot;Add new product&quot;">
       <created>1571923905195</created>
@@ -518,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574260668194</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="login with facebook (part 3);&#10;+ action loginToken">
+      <created>1574429029249</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1574429029250</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,22 +589,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1152" height="151" key="GridCell.Tab.0.bottom" timestamp="1574428960204">
+    <state width="1152" height="272" key="GridCell.Tab.0.bottom" timestamp="1574437123070">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1152" height="151" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1574428960204" />
-    <state width="1152" height="151" key="GridCell.Tab.0.center" timestamp="1574428960203">
+    <state width="1152" height="272" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1574437123070" />
+    <state width="1152" height="272" key="GridCell.Tab.0.center" timestamp="1574437123069">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1152" height="151" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1574428960203" />
-    <state width="1152" height="151" key="GridCell.Tab.0.left" timestamp="1574428960203">
+    <state width="1152" height="272" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1574437123069" />
+    <state width="1152" height="272" key="GridCell.Tab.0.left" timestamp="1574437123068">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1152" height="151" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1574428960203" />
-    <state width="1152" height="151" key="GridCell.Tab.0.right" timestamp="1574428960203">
+    <state width="1152" height="272" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1574437123068" />
+    <state width="1152" height="272" key="GridCell.Tab.0.right" timestamp="1574437123069">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1152" height="151" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1574428960203" />
+    <state width="1152" height="272" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1574437123069" />
     <state width="1218" height="340" key="GridCell.Tab.1.bottom" timestamp="1574260687922">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -677,10 +677,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="823" y="287" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1572278542542" />
-    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1574423058763">
+    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1574430790553">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/67.27.1853.1053@67.27.1853.1053" timestamp="1574423058763" />
+    <state x="1318" y="424" width="187" height="206" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/67.27.1853.1053@67.27.1853.1053" timestamp="1574430790553" />
     <state x="1201" y="354" width="484" height="310" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1573828532894">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -713,9 +713,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1073" y="240" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1573636231508" />
-    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1573824998699">
+    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1574434174602">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1573824998699" />
+    <state x="1111" y="246" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1574434174602" />
   </component>
 </project>
