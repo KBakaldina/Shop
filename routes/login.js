@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
+const actionLoginToken = require('../actions/loginToken')
 
 /* GET login page.*/
 router.get('/', (req, res) => {
@@ -13,12 +13,7 @@ router.post('/', (req, res) => {
     passport.authenticate('local-login',
         (user, msg) => {
         if (user) {
-            const payload = {
-                id: user.id,
-                userName: user.userName
-            };
-            const token = jwt.sign(payload, process.env.JWT_SECRET);
-            res.cookie('token', token);
+            res.cookie('token', actionLoginToken(user.id, user.userName));
             res.redirect('/profile');
         } else { res.send(msg); }
 })(req, res);
@@ -31,16 +26,10 @@ router.get('/facebook/callback', (req, res) => {
     passport.authenticate('facebook',
         (user, msg) => {
         if (user) {
-            const payload = {
-                id: user.id,
-                userName: user.userName
-            };
-            const token = jwt.sign(payload, process.env.JWT_SECRET);
-            res.cookie('token', token);
+            res.cookie('token', actionLoginToken(user.id, user.userName));
             res.redirect('/profile');
         } else { res.send(msg); }
     })(req, res);
 });
-
 
 module.exports = router;

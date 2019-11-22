@@ -25,11 +25,7 @@ module.exports = (passport) => {
             try {
                 let user = await queryPromise('SELECT * FROM users WHERE id = ?', [payload.id]);
                 if (user[0]) return done(null, user[0]);
-                else {
-                    user = await queryPromise('SELECT * FROM facebook WHERE id = ?', [payload.id]);
-                    if (user[0]) return done(null, user[0]);
-                    else return done(null, false);
-                }
+                else return done(null, false);
             } catch(err) { return done(err); }
         })
     );
@@ -42,8 +38,9 @@ module.exports = (passport) => {
             },
             async (userName, userPassword, done) => {
                 try {
-                    let rows = await queryPromise('SELECT * FROM users WHERE userName = ?', [userName]);
+                    let rows = await queryPromise('SELECT * FROM users WHERE userName = ? OR email=?', [userName, userName]);
                     if (rows[0]) {
+                        if (!rows[0].password) return done(false, 'Log in with Facebook, please!')
                         if (bcrypt.compareSync(userPassword, rows[0].password))
                             return done(rows[0]);
                         else return done(false, 'Wrong password. Try again, please!');
@@ -57,18 +54,24 @@ module.exports = (passport) => {
     passport.use(new FacebookStrategy({
             clientID: process.env.FB_API_KEY,
             clientSecret: process.env.FB_API_SECRET,
-            callbackURL: process.env.FB_CB_URL
+            callbackURL: process.env.FB_CB_URL,
+            profileFields: ['id', 'displayName', 'email']
         },
         (accessToken, refreshToken, profile, done) => {
             process.nextTick(async () => {
                 try {
-                    let rows = await queryPromise("SELECT * from facebook where id=?", [profile.id]);
-                    if (!rows[0]) {
-                        // TODO: to get the email from FB and check if it exists in users-DB
-                        await queryPromise("INSERT INTO facebook(id, userName, email) VALUES(?, ?, ?)",[profile.id, profile.displayName, 'kr.bakaldina@gmail.com']);
+                    let rows = await queryPromise("SELECT * from facebook where fbId=?", [profile.id]);
+                    if (rows[0]) return done({id: rows[0].userId, userName: profile.displayName});
+                    if (profile._json.email)  {
+                        rows = await queryPromise("SELECT * from users where email=?", [profile._json.email]);
+                        if (rows[0]) return done(false, 'Your email is already used! Log in without Facebook, please!')
                     }
-                    return done({id: profile.id, userName: profile.displayName});
-                } catch (err) { done(null, err); }
+                    rows = await queryPromise("INSERT INTO users(userName, email) VALUES(?, ?)",
+                        [profile.displayName, profile._json.email]);
+                    await queryPromise("INSERT INTO facebook(fbId, userId) VALUES(?, ?)",
+                        [profile.id, rows.insertId]);
+                    return done({id: rows.insertId, userName: profile.displayName});
+                } catch (err) { done(false, err); }
             });
         }
     ));

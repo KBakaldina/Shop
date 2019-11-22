@@ -16,8 +16,8 @@ connection.getConnection( (err) => {
         connection.query('CREATE TABLE IF NOT EXISTS users (' +
             'id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, ' +
             'userName VARCHAR(20) UNIQUE KEY NOT NULL, ' +
-            'password VARCHAR(100) NOT NULL, ' +
-            'email VARCHAR(100) NOT NULL UNIQUE)', (err) => {
+            'password VARCHAR(100), ' +
+            'email VARCHAR(100) UNIQUE KEY)', (err) => {
             if (err) console.log(err);
         });
 
@@ -49,9 +49,9 @@ connection.getConnection( (err) => {
         });
 
         connection.query('CREATE TABLE IF NOT EXISTS facebook (' +
-            'id BIGINT(40) UNSIGNED NOT NULL PRIMARY KEY, ' +
-            'userName VARCHAR(50) NOT NULL, ' +
-            'email VARCHAR(100) NOT NULL UNIQUE)', (err) => {
+            'fbId BIGINT(40) UNSIGNED NOT NULL PRIMARY KEY, ' +
+            'userId INT(10) UNSIGNED NOT NULL, ' +
+            'CONSTRAINT FK_facebook_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });
     }
