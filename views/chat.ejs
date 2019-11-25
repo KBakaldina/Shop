@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+<% include ./partials/topNavigation %>
+
+<h1><%=pageName%></h1>
+
+<textarea id="chat" rows="20" readonly></textarea> <br>
+<textarea id="message" rows="3"></textarea> <br>
+<button onclick="send(event)" style="width: 474px" title="ENTER also work">Send</button>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+        var socket = io('localhost:4430');
+
+        let chat = document.getElementById('chat');
+        let msg = document.getElementById('message');
+
+        chat.value = '--- YOU JOINED ---';
+
+        socket.emit('user in', '<%=userName%>');
+
+        socket.on('add new user', (name)=> {
+            chat.value += '\n--- ' + name + ' JOINED ---';
+        });
+
+        socket.on('add msg', (data)=> {
+            chat.value += '\n[' + data.userName + ']: ' + data.msg;
+        });
+
+        function send(event) {
+            event.preventDefault();
+
+            socket.emit('new msg', {msg: msg.value, userName: '<%=userName%>'});
+            chat.value += '\n[YOU]: ' + msg.value;
+            msg.value ='';
+
+            return true;
+        }
+
+        msg.addEventListener("keypress", (event) => {
+            let key = event.which || event.keyCode;
+            if (key === 13) //enter
+                send(event);
+        });
+</script>
+
+</body>
+</html>

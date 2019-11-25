@@ -5,12 +5,6 @@ const request = require('request');
 
 const queryPromise = require('../libs/dbConnection').queryPromise;
 
-router.get('/me', (req, res) => {
-    console.log(req);
-    res.send('hi');
-});
-
-
 router.get('/', (req, res) => {
     passport.authenticate('jwt', {session: false}, async (err, user) => {
    if (user) {
