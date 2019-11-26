@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
                     let products = await actionShowAllProducts(user.id, order, desc, search, limit, fav, page);
                     if (page <= products.count) {
                         res.render('products/products', {pageName: 'Shop', linkStart: '/shop', limit: limit,
-                            rows: products.rows, currentPage: page, lastPage: products.count, query: query});
+                            rows: products.rows, currentPage: page, lastPage: products.count, query: query, user: user});
                     } else res.redirect('/shop/?page=1'+query);
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/shop/?page='+page+query);

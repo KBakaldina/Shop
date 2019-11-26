@@ -1,0 +1,10 @@
+<script src="/socket.io/socket.io.js"></script>
+<button onclick="chatPopUp()" id="chat-button" title="Open and join the chat">Chat</button>
+<div class="chat isHidden" id="chat">
+    <h1>Chat</h1>
+
+    <textarea id="chat-textarea" rows="20" readonly></textarea> <br>
+    <textarea id="message" rows="3"></textarea> <br>
+    <button onclick="send()" style="width: 474px" title="ENTER also work">Send</button>
+</div>
+

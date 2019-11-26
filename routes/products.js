@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
                     if (page <= products.count || products.count == 0) {
                         res.render('products/products', {pageName: 'My products', linkStart: '/products',
                             rows: products.rows, limit: limit,
-                            currentPage: page, lastPage: products.count, query: query});
+                            currentPage: page, lastPage: products.count, query: query, user: user});
                     } else res.redirect('/products/?page=1'+query);
                 } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
             } else res.redirect('/products/?page='+page+query);

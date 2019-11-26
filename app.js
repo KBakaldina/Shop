@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
+// chat
+const io = require('socket.io').listen(express().listen(4430));
+require('./config/chat')(io);
+
 require('./config/passport')(passport);
 require('dotenv').config();
 
@@ -17,7 +21,6 @@ const profileRouter = require('./routes/profile');
 const productsRouter = require('./routes/products');
 const shopRouter = require('./routes/shop');
 const facebookRouter = require('./routes/facebook');
-const chatRouter = require('./routes/chat');
 
 const app = express();
 
@@ -40,7 +43,6 @@ app.use('/profile', profileRouter);
 app.use('/products', productsRouter);
 app.use('/shop', shopRouter);
 app.use('/facebook', facebookRouter);
-app.use('/chat', chatRouter);
 
 
 

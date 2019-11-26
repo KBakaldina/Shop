@@ -13,5 +13,8 @@
     <p>Email: <%=user.email%></p>
     <br>
     <button onclick="window.location.href='/facebook'">Get profile data from Facebook</button>
+
+    <% include ./partials/chat %>
+    <script src="/scripts/chat.js" id="script" data-src="<%=user.userName%>"></script>
 </body>
 </html>

@@ -175,5 +175,8 @@
     <% } else { %>
         <label>No products...</label>
     <% } %>
+
+    <% include ../partials/chat %>
+    <script src="/scripts/chat.js" id="script" data-src="<%=user.userName%>"></script>
 </body>
 </html>
