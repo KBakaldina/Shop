@@ -1,7 +1,6 @@
 let socket = io('localhost:4430', {autoConnect: false});
 
 let chat = document.getElementById('chat');
-let chatButton = document.getElementById('chat-button')
 let chatTextarea = document.getElementById('chat-textarea');
 
 let msg = document.getElementById('message');
@@ -16,13 +15,35 @@ socket.on('add msg', (data) => {
 });
 
 socket.on('del user', (data) => {
-    chatTextarea.value += '\n--- ' + data.userName + ' DISCONNECTED ---';
+    chatTextarea.value += '\n--- ' + data.userName + ' LEFT ---';
+});
+
+socket.on('add personal msg', (data) => {
+    chatTextarea.value += '\n[[[' + data.userName + ']]]: ' + data.msg;
+});
+
+socket.on('scroll', () => {
+    scroll();
 });
 
 function send() {
-    socket.emit('new msg', {msg: msg.value});
-    chatTextarea.value += '\n[YOU]: ' + msg.value;
-    msg.value ='';
+    let text = msg.value.trim();
+    if (text) {
+        let isPersonal = (text.startsWith('@(')) ? true: false;
+        if (isPersonal) {
+            let to = text.split('@(')[1]
+                .split(')')[0];
+            text = text.substring(3 + to.length);
+            socket.emit('new personal msg', {to: to, msg: text})
+            chatTextarea.value += '\n[YOU TO ' + to + ']: ' + text;
+        } else {
+            socket.emit('new msg', {msg: text});
+            chatTextarea.value += '\n[YOU]: ' + text;
+        }
+        // if user 'to' does not exists ?
+    }
+    msg.value='';
+    scroll();
 }
 
 function chatPopUp() {
@@ -37,8 +58,16 @@ function chatPopUp() {
     }
 }
 
-msg.addEventListener("keypress", (event) => {
+function scroll () {
+    chatTextarea.scrollTop = chatTextarea.scrollHeight;
+}
+
+msg.addEventListener('keyup', (event) => {
     let key = event.which || event.keyCode;
-    if (key == 13) //enter
-        send(event);
+    if (key == 13 && !event.shiftKey) // only enter
+            send(event);
+});
+
+document.getElementById('chat-pic').addEventListener('click', () => {
+    chatPopUp();
 });
