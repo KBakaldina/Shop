@@ -55,16 +55,6 @@ connection.getConnection( (err) => {
             'CONSTRAINT FK_facebook_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);
         });
-
-        connection.query('DROP TABLE IF EXISTS chat', (err) => {
-            if (err) console.log(err);
-        });
-
-        connection.query('CREATE TABLE IF NOT EXISTS chat (' +
-            'id VARCHAR(40) NOT NULL, ' +
-            'name VARCHAR(100) NOT NULL)', (err) => {
-            if (err) console.log(err);
-        });
     }
 });
 

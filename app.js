@@ -6,10 +6,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
-// chat
-const io = require('socket.io').listen(express().listen(4430));
-require('./config/chat')(io);
-
 require('./config/passport')(passport);
 require('dotenv').config();
 
@@ -43,8 +39,6 @@ app.use('/profile', profileRouter);
 app.use('/products', productsRouter);
 app.use('/shop', shopRouter);
 app.use('/facebook', facebookRouter);
-
-
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -4,22 +4,25 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('registration:server');
-var http = require('http');
+const app = require('../app');
+const debug = require('debug')('registration:server');
+const http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+const io = require('socket.io')(app.listen(process.env.CHAT_PORT));
+require('../config/chat')(io);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -1,8 +1,11 @@
 <script src="/socket.io/socket.io.js"></script>
-<img src="/pictures/chat.png" id="chat-pic" title="Show or hide chat">
+
+<img src="/images/chat.png" id="chat-pic" title="Show or hide chat">
+
 <div class="chat isHidden" id="chat">
     <textarea id="chat-textarea" rows="20" readonly></textarea> <br>
 
     <textarea id="message" rows="3" maxlength="150"></textarea> <br>
-    <button onclick="send()" style="width: 206px" title="<ENTER> also work">Send</button>
+
+    <button id="send-button" onclick="send()" style="width: 206px" title="<ENTER> also work">Send</button>
 </div>

@@ -54,7 +54,7 @@ module.exports = (passport) => {
     passport.use(new FacebookStrategy({
             clientID: process.env.FB_API_KEY,
             clientSecret: process.env.FB_API_SECRET,
-            callbackURL: process.env.FB_CB_URL,
+            callbackURL: '/login/facebook/callback',
             profileFields: ['id', 'displayName', 'email']
         },
         (accessToken, refreshToken, profile, done) => {

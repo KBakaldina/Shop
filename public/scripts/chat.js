@@ -19,12 +19,19 @@ socket.on('del user', (data) => {
 });
 
 socket.on('add personal msg', (data) => {
-    chatTextarea.value += '\n[[[' + data.userName + ']]]: ' + data.msg;
+    chatTextarea.value += '\n[' + data.userName + ' ONLY FOR YOU]: ' + data.msg;
 });
 
 socket.on('scroll', () => {
     scroll();
 });
+
+/*socket.on('disconnect', ()=>{
+    chatTextarea.value +=   '\n----- SERVER DISCONNECTED -----'+
+                            '\n----- RELOAD PAGE, PLEASE -----';
+    msg.classList.add('isHidden');
+    document.getElementById('send-button').classList.add('isHidden');
+});*/
 
 function send() {
     let text = msg.value.trim();

@@ -1,12 +1,14 @@
-const queryPromise = require('../libs/dbConnection').queryPromise;
-
 module.exports = (io) => {
     io.on('connection', (socket) => {
         let userName;
+        let socketId = socket.request.headers.cookie.split('io=')[1];
+        let token = socket.request.headers.cookie.split('token=')[1].split(';')[0];
+        console.log('id:'+socketId+'\ntoken:'+token);
+
 
         socket.on('user in', async (name) => {
             userName = name;
-            await queryPromise('INSERT INTO chat(id, name) VALUES (?, ?)', [socket.id, userName]);
+
             socket.broadcast.emit('add new user', {userName: userName});
             socket.broadcast.emit('scroll');
         });
@@ -17,13 +19,11 @@ module.exports = (io) => {
         });
 
         socket.on('new personal msg', async (data) => {
-            let rows = await queryPromise('SELECT * FROM chat WHERE name=?', [data.to]);
-            let toId = rows[0].id;
-            io.to(`${toId}`).emit('add personal msg', {userName: userName, msg: data.msg});
+            //join
+            //io.to(`${SocketId}`).emit('add personal msg', {userName: userName, msg: data.msg});
         });
 
         socket.on('disconnect', async() => {
-            await queryPromise('DELETE FROM chat WHERE id=?', [socket.id]);
             socket.broadcast.emit('del user', {userName: userName});
             socket.broadcast.emit('scroll');
         });
