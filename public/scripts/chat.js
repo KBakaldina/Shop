@@ -1,37 +1,97 @@
 let socket = io('localhost:4430', {autoConnect: false});
+let isUp = false;
+
+let name;
+let nameMenu = document.getElementById('name-menu');
+
+let errorReason = document.getElementById('error-reason');
+let errorSolution = document.getElementById('error-solution');
+let errorDiv = document.getElementById('error-div');
 
 let chat = document.getElementById('chat');
 let chatTextarea = document.getElementById('chat-textarea');
 
 let msg = document.getElementById('message');
-let userName = document.getElementById('script').dataset.src;
+
+socket.on('name is unique', (data) => {
+    name = data.name;
+
+    hide(errorDiv);
+    hide(nameMenu);
+    chatPopUp();
+});
+
+socket.on('name exists', () => {
+    errorReason.innerText = 'This name is already used.';
+    errorSolution.innerText = 'Choose another one, please!';
+    show(errorDiv);
+});
 
 socket.on('add new user', (data) => {
-    chatTextarea.value += '\n--- ' + data.userName + ' JOINED ---';
-});
-
-socket.on('add msg', (data) => {
-    chatTextarea.value += '\n[' + data.userName + ']: ' + data.msg;
-});
-
-socket.on('del user', (data) => {
-    chatTextarea.value += '\n--- ' + data.userName + ' LEFT ---';
-});
-
-socket.on('add personal msg', (data) => {
-    chatTextarea.value += '\n[' + data.userName + ' ONLY FOR YOU]: ' + data.msg;
-});
-
-socket.on('scroll', () => {
+    chatTextarea.value += '\n--- ' + data.name + ' JOINED ---';
     scroll();
 });
 
-/*socket.on('disconnect', ()=>{
+socket.on('add msg', (data) => {
+    chatTextarea.value += '\n[' + data.name + ']: ' + data.msg;
+    scroll();
+});
+
+socket.on('add personal msg', (data) => {
+    chatTextarea.value += '\n[' + data.name + ' ONLY FOR YOU]: ' + data.msg;
+    scroll();
+});
+
+socket.on('del user', (data) => {
+    chatTextarea.value += '\n--- ' + data.name + ' LEFT ---';
+    scroll();
+});
+
+socket.on('disconnect', () => {
     chatTextarea.value +=   '\n----- SERVER DISCONNECTED -----'+
                             '\n----- RELOAD PAGE, PLEASE -----';
-    msg.classList.add('isHidden');
-    document.getElementById('send-button').classList.add('isHidden');
-});*/
+    //hide(msg);
+    //hide(document.getElementById('send-button'));
+});
+
+
+function chatPicClick() {
+    if (isUp) {
+        socket.disconnect();
+
+        hide(nameMenu);
+        hide(errorDiv);
+        hide(chat);
+
+        isUp = false;
+    } else {
+        socket.connect();
+
+        if (name) chatPopUp();
+        else show(nameMenu);
+
+        isUp = true;
+    }
+}
+
+function checkName() {
+    hide(errorDiv);
+
+    let userName = document.getElementById('name').value;
+    if (userName) {
+        socket.emit('check name', {name: userName});
+    } else {
+        errorReason.innerText = 'Name field is empty.';
+        errorSolution.innerText = 'Enter your name, please!';
+        show(errorDiv);
+    }
+}
+
+function chatPopUp() {
+    socket.emit('user in', {name: name});
+    show(chat);
+    chatTextarea.value = '--- YOU JOINED ---';
+}
 
 function send() {
     let text = msg.value.trim();
@@ -53,28 +113,18 @@ function send() {
     scroll();
 }
 
-function chatPopUp() {
-    if (chat.classList.contains('isHidden')) {
-        socket.connect();
-        chat.classList.remove("isHidden");
-        socket.emit('user in', userName);
-        chatTextarea.value = '--- YOU JOINED ---';
-    } else {
-        socket.disconnect();
-        chat.classList.add("isHidden");
-    }
+function typing() {
+    // show all users that <name> is typing
 }
 
 function scroll () {
     chatTextarea.scrollTop = chatTextarea.scrollHeight;
 }
 
-msg.addEventListener('keyup', (event) => {
-    let key = event.which || event.keyCode;
-    if (key == 13 && !event.shiftKey) // only enter
-            send(event);
-});
+function hide(element) {
+    element.classList.add('hidden');
+}
 
-document.getElementById('chat-pic').addEventListener('click', () => {
-    chatPopUp();
-});
+function show(element) {
+    element.classList.remove('hidden');
+}

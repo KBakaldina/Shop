@@ -1,31 +1,36 @@
+const queryPromise = require('../libs/dbConnection');
+
 module.exports = (io) => {
     io.on('connection', (socket) => {
-        let userName;
+        let name;
         let socketId = socket.request.headers.cookie.split('io=')[1];
         let token = socket.request.headers.cookie.split('token=')[1].split(';')[0];
-        console.log('id:'+socketId+'\ntoken:'+token);
 
+        socket.on('check name', (data) => {
 
-        socket.on('user in', async (name) => {
-            userName = name;
+            let nameIsOk=true;
+            // check name
+            if (nameIsOk) {
+                socket.emit('name is unique', {name: data.name});
+            } else socket.emit('name exists');
+        });
 
-            socket.broadcast.emit('add new user', {userName: userName});
-            socket.broadcast.emit('scroll');
+        socket.on('user in', (data) => {
+            name = data.name;
+            socket.broadcast.emit('add new user', {name: name});
         });
 
         socket.on('new msg', (data) => {
-            socket.broadcast.emit('add msg', {userName: userName, msg: data.msg});
-            socket.broadcast.emit('scroll');
+            socket.broadcast.emit('add msg', {name: name, msg: data.msg});
         });
 
-        socket.on('new personal msg', async (data) => {
+        socket.on('new personal msg', (data) => {
             //join
-            //io.to(`${SocketId}`).emit('add personal msg', {userName: userName, msg: data.msg});
+            //io.to(`${SocketId}`).emit('add personal msg', {name: data.name, msg: data.msg});
         });
 
         socket.on('disconnect', async() => {
-            socket.broadcast.emit('del user', {userName: userName});
-            socket.broadcast.emit('scroll');
+            socket.broadcast.emit('del user', {name: name});
         });
     });
 };

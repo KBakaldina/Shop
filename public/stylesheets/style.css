@@ -66,23 +66,43 @@ textarea {
     text-align: center;
 }
 
-.chat {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
-.chat textarea {
-    font-size: 12px;
-    width: 200px;
-}
-
-.isHidden {
-    display: none;
-}
+/* CHAT */
 
 #chat-pic {
     position: fixed;
     bottom: 420px;
     right: 20px;
+}
+
+#error-div {
+    position: fixed;
+    bottom: 420px;
+    right: 60px;
+
+    padding: 5px;
+    background-color: lightcoral;
+}
+
+#name-menu {
+    position: fixed;
+    bottom: 370px;
+    right: 20px;
+    padding: 5px;
+    background-color: lightcyan;
+    border: lightblue solid 1px;
+}
+
+#chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#chat textarea {
+    font-size: 12px;
+    width: 200px;
+}
+
+.hidden {
+    display: none;
 }

@@ -1,11 +1,22 @@
-<script src="/socket.io/socket.io.js"></script>
+<script src="/scripts/socket.io.js"></script>
 
-<img src="/images/chat.png" id="chat-pic" title="Show or hide chat">
+<img src="/images/chat.png" id="chat-pic" title="Show or hide chat" onclick="chatPicClick()">
 
-<div class="chat isHidden" id="chat">
+<div id="error-div" class="hidden">
+    <label id="error-reason"></label> <br>
+    <label id="error-solution"></label>
+</div>
+
+<div id="name-menu" class="hidden">
+    <label>Your name:</label>
+    <input type="text" id="name" maxlength="20">
+    <button onclick="checkName()">OK</button>
+</div>
+
+<div id="chat" class="hidden">
     <textarea id="chat-textarea" rows="20" readonly></textarea> <br>
 
-    <textarea id="message" rows="3" maxlength="150"></textarea> <br>
+    <textarea id="message" rows="3" maxlength="150" onkeyup="typing(); if ((event.which || event.keyCode) == 13 && !event.shiftKey) send(event);"></textarea> <br>
 
     <button id="send-button" onclick="send()" style="width: 206px" title="<ENTER> also work">Send</button>
 </div>
