@@ -1,7 +1,5 @@
 const mysql = require('mysql');
 
-require('dotenv').config();
-
 const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -17,7 +15,8 @@ connection.getConnection( (err) => {
             'id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, ' +
             'userName VARCHAR(20) UNIQUE KEY NOT NULL, ' +
             'password VARCHAR(100), ' +
-            'email VARCHAR(100) UNIQUE KEY)', (err) => {
+            'email VARCHAR(100) UNIQUE KEY, ' +
+            'pictureLink VARCHAR(200))', (err) => {
             if (err) console.log(err);
         });
 
@@ -25,8 +24,8 @@ connection.getConnection( (err) => {
             'id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, ' +
             'productName VARCHAR(25) NOT NULL, ' +
             'price DECIMAL(9,2) NOT NULL, ' +
-            'description VARCHAR(150) NOT NULL, ' +
-            'pictureLink VARCHAR(150), ' +
+            'description VARCHAR(300) NOT NULL, ' +
+            'pictureLink VARCHAR(200), ' +
             'userId INT(10) UNSIGNED NOT NULL, ' +
             'CONSTRAINT FK_products_userId FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE)', (err) => {
             if (err) console.log(err);

@@ -82,7 +82,7 @@
             <% for (var i=0; rows[i]; ++i) { %>
             <tr>
                 <td><%= (limit*(currentPage-1))+i+1 %></td>
-                <td><img class="product-pic" src="<%=rows[i].pictureLink%>" alt="No picture"></td>
+                <td><img class="picture" src="<%=rows[i].pictureLink%>" alt="No picture"></td>
                 <td><p><%= rows[i].productName %></p></td>
                 <td><p>$<%= rows[i].price%></p></td>
                 <td><textarea cols="50" rows="6" readonly disabled><%=rows[i].description%></textarea></td>
@@ -178,6 +178,6 @@
     <% } %>
 
     <% include ../partials/chat %>
-    <script src="/scripts/chat.js" id="script" data-src="<%=user.userName%>"></script>
+    <script src="/scripts/chat.js" id="script" data-src="<%=user.pitureLink%>"></script>
 </body>
 </html>

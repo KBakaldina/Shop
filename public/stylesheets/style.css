@@ -17,7 +17,7 @@ table.user-products {
     z-index: 30;
 }
 
-img.product-pic {
+img.picture {
     max-height:100px;
     max-width: 200px;
 }
@@ -68,7 +68,7 @@ textarea {
 
 /* CHAT */
 
-#chat-pic {
+#chat-ico {
     position: fixed;
     bottom: 420px;
     right: 20px;
@@ -88,19 +88,68 @@ textarea {
     bottom: 370px;
     right: 20px;
     padding: 5px;
-    background-color: lightcyan;
+    background-color: azure;
     border: lightblue solid 1px;
 }
 
+.chat-pic {
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 #chat {
+    position: relative;
+    font: inherit;
+    font-size: 12px;
+}
+
+#message-list {
+    padding: 3px;
+    background-color: azure;
+    border: #00B7FF solid 1px;
+    width: 248px;
+    height: 340px;
     position: fixed;
-    bottom: 20px;
     right: 20px;
+    bottom: 70px;
+    list-style-type: none;
+    overflow-y: scroll;
+}
+
+#message-list label {
+    color: dimgrey;
+}
+
+#message-list div {
+    background-color: lightblue;
+    margin-top: 5px;
+}
+
+#message-list img {
+    float: left;
+    right: 3px;
+    top: 3px;
+    margin: 3px;
 }
 
 #chat textarea {
-    font-size: 12px;
+    border: #00B7FF solid 1px;
+    position: fixed;
+    right: 70px;
+    bottom: 20px;
     width: 200px;
+}
+
+#send-button {
+    border: #00B7FF solid 1px;
+    background-color: #00B7FF;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 51px;
 }
 
 .hidden {

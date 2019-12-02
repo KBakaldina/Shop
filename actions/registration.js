@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const queryPromise = require('../libs/dbConnection').queryPromise;
 
-module.exports = async  (userName, email, userPassword, userPassword2) => {
+module.exports = async (userName, email, userPassword, userPassword2, pictureLink) => {
     let rows = await queryPromise('SELECT * FROM users WHERE userName = ?', userName);
 
     if (!rows[0]) {
@@ -11,18 +11,14 @@ module.exports = async  (userName, email, userPassword, userPassword2) => {
 
         if (!rows[0]) {
             if(userPassword === userPassword2){
-                userPassword = bcrypt.hashSync(userPassword, process.env.HASH_SALT);
-
-                await queryPromise(
-                    'INSERT INTO users(userName, password, email) VALUES (?, ?, ?)',
-                    [userName, userPassword, email]);
+                userPassword = bcrypt.hashSync(userPassword, parseInt(process.env.HASH_SALT));
 
                 rows = await queryPromise(
-                    'SELECT id FROM users WHERE userName = ?',
-                    [userName]);
+                    'INSERT INTO users(userName, password, email, pictureLink) VALUES (?, ?, ?, ?)',
+                    [userName, userPassword, email, pictureLink]);
 
-                return {id: rows[0].id, msg: 'Success'};
+                return {id: rows.insertId, msg: 'Success!'};
             } return {id: false, msg: 'Incorrect conformation of password. Try again, please!'};
-        } else return {id: false, msg: 'This email is already in use. Please, choose another email and try again or login!'};
+        } else return {id: false, msg: 'This email is already in use. Choose another email and try again or login!'};
     } else return {id: false, msg: 'This user already exists. Please, choose another name and try again!'};
 };

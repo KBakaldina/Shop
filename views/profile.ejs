@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Profile</title>
+    <title><%=pageName%></title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="icon" href="/images/favicon.png">
 </head>
@@ -9,6 +9,7 @@
     <% include ./partials/topNavigation %>
 
     <h1><%=pageName%></h1>
+    <img class="product-pic" src="<%=user.pictureLink%>" alt="No picture">
     <p>ID: <%=user.id%></p>
     <p>Name: <%=user.userName%></p>
     <p>Email: <%=user.email%></p>
@@ -16,6 +17,6 @@
     <button onclick="window.location.href='/facebook'">Get profile data from Facebook</button>
 
     <% include ./partials/chat %>
-    <script src="/scripts/chat.js" id="script" data-src="<%=user.userName%>"></script>
+    <script src="/scripts/chat.js" id="script" data-src="<%=user.pictureLink%>"></script>
 </body>
 </html>

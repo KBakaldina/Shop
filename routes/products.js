@@ -59,7 +59,7 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
                 let pictureLink = await actionSharpPic(req.file.path);
                 await actionAddProduct(req.body.productName, req.body.price, req.body.description,
                     pictureLink, user.id);
-                res.redirect('/products')
+                res.redirect('/products');
             } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
         else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});

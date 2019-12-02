@@ -21,7 +21,7 @@ module.exports = (io) => {
         });
 
         socket.on('new msg', (data) => {
-            socket.broadcast.emit('add msg', {name: name, msg: data.msg});
+            socket.broadcast.emit('add msg', {name: name, msg: data.msg, pictureLink: data.pictureLink});
         });
 
         socket.on('new personal msg', (data) => {

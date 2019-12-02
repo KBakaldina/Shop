@@ -8,8 +8,10 @@ let errorReason = document.getElementById('error-reason');
 let errorSolution = document.getElementById('error-solution');
 let errorDiv = document.getElementById('error-div');
 
+let pictureLink = document.getElementById('script').dataset.src;
+
 let chat = document.getElementById('chat');
-let chatTextarea = document.getElementById('chat-textarea');
+let chatArea = document.getElementById('message-list');
 
 let msg = document.getElementById('message');
 
@@ -28,32 +30,29 @@ socket.on('name exists', () => {
 });
 
 socket.on('add new user', (data) => {
-    chatTextarea.value += '\n--- ' + data.name + ' JOINED ---';
-    scroll();
+    displayMsg(null, 'SYSTEM', '--- ' + data.name + ' JOINED---');
 });
 
 socket.on('add msg', (data) => {
-    chatTextarea.value += '\n[' + data.name + ']: ' + data.msg;
-    scroll();
+    displayMsg(data.pictureLink, data.name, data.msg);
 });
 
 socket.on('add personal msg', (data) => {
-    chatTextarea.value += '\n[' + data.name + ' ONLY FOR YOU]: ' + data.msg;
-    scroll();
+    displayMsg(data.pictureLink,data.name+' [ONLY FOR YOU]', data.msg);
 });
 
 socket.on('del user', (data) => {
-    chatTextarea.value += '\n--- ' + data.name + ' LEFT ---';
-    scroll();
+    displayMsg(null,'SYSTEM', '--- ' + data.name + ' LEFT---');
 });
 
 socket.on('disconnect', () => {
-    chatTextarea.value +=   '\n----- SERVER DISCONNECTED -----'+
-                            '\n----- RELOAD PAGE, PLEASE -----';
-    //hide(msg);
-    //hide(document.getElementById('send-button'));
+    socket.disconnect();
+    displayMsg(null,'SYSTEM',
+             '----- SERVER DISCONNECTED -----' +
+                '\n----- RELOAD PAGE, PLEASE -----');
+    hide(msg);
+    hide(document.getElementById('send-button'));
 });
-
 
 function chatPicClick() {
     if (isUp) {
@@ -90,7 +89,7 @@ function checkName() {
 function chatPopUp() {
     socket.emit('user in', {name: name});
     show(chat);
-    chatTextarea.value = '--- YOU JOINED ---';
+    displayMsg(null,'SYSTEM', '--- YOU JOINED ---');
 }
 
 function send() {
@@ -101,16 +100,17 @@ function send() {
             let to = text.split('@(')[1]
                 .split(')')[0];
             text = text.substring(3 + to.length);
-            socket.emit('new personal msg', {to: to, msg: text})
-            chatTextarea.value += '\n[YOU TO ' + to + ']: ' + text;
+
+            socket.emit('new personal msg', {to: to, msg: text, pictureLink: pictureLink});
+
+            displayMsg(pictureLink,'YOU [TO '+ to + ']', text);
         } else {
-            socket.emit('new msg', {msg: text});
-            chatTextarea.value += '\n[YOU]: ' + text;
+            socket.emit('new msg', {msg: text, pictureLink: pictureLink});
+            displayMsg(pictureLink,'YOU', text);
         }
         // if user 'to' does not exists ?
     }
     msg.value='';
-    scroll();
 }
 
 function typing() {
@@ -118,7 +118,7 @@ function typing() {
 }
 
 function scroll () {
-    chatTextarea.scrollTop = chatTextarea.scrollHeight;
+    chatArea.scrollTop = chatArea.scrollHeight;
 }
 
 function hide(element) {
@@ -127,4 +127,14 @@ function hide(element) {
 
 function show(element) {
     element.classList.remove('hidden');
+}
+
+function displayMsg (pictureLink, name, msg) {
+    let time = new Date();
+    chatArea.innerHTML += '<div>' +
+        '<img class="chat-pic" src="'+ pictureLink +'">'+
+        '<p>'+ msg +'</p>' +
+        '<label>'+ name + ', '+ time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() +'</label>' +
+        '</div>';
+    scroll();
 }

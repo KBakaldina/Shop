@@ -27,21 +27,10 @@
             <tr>
                 <td> <label for="pictureFileId">To change photo: </label> </td>
                 <td colspan="2"> <input id="pictureFileId" type="file" accept=".png,.jpeg,.jpg" name="pictureFile" onchange="showFile(event)" > </td>
-            </tr>
             <tr>
                 <td><label for="fileImgId">Photo: </label> </td>
-                <td colspan="2"><img id="fileImgId" class="product-pic" src="<%=product.pictureLink%>" alt="No picture"></td>
-                <script>
-                    function showFile(event) {
-                        let reader = new FileReader();
-
-                        reader.onload = (event) => {
-                            document.getElementById('fileImgId').src = event.target.result;
-                        };
-
-                        reader.readAsDataURL(event.target.files[0]);
-                    }
-                </script>
+                <td colspan="2"><img id="fileImgId" class="picture" src="<%=product.pictureLink%>" alt="No picture"></td>
+                <script src="/scripts/showFile.js"></script>
             </tr>
             <tr>
                 <td> <input type="submit" value="Edit" onclick="return confirm('Are you sure to edit this product?')" > </td>

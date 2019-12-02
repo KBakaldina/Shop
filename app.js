@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
-require('./config/passport')(passport);
 require('dotenv').config();
+require('./config/passport')(passport);
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
