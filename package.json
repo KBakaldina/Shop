@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test" : "jest"
   },
   "dependencies": {
     "bcrypt": "latest",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "facebook-node-sdk": "^0.2.0",
+    "jest": "^24.9.0",
     "request": "^2.88.0"
   }
 }
