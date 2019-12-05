@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eebf95d3-32b0-4c7c-ac98-0f23f05887af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bcrypt/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bcrypt/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/products_service.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/products_service.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +36,6 @@
         <item name="shop@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="shop: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="shop@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="shop: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="users: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -98,18 +90,18 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/__mocks__" />
+      <recent name="$PROJECT_DIR$/public/scripts" />
+      <recent name="$PROJECT_DIR$/views/partials" />
+      <recent name="$PROJECT_DIR$/views" />
+      <recent name="$PROJECT_DIR$/public/uploads" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/pictures" />
       <recent name="$PROJECT_DIR$/public/socket.io" />
       <recent name="$PROJECT_DIR$/actions/products" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/scripts" />
-      <recent name="$PROJECT_DIR$/views/partials" />
-      <recent name="$PROJECT_DIR$/views" />
-      <recent name="$PROJECT_DIR$/public/uploads" />
-      <recent name="$PROJECT_DIR$/actions/products" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.bin/www">
@@ -177,14 +169,8 @@
       <workItem from="1574684671156" duration="17732000" />
       <workItem from="1574937917157" duration="21895000" />
       <workItem from="1575276428116" duration="18640000" />
-      <workItem from="1575460987577" duration="6443000" />
-    </task>
-    <task id="LOCAL-00023" summary="jwt authentication to protected(secure) routes">
-      <created>1572013437499</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1572013437499</updated>
+      <workItem from="1575460987577" duration="8719000" />
+      <workItem from="1575551292414" duration="8986000" />
     </task>
     <task id="LOCAL-00024" summary="changed: the process of adding new product (moved into products route)&#10;added: the process of deleting product (a part of products route + action)">
       <created>1572268517580</created>
@@ -522,14 +508,20 @@
       <option name="project" value="LOCAL" />
       <updated>1575296030007</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="a try of an unit test (jest) : done wrong">
+      <created>1575472109879</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1575472109880</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pool instead of connection (mysql); some bugs are fixed" />
     <MESSAGE value="'favorites' now is a part of filter in shop page;&#10;action show for products page and action showAll for shop page;&#10;some visual changes" />
     <MESSAGE value="some changes in login and registration pages" />
     <MESSAGE value="changed: sql queries with many select`s are replaced by join and separating sql requests;&#10;fixed: some bugs with page redirecting" />
@@ -554,7 +546,8 @@
     <MESSAGE value="pop up chat (part 3)" />
     <MESSAGE value="pop up chat (part 4)" />
     <MESSAGE value="pop up chat (part 5)" />
-    <option name="LAST_COMMIT_MESSAGE" value="pop up chat (part 5)" />
+    <MESSAGE value="a try of an unit test (jest) : done wrong" />
+    <option name="LAST_COMMIT_MESSAGE" value="a try of an unit test (jest) : done wrong" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1072" y="212" width="800" height="677" key="#Console" timestamp="1572609584463">
@@ -577,10 +570,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="985" y="188" width="817" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1574089835376" />
-    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1574763591815">
+    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1575552550914">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1574763591815" />
+    <state x="1073" y="334" width="786" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1575552550914" />
     <state x="1025" y="279" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1572954678152">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -589,10 +582,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1136" y="300" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1575467380913" />
-    <state x="989" y="147" width="860" height="807" key="CommitChangelistDialog2" timestamp="1575296029734">
+    <state x="989" y="147" width="860" height="807" key="CommitChangelistDialog2" timestamp="1575472109558">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="989" y="147" width="860" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1575296029734" />
+    <state x="989" y="147" width="860" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1575472109558" />
     <state x="1137" y="233" width="492" height="636" key="ExecutionTargetDialog" timestamp="1573740237219">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -601,22 +594,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="955" y="285" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1571916761188" />
-    <state width="1083" height="291" key="GridCell.Tab.0.bottom" timestamp="1575472053500">
+    <state width="1019" height="421" key="GridCell.Tab.0.bottom" timestamp="1575562892438">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1083" height="291" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1575472053500" />
-    <state width="1083" height="291" key="GridCell.Tab.0.center" timestamp="1575472053499">
+    <state width="1019" height="421" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1575562892438" />
+    <state width="1019" height="421" key="GridCell.Tab.0.center" timestamp="1575562892437">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1083" height="291" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1575472053499" />
-    <state width="1083" height="291" key="GridCell.Tab.0.left" timestamp="1575472053499">
+    <state width="1019" height="421" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1575562892437" />
+    <state width="1019" height="421" key="GridCell.Tab.0.left" timestamp="1575562892437">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1083" height="291" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1575472053499" />
-    <state width="1083" height="291" key="GridCell.Tab.0.right" timestamp="1575472053500">
+    <state width="1019" height="421" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1575562892437" />
+    <state width="1019" height="421" key="GridCell.Tab.0.right" timestamp="1575562892438">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1083" height="291" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1575472053500" />
+    <state width="1019" height="421" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1575562892438" />
     <state width="917" height="340" key="GridCell.Tab.1.bottom" timestamp="1574789096592">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -705,10 +698,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1024" y="293" width="287" height="468" key="com.intellij.database.view.ui.DbObjectDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1573657131829" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1575460987062">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1575551311743">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1575460987062" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1575551311743" />
     <state x="1188" y="424" width="509" height="205" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate" timestamp="1571238098771">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
