@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
         let rows;
         try {
             rows = await queryPromise('SELECT * FROM facebook WHERE userId=?', [user.id])
-        } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+        } catch(err) { res.render('error', {error: err}); }
 
         if (!rows[0]) return res.redirect('/login/facebook');
 
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
             else res.send(body);
         })
     } else if (user == false && err === null) return res.redirect('login');
-    else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+    else return res.render('error', {error: err});
 })(req, res);
 });
 

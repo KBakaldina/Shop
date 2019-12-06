@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 
             res.send('Check your email!');
         } else res.send('No user with such email! Change the email address and try again or sign up, please!');
-    } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }
+    } catch (err) { res.render('error', {error: err}); }
 });
 
 router.get('/deny/:token', async (req, res) => {
@@ -46,7 +46,7 @@ router.get('/deny/:token', async (req, res) => {
             await queryPromise('DELETE FROM tokens WHERE token=?', [req.params.token]);
         }
         res.send('The token was delete! Do not worry :)');
-    } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }
+    } catch (err) { res.render('error', {error: err}); }
 });
 
 router.get('/:token', async (req, res) => {
@@ -61,7 +61,7 @@ router.get('/:token', async (req, res) => {
                 else res.render('changePassword', {pageName: 'Change password', userName: decoded.userName});
             });
         } else res.send('There is no such token!');
-    } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }
+    } catch (err) { res.render('error', {error: err}); }
 });
 
 router.post('/:token', async (req, res) => {
@@ -88,7 +88,7 @@ router.post('/:token', async (req, res) => {
                 } else res.send('Incorrect conformation of password. Try again, please!');
             });
         } else res.send('There is no such token!');
-    } catch (err) { res.render('error', {message: 'Wow! Something\'s wrong...', error: err}); }
+    } catch (err) { res.render('error', {error: err}); }
 });
 
 module.exports = router;

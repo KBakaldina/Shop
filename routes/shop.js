@@ -29,10 +29,10 @@ router.get('/', (req, res) => {
                         res.render('products/products', {pageName: 'Shop', linkStart: '/shop', limit: limit,
                             rows: products.rows, currentPage: page, lastPage: products.count, query: query, user: user});
                     } else res.redirect('/shop/?page=1'+query);
-                } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+                } catch(err) { res.render('error', {error: err}); }
             } else res.redirect('/shop/?page='+page+query);
         } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 

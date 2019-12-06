@@ -35,10 +35,10 @@ router.get('/', (req, res) => {
                             rows: products.rows, limit: limit,
                             currentPage: page, lastPage: products.count, query: query, user: user});
                     } else res.redirect('/products/?page=1'+query);
-                } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+                } catch(err) { res.render('error', {error: err}); }
             } else res.redirect('/products/?page='+page+query);
         } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 
@@ -47,7 +47,7 @@ router.get('/add', (req, res) => {
     passport.authenticate('jwt', {session: false}, (err, user) => {
         if (user) res.render('products/add');
         else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 
@@ -60,9 +60,9 @@ router.post('/add', upload.single('pictureFile'), (req, res) => {
                 await actionAddProduct(req.body.productName, req.body.price, req.body.description,
                     pictureLink, user.id);
                 res.redirect('/products');
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+            } catch(err) { res.render('error', {error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 
@@ -75,9 +75,9 @@ router.get('/edit/:id', (req, res) => {
                 if (product)
                     res.render('products/edit', {product: product});
                 else res.send('This is not your product!');
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+            } catch(err) { res.render('error', {error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 
@@ -92,9 +92,9 @@ router.post('/edit/:id', upload.single('pictureFile'), (req, res) => {
                     await actionEditProduct(req.params.id, req.body.productName, req.body.price, req.body.description, pictureLink);
                     res.redirect('/products');
                     } else res.send('This is not your product! You can change only your products.');
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+            } catch(err) { res.render('error', {error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 
@@ -108,9 +108,9 @@ router.get('/delete/:id', (req, res) => {
                     await actionDeleteProduct(req.params.id);
                     res.redirect('/products');
                 } else res.send('This is not your product! You can delete only your products.');
-            } catch(err) { res.render('error', {message: 'Ooops...', error: err}); }
+            } catch(err) { res.render('error', {error: err}); }
         } else if (user == false && err === null) return res.redirect('login');
-        else return res.render('error', {message: 'Wow! Something\'s wrong...', error: err});
+        else return res.render('error', {error: err});
     })(req, res);
 });
 

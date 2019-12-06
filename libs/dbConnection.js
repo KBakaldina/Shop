@@ -6,6 +6,7 @@ const connection = mysql.createPool({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
 });
+if (connection) {
 
 //TODO: what to do with console.log?
 connection.getConnection( (err) => {
@@ -56,6 +57,7 @@ connection.getConnection( (err) => {
         });
     }
 });
+}
 
 const queryPromise = (query, data) => {
     return new Promise ((resolve,reject) => {

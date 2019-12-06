@@ -15,6 +15,8 @@ let chatArea = document.getElementById('message-list');
 
 let msg = document.getElementById('message');
 
+let systemPicLink = '/images/system.png';
+
 socket.on('name is unique', (data) => {
     name = data.name;
 
@@ -30,7 +32,7 @@ socket.on('name exists', () => {
 });
 
 socket.on('add new user', (data) => {
-    displayMsg(null, 'SYSTEM', '--- ' + data.name + ' JOINED---');
+    displayMsg(systemPicLink, 'SYSTEM', '--- ' + data.name + ' JOINED ---');
 });
 
 socket.on('add msg', (data) => {
@@ -42,12 +44,12 @@ socket.on('add personal msg', (data) => {
 });
 
 socket.on('del user', (data) => {
-    displayMsg(null,'SYSTEM', '--- ' + data.name + ' LEFT---');
+    displayMsg(systemPicLink,'SYSTEM', '--- ' + data.name + ' LEFT ---');
 });
 
 socket.on('disconnect', () => {
     socket.disconnect();
-    displayMsg(null,'SYSTEM',
+    displayMsg(systemPicLink,'SYSTEM',
              '----- SERVER DISCONNECTED -----' +
                 '\n----- RELOAD PAGE, PLEASE -----');
     hide(msg);
@@ -89,7 +91,7 @@ function checkName() {
 function chatPopUp() {
     socket.emit('user in', {name: name});
     show(chat);
-    displayMsg(null,'SYSTEM', '--- YOU JOINED ---');
+    displayMsg(systemPicLink,'SYSTEM', '--- YOU JOINED ---');
 }
 
 function send() {
